@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class FirstPersonAiming : MonoBehaviour
@@ -13,6 +14,7 @@ public class FirstPersonAiming : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         cam = camTransform.GetComponent<Camera>();
     }
 
@@ -26,6 +28,8 @@ public class FirstPersonAiming : MonoBehaviour
 
     void HandleAiming(float aimX, float aimY)
     {
-        //TODO:
+        transform.Rotate(Vector3.up, aimX*sensitivity);
+        
+        camTransform.Rotate(Vector3.left, aimY*sensitivity);
     }
 }

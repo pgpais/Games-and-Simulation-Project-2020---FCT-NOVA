@@ -714,7 +714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 10
-  camTransform: {fileID: 0}
+  camTransform: {fileID: 67651156}
 --- !u!1 &1525844424
 GameObject:
   m_ObjectHideFlags: 0

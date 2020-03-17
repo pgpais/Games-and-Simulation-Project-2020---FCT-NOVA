@@ -32,6 +32,10 @@ public class FirstPersonMovement : MonoBehaviour
 
     void HandleMovement()
     {
-        rb.velocity = new Vector3(movH * speed, rb.velocity.y, movV * speed);
+        Vector3 mov = transform.forward * movV + transform.right * movH;
+        mov.Normalize();
+        mov *= speed;
+        mov += new Vector3(0, rb.velocity.y, 0);
+        rb.velocity = mov;
     }
 }
