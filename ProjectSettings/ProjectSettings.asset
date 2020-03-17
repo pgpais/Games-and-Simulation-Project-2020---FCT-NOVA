@@ -17,7 +17,7 @@ PlayerSettings:
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
-  m_ShowUnitySplashScreen: 0
+  m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
   m_SplashScreenOverlayOpacity: 1
   m_SplashScreenAnimation: 1
@@ -627,7 +627,7 @@ PlayerSettings:
   cloudProjectId: 239fc94d-18d1-4273-9fde-d0635dc2eea1
   framebufferDepthMemorylessMode: 0
   projectName: JS Project
-  organizationId: js-19-20
+  organizationId: unity_jvhorswzu60y4a
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
