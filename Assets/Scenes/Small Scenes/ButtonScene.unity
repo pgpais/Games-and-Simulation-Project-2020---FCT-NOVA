@@ -558,6 +558,11 @@ PrefabInstance:
       propertyPath: objectToActivate
       value: 
       objectReference: {fileID: 812120945}
+    - target: {fileID: 4480725107102029069, guid: d524a1d01dcd1b04a9116fed17b4f47b,
+        type: 3}
+      propertyPath: activatable
+      value: 
+      objectReference: {fileID: 812120950}
     - target: {fileID: 6348498956792075710, guid: d524a1d01dcd1b04a9116fed17b4f47b,
         type: 3}
       propertyPath: m_Name

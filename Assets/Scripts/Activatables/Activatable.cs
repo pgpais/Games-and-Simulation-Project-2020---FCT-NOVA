@@ -1,9 +1,19 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Activatables
 {
-    public interface Activatable
+    /// <summary>
+    /// Objects that can be activated.
+    /// Meaning that they don't go back to a "deactivated" state. 
+    /// </summary>
+    public abstract class Activatable: MonoBehaviour
     {
-        void Activate();
+        private void Start()
+        {
+            gameObject.tag = "Activatable";
+        }
+
+        public abstract void Activate();
     }
 }

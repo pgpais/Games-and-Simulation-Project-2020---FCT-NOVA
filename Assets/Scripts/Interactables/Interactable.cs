@@ -1,10 +1,17 @@
-﻿namespace Interactables
+﻿using UnityEngine;
+
+namespace Interactables
 {
-    public interface Interactable
+    public abstract class Interactable : MonoBehaviour
     {
+        private void Start()
+        {
+            gameObject.tag = "Interactable";
+        }
+        
         /// <summary>
         /// To be called by the player when trying to interact with an object
         /// </summary>
-        void Interact();
+        public abstract void Interact();
     }
 }
