@@ -1,15 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Interactables;
 using UnityEditor;
 using UnityEngine;
 
 public class FirstPersonAiming : MonoBehaviour
 {
+    [Header("Controls Parameters")]
     public float sensitivity = 10f;
 
     private float rotY;
 
-    [Header("Camera Properties")] 
+    [Header("Interact Parameters")] 
+    [SerializeField]
+    private float interactRange = 10f;
+    [SerializeField] private LayerMask interactMask;
+    
+
+    [Header("Camera Parameters")] 
     public float maxClamp = 90.0f;
     public float minClamp = -90.0f;
     private Camera cam;
@@ -30,6 +38,10 @@ public class FirstPersonAiming : MonoBehaviour
     void Update()
     {
         HandleAiming(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        if (Input.GetButtonDown("Use"))
+        {
+            TryInteracting();
+        }
     }
 
     void HandleAiming(float aimX, float aimY)
@@ -48,5 +60,22 @@ public class FirstPersonAiming : MonoBehaviour
         camRotation.x = rotX;
         camTransform.localRotation = Quaternion.Euler(camRotation);
         transform.eulerAngles = bodyRotation;
+    }
+
+    /// <summary>
+    /// Shoots a Raycast forward to look for an Interactable
+    /// </summary>
+    void TryInteracting()
+    {
+        RaycastHit hit;
+        Debug.DrawRay(camTransform.position, camTransform.forward, Color.red, 3f);
+        if (Physics.Raycast(camTransform.position, camTransform.forward, out hit, interactRange, interactMask))
+        {
+            if (hit.collider.CompareTag("Interactable"))
+            {
+                // TODO: This but with better performance?
+                hit.collider.GetComponent<Interactable>().Interact();
+            }
+        }
     }
 }
