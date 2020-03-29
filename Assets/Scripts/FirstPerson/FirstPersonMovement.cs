@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(Collider))]
 public class FirstPersonMovement : MonoBehaviour
 {
     public float speed = 10f;
@@ -25,7 +24,8 @@ public class FirstPersonMovement : MonoBehaviour
     private float movH, movV;
     private bool triedJumping;
     private Rigidbody rb;
-    
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +46,8 @@ public class FirstPersonMovement : MonoBehaviour
         HandleJumping();
     }
 
+    #region Jumping
+
     private void HandleJumping()
     {
         CheckGrounded();
@@ -58,19 +60,17 @@ public class FirstPersonMovement : MonoBehaviour
 
     private void CheckGrounded()
     {
-        if (Physics.OverlapBox(GroundCheck.position, boxRadiuses, Quaternion.identity, boxMask).Length > 0)
-        {
-            //TODO: check that this work for every case (probably mess with Layermask)
-            isGrounded = true; 
-        }
-        else
-        {
-            isGrounded = false;
-        }
+        // Maybe nonAlloc
+        isGrounded = Physics.OverlapBox(GroundCheck.position, boxRadiuses, Quaternion.identity, boxMask).Length > 0;
     }
 
+    #endregion
+
+    #region Movement
     void HandleMovement()
     {
+        // TODO: total mid-air control
+
         Vector3 mov = transform.forward * movV + transform.right * movH;
         mov.Normalize();
         mov *= speed;
@@ -85,4 +85,5 @@ public class FirstPersonMovement : MonoBehaviour
         Gizmos.DrawSphere(position, 0.05f);
         Gizmos.DrawWireCube(position, boxRadiuses*2);
     }
+    #endregion
 }

@@ -777,26 +777,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5397416739689881527, guid: c85739c26f46b2446803a6029b2d1e47,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5397416739689881527, guid: c85739c26f46b2446803a6029b2d1e47,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5397416740430290172, guid: c85739c26f46b2446803a6029b2d1e47,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5397416741137440577, guid: c85739c26f46b2446803a6029b2d1e47,
-        type: 3}
-      propertyPath: interactMask.m_Bits
-      value: 1335
-      objectReference: {fileID: 0}
     - target: {fileID: 5397416741137440589, guid: c85739c26f46b2446803a6029b2d1e47,
         type: 3}
       propertyPath: m_Name
@@ -1507,11 +1487,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4480725107102029069, guid: d524a1d01dcd1b04a9116fed17b4f47b,
         type: 3}
-      propertyPath: objectToActivate
-      value: 
-      objectReference: {fileID: 812120945}
-    - target: {fileID: 4480725107102029069, guid: d524a1d01dcd1b04a9116fed17b4f47b,
-        type: 3}
       propertyPath: activatable
       value: 
       objectReference: {fileID: 812120950}
@@ -1574,11 +1549,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6521714221156358250, guid: d524a1d01dcd1b04a9116fed17b4f47b,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.49880266
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d524a1d01dcd1b04a9116fed17b4f47b, type: 3}

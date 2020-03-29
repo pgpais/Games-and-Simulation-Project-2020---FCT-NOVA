@@ -17,9 +17,12 @@ public class FirstPersonAiming : MonoBehaviour
     [SerializeField] private LayerMask interactMask;
     
 
+    
     [Header("Camera Parameters")] 
+    [Range(0f, 90f)]
     public float maxClamp = 90.0f;
-    public float minClamp = -90.0f;
+    private float minClamp;
+    
     private Camera cam;
     [SerializeField]
     private Transform camTransform;
@@ -32,6 +35,7 @@ public class FirstPersonAiming : MonoBehaviour
         cam = camTransform.GetComponent<Camera>();
         rotX = 0;
         rotY = 0;
+        minClamp = -maxClamp;
     }
 
     // Update is called once per frame
@@ -73,7 +77,7 @@ public class FirstPersonAiming : MonoBehaviour
         {
             if (hit.collider.CompareTag("Interactable"))
             {
-                // TODO: This but with better performance?
+                // TODO: This but with better performance? SendMessage?
                 hit.collider.GetComponent<Interactable>().Interact();
             }
         }

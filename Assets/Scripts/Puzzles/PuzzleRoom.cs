@@ -1,11 +1,12 @@
 ﻿using System;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace DefaultNamespace
 {
-    [UnityEngine.CreateAssetMenu(fileName = "Puzzle Room", menuName = "Puzzle/Sample Room", order = 0)]
-    public class PuzzleRoom : UnityEngine.ScriptableObject
+    [CreateAssetMenu(fileName = "Puzzle Room", menuName = "Puzzle/Sample Room", order = 0)]
+    public class PuzzleRoom : ScriptableObject
     {
         [Serializable]
         public struct PathWays
@@ -16,14 +17,14 @@ namespace DefaultNamespace
             public bool East;
         }
         
-        public Scene scene;
+        //TODO: wtf editor?
+        public SceneAsset scene;
 
         [Header("Properties")]
         [Range(1, 5)]
         public float difficulty;
         [Tooltip("Position set to true if N, S, W, E exist, respectively")]
         public PathWays pathWays;
-        
     }
 
     

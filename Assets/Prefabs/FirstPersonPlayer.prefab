@@ -275,7 +275,7 @@ MonoBehaviour:
   boxRadiuses: {x: 0.4, y: 0.2, z: 0.4}
   boxMask:
     serializedVersion: 2
-    m_Bits: 311
+    m_Bits: 1335
 --- !u!114 &5397416741137440577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,7 +292,6 @@ MonoBehaviour:
   interactRange: 10
   interactMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1335
   maxClamp: 60
-  minClamp: -60
   camTransform: {fileID: 5397416740430290172}

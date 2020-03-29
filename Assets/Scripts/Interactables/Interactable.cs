@@ -4,7 +4,7 @@ namespace Interactables
 {
     public abstract class Interactable : MonoBehaviour
     {
-        private void Start()
+        protected virtual void Start()
         {
             gameObject.tag = "Interactable";
         }

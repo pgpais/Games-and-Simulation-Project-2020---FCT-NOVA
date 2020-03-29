@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Puzzles/Sample Puzzle.unity
+    guid: 47f2dd90bd7b94f4dbba5d3533637d2b
   m_configObjects: {}
