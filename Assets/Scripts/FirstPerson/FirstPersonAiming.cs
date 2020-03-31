@@ -4,7 +4,7 @@ using Interactables;
 using UnityEditor;
 using UnityEngine;
 
-public class FirstPersonAiming : MonoBehaviour
+public class FirstPersonAiming : Bolt.EntityBehaviour<IPlayerState>
 {
     [Header("Controls Parameters")]
     public float sensitivity = 10f;
@@ -31,12 +31,17 @@ public class FirstPersonAiming : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cam = GetComponentInChildren<Camera>();
+        camTransform = cam.transform;
+        
+        if(!entity.HasControl)
+            cam.gameObject.SetActive(false);
+        
         Cursor.lockState = CursorLockMode.Locked;
-        cam = camTransform.GetComponent<Camera>();
         rotX = 0;
         rotY = 0;
-        minClamp = -maxClamp;
     }
+
 
     // Update is called once per frame
     void Update()

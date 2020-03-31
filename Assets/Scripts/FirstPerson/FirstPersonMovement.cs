@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class FirstPersonMovement : MonoBehaviour
+public class FirstPersonMovement : Bolt.EntityBehaviour<ICustomPlayerState>
 {
     public float speed = 10f;
     public float jumpForce = 10f;
@@ -25,6 +25,10 @@ public class FirstPersonMovement : MonoBehaviour
     private bool triedJumping;
     private Rigidbody rb;
 
+    public override void Attached()
+    {
+        state.SetTransforms(state.PlayerMovement, transform);
+    }
 
     // Start is called before the first frame update
     void Start()
