@@ -31,14 +31,20 @@ public class FirstPersonAiming : Bolt.EntityBehaviour<IPlayerState>
     // Start is called before the first frame update
     void Start()
     {
+
+
+        Cursor.lockState = CursorLockMode.Locked;
+
         cam = GetComponentInChildren<Camera>();
         camTransform = cam.transform;
         minClamp = -maxClamp;
-        
-        if(!entity.HasControl)
+
+        if (!entity.HasControl){
             cam.gameObject.SetActive(false);
+        }
+
+
         
-        Cursor.lockState = CursorLockMode.Locked;
         rotX = 0;
         rotY = 0;
     }
