@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,7 +17,8 @@ namespace DefaultNamespace
         }
         
         //TODO: wtf editor?
-        public SceneAsset scene;
+        [Tooltip("Prefab to instantiate puzzle with")]
+        public GameObject puzzlePrefab;
 
         [Header("Properties")]
         [Range(1, 5)]

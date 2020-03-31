@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-//detect if network has been instantianted if not it'll do it automatically and on disconnect it'll destroy it
+//detect if network has been instantiated if not it'll do it automatically and on disconnect it'll destroy it
 [BoltGlobalBehaviour]
 public class NetworkCallbacks : Bolt.GlobalEventListener
 {

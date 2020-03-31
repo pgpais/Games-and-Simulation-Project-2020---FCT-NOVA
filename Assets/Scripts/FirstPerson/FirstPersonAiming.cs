@@ -33,6 +33,7 @@ public class FirstPersonAiming : Bolt.EntityBehaviour<IPlayerState>
     {
         cam = GetComponentInChildren<Camera>();
         camTransform = cam.transform;
+        minClamp = -maxClamp;
         
         if(!entity.HasControl)
             cam.gameObject.SetActive(false);
