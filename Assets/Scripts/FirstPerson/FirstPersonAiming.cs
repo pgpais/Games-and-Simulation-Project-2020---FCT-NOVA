@@ -4,7 +4,7 @@ using Interactables;
 using UnityEditor;
 using UnityEngine;
 
-public class FirstPersonAiming : Bolt.EntityBehaviour<IPlayerState>
+public class FirstPersonAiming : Bolt.EntityBehaviour<ICustomPlayerState>
 {
     [Header("Controls Parameters")]
     public float sensitivity = 10f;

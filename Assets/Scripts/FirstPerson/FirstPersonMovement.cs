@@ -71,6 +71,7 @@ public class FirstPersonMovement : Bolt.EntityBehaviour<ICustomPlayerState>
     #endregion
 
     #region Movement
+    
     void HandleMovement()
     {
         // TODO: total mid-air control
