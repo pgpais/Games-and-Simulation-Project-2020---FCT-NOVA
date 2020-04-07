@@ -8,7 +8,8 @@ public class PressurePlate : MonoBehaviour
     [SerializeField] private GameObject door;
 
     private bool open = false;
-
+    
+    
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("I'm in");
@@ -16,6 +17,8 @@ public class PressurePlate : MonoBehaviour
         {
             open = true;
             door.transform.position += new Vector3(0, 4, 0);
+            transform.GetComponent<Renderer>().material.color = Color.red;
+            
         }
     }
 
