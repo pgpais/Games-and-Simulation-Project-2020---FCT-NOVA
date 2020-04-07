@@ -16,4 +16,5 @@ MonoBehaviour:
   Prefabs:
   - {fileID: 0}
   - {fileID: 5397416741137440589, guid: c85739c26f46b2446803a6029b2d1e47, type: 3}
+  - {fileID: 8961259287880240387, guid: 76ebf7ea86045354bb92a7a9879cd042, type: 3}
   SearchPaths: []

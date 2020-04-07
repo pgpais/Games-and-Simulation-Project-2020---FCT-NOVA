@@ -6,6 +6,7 @@ namespace Interactables
     [RequireComponent(typeof(Animator))]
     public class ButtonInteractable : Interactable
     {
+        //TODO: check photon bolt events
         [Tooltip("Object this button will activate")]
         public Activatable activatable;
 

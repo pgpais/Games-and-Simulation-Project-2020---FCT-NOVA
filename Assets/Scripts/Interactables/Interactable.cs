@@ -2,6 +2,7 @@
 
 namespace Interactables
 {
+    [RequireComponent(typeof(BoltEntity))]
     public abstract class Interactable : MonoBehaviour
     {
         protected virtual void Start()

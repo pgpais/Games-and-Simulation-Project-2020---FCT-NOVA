@@ -7,13 +7,25 @@ namespace Activatables
     /// Objects that can be activated.
     /// Meaning that they don't go back to a "deactivated" state. 
     /// </summary>
-    public abstract class Activatable : MonoBehaviour
+    public abstract class Activatable: Bolt.EntityBehaviour<IButtonState>
     {
-        private void Start()
+        private BoltEntity boltEntity;
+
+        public override void Attached()
         {
+            
+        }
+
+        protected virtual void Start()
+        {
+            boltEntity = GetComponent<BoltEntity>();
             gameObject.tag = "Activatable";
         }
 
-        public abstract void Activate();
+        public virtual void Activate()
+        {
+            var ev = ActivatedObject.Create();
+            ev.Activatable = boltEntity;
+        }
     }
 }
