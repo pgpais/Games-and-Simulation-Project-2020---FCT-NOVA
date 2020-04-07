@@ -820,6 +820,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 632162771}
+  box: {fileID: 812651866}
+  wrong: {fileID: 2100000, guid: c88afdf7255da274882b8adb81a9e527, type: 2}
+  right: {fileID: 2100000, guid: fcbda40a28cdd7f4faa6dc341816d3b7, type: 2}
+  normal: {fileID: 2100000, guid: e05616a7f0fc05f4d951f8cb55c6464c, type: 2}
 --- !u!65 &812651868
 BoxCollider:
   m_ObjectHideFlags: 0
