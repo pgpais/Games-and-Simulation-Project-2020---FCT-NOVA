@@ -7,14 +7,13 @@ public class NetworkCallbacks : Bolt.GlobalEventListener
     public override void SceneLoadLocalDone(string scene)
     {
         if (BoltNetwork.IsServer)
-                        BoltNetwork.Instantiate(BoltPrefabs.FirstPersonPlayer,
-                             new Vector3(-9, 1, -1) , Quaternion.identity).TakeControl();
+            BoltNetwork.Instantiate(BoltPrefabs.FirstPersonPlayer,
+                new Vector3(-9, 1, -1), Quaternion.identity).TakeControl();
 
         else
         {
             BoltNetwork.Instantiate(BoltPrefabs.FirstPersonPlayer,
-                new Vector3(-3, 1, -1) , Quaternion.identity).TakeControl();
+                new Vector3(-3, 1, -1), Quaternion.identity).TakeControl();
         }
     }
 }
- 

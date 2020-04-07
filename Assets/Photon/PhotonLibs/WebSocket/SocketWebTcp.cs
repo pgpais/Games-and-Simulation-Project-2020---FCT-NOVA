@@ -1,5 +1,4 @@
 #if UNITY_WEBGL || WEBSOCKET || (UNITY_XBOXONE && UNITY_EDITOR)
-
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright file="SocketWebTcp.cs" company="Exit Games GmbH">
 //   Copyright (c) Exit Games GmbH.  All rights reserved.
@@ -104,7 +103,8 @@ namespace ExitGames.Client.Photon
             MonoBehaviour mb = this.websocketConnectionObject.AddComponent<MonoBehaviourExt>();
             this.websocketConnectionObject.hideFlags = HideFlags.HideInHierarchy;
             UnityEngine.Object.DontDestroyOnLoad(this.websocketConnectionObject);
-            this.sock = new WebSocket(new Uri(this.ServerAddress), SerializationProtocol);          // TODO: The protocol should be set based on current PeerBase value (but that's currently not accessible)
+            this.sock =
+ new WebSocket(new Uri(this.ServerAddress), SerializationProtocol);          // TODO: The protocol should be set based on current PeerBase value (but that's currently not accessible)
             this.sock.Connect();
 
             mb.StartCoroutine(this.ReceiveLoop());

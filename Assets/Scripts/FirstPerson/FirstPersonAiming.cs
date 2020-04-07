@@ -6,45 +6,40 @@ using UnityEngine;
 
 public class FirstPersonAiming : Bolt.EntityBehaviour<ICustomPlayerState>
 {
-    [Header("Controls Parameters")]
-    public float sensitivity = 10f;
+    [Header("Controls Parameters")] public float sensitivity = 10f;
 
     private float rotY;
 
-    [Header("Interact Parameters")] 
-    [SerializeField]
+    [Header("Interact Parameters")] [SerializeField]
     private float interactRange = 10f;
-    [SerializeField] private LayerMask interactMask;
-    
 
-    
-    [Header("Camera Parameters")] 
-    [Range(0f, 90f)]
+    [SerializeField] private LayerMask interactMask;
+
+
+    [Header("Camera Parameters")] [Range(0f, 90f)]
     public float maxClamp = 90.0f;
+
     private float minClamp;
-    
+
     private Camera cam;
-    [SerializeField]
-    private Transform camTransform;
+    [SerializeField] private Transform camTransform;
     private float rotX;
-    
+
     // Start is called before the first frame update
     void Start()
     {
-
-
         Cursor.lockState = CursorLockMode.Locked;
 
         cam = GetComponentInChildren<Camera>();
         camTransform = cam.transform;
         minClamp = -maxClamp;
 
-        if (!entity.HasControl){
+        if (!entity.HasControl)
+        {
             cam.gameObject.SetActive(false);
         }
 
 
-        
         rotX = 0;
         rotY = 0;
     }
@@ -68,7 +63,7 @@ public class FirstPersonAiming : Bolt.EntityBehaviour<ICustomPlayerState>
 
         // Clamp camera rotation so the player doesn't turn upside down
         rotX = Mathf.Clamp(rotX, minClamp, maxClamp);
-        
+
         // Set rotations
         Vector3 bodyRotation = transform.eulerAngles;
         Vector3 camRotation = camTransform.localRotation.eulerAngles;
@@ -91,6 +86,11 @@ public class FirstPersonAiming : Bolt.EntityBehaviour<ICustomPlayerState>
             {
                 // TODO: This but with better performance? SendMessage?
                 hit.collider.GetComponent<Interactable>().Interact();
+            }
+
+            if (hit.collider.CompareTag("Carryable"))
+            {
+                
             }
         }
     }

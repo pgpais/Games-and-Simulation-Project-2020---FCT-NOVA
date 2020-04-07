@@ -35,7 +35,6 @@ public class Menu : Bolt.GlobalEventListener
             {
                 BoltNetwork.Connect(photonSession);
             }
-            
         }
     }
 }

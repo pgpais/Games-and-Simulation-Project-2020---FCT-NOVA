@@ -14,11 +14,11 @@ namespace Interactables
 
         protected override void Start()
         {
-           base.Start();
+            base.Start();
 
-           anim = GetComponent<Animator>();
+            anim = GetComponent<Animator>();
         }
-        
+
         public override void Interact()
         {
             Debug.Log("Button activated", gameObject);

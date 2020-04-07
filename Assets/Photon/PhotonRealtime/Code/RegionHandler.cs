@@ -26,15 +26,15 @@ namespace Photon.Realtime
     using System.Collections.Generic;
     using System.Diagnostics;
     using ExitGames.Client.Photon;
-
-    #if SUPPORTED_UNITY
+#if SUPPORTED_UNITY
     using UnityEngine;
     using Debug = UnityEngine.Debug;
-    #endif
-    #if SUPPORTED_UNITY || NETFX_CORE
+#endif
+#if SUPPORTED_UNITY || NETFX_CORE
     using Hashtable = ExitGames.Client.Photon.Hashtable;
     using SupportClass = ExitGames.Client.Photon.SupportClass;
-    #endif
+
+#endif
 
     /// <summary>
     /// Provides methods to work with Photon's regions (Photon Cloud) and can be use to find the one with best ping.
@@ -75,6 +75,7 @@ namespace Photon.Realtime
                 {
                     return null;
                 }
+
                 if (this.bestRegionCache != null)
                 {
                     return this.bestRegionCache;
@@ -98,15 +99,16 @@ namespace Photon.Realtime
         {
             get
             {
-				if (this.BestRegion != null) {
-					return this.BestRegion.Code + ";" + this.BestRegion.Ping + ";" + this.availableRegionCodes;
-				}
+                if (this.BestRegion != null)
+                {
+                    return this.BestRegion.Code + ";" + this.BestRegion.Ping + ";" + this.availableRegionCodes;
+                }
 
-				return this.availableRegionCodes;
+                return this.availableRegionCodes;
             }
         }
 
-        #if PING_VIA_COROUTINE
+#if PING_VIA_COROUTINE
         private ConnectionHandler connectionHandler;
         
         public RegionHandler()
@@ -117,7 +119,7 @@ namespace Photon.Realtime
                 Debug.LogError("ConnectionHandler component not found. It is required to start regions ping coroutine.");
             }
         }
-        #endif
+#endif
 
         public string GetResults()
         {
@@ -141,6 +143,7 @@ namespace Photon.Realtime
             {
                 return;
             }
+
             if (opGetRegions.ReturnCode != ErrorCode.Ok)
             {
                 return;
@@ -225,14 +228,18 @@ namespace Photon.Realtime
             {
                 return this.PingEnabledRegions();
             }
+
             if (string.IsNullOrEmpty(prevAvailableRegionCodes))
             {
                 return this.PingEnabledRegions();
             }
-            if (!this.availableRegionCodes.Equals(prevAvailableRegionCodes) || !this.availableRegionCodes.Contains(prevBestRegionCode))
+
+            if (!this.availableRegionCodes.Equals(prevAvailableRegionCodes) ||
+                !this.availableRegionCodes.Contains(prevBestRegionCode))
             {
                 return this.PingEnabledRegions();
             }
+
             if (prevBestRegionPing >= RegionPinger.PingWhenFailed)
             {
                 return this.PingEnabledRegions();
@@ -243,11 +250,11 @@ namespace Photon.Realtime
 
             Region preferred = this.EnabledRegions.Find(r => r.Code.Equals(prevBestRegionCode));
             RegionPinger singlePinger = new RegionPinger(preferred, this.OnPreferredRegionPinged);
-            #if PING_VIA_COROUTINE
+#if PING_VIA_COROUTINE
             singlePinger.Start(this.connectionHandler);
-            #else
+#else
             singlePinger.Start();
-            #endif
+#endif
             return true;
         }
 
@@ -279,11 +286,11 @@ namespace Photon.Realtime
             {
                 RegionPinger rp = new RegionPinger(region, this.OnRegionDone);
                 this.pingerList.Add(rp);
-                #if PING_VIA_COROUTINE
+#if PING_VIA_COROUTINE
                 rp.Start(this.connectionHandler); // TODO: check return value
-                #else
+#else
                 rp.Start(); // TODO: check return value
-                #endif
+#endif
             }
 
             return true;
@@ -309,7 +316,10 @@ namespace Photon.Realtime
     {
         public static int Attempts = 5;
         public static bool IgnoreInitialAttempt = true;
-        public static int MaxMilliseconsPerPing = 800; // enter a value you're sure some server can beat (have a lower rtt)
+
+        public static int
+            MaxMilliseconsPerPing = 800; // enter a value you're sure some server can beat (have a lower rtt)
+
         public static int PingWhenFailed = Attempts * MaxMilliseconsPerPing;
 
         private Region region;
@@ -335,38 +345,38 @@ namespace Photon.Realtime
         {
             PhotonPing ping = null;
 
-            #if !NETFX_CORE
+#if !NETFX_CORE
             if (LoadBalancingPeer.PingImplementation == typeof(PingMono))
             {
                 ping = new PingMono(); // using this type explicitly saves it from IL2CPP bytecode stripping
             }
-            #endif
-            #if NATIVE_SOCKETS
+#endif
+#if NATIVE_SOCKETS
             if (LoadBalancingPeer.PingImplementation == typeof(PingNativeDynamic))
             {
                 ping = new PingNativeDynamic();
             }
-            #endif
-            #if UNITY_WEBGL
+#endif
+#if UNITY_WEBGL
             if (LoadBalancingPeer.PingImplementation == typeof(PingHttp))
             {
                 ping = new PingHttp();
             }
-            #endif
+#endif
 
             if (ping == null)
             {
-                ping = (PhotonPing)Activator.CreateInstance(LoadBalancingPeer.PingImplementation);
+                ping = (PhotonPing) Activator.CreateInstance(LoadBalancingPeer.PingImplementation);
             }
 
             return ping;
         }
 
-        #if PING_VIA_COROUTINE
+#if PING_VIA_COROUTINE
         public bool Start(ConnectionHandler connectionHandler)
-        #else
+#else
         public bool Start()
-        #endif
+#endif
         {
             // all addresses for Photon region servers will contain a :port ending. this needs to be removed first.
             // PhotonPing.StartPing() requires a plain (IP) address without port or protocol-prefix (on all but Windows 8.1 and WebGL platforms).
@@ -376,6 +386,7 @@ namespace Photon.Realtime
             {
                 address = address.Substring(0, indexOfColon);
             }
+
             this.regionAddress = ResolveHost(address);
 
 
@@ -386,7 +397,7 @@ namespace Photon.Realtime
             this.CurrentAttempt = 0;
             this.rttResults = new List<int>(Attempts);
 
-            #if PING_VIA_COROUTINE
+#if PING_VIA_COROUTINE
             if (connectionHandler)
             {
                 connectionHandler.StartCoroutine(this.RegionPingCoroutine());
@@ -395,11 +406,12 @@ namespace Photon.Realtime
             {
                 Debug.LogError("ConnectionHandler component is null or destroyed. It is required to start regions ping coroutine.");
             }
-            #elif UNITY_SWITCH
+#elif UNITY_SWITCH
             SupportClass.StartBackgroundCalls(this.RegionPingThreaded, 0);
-            #else
-            SupportClass.StartBackgroundCalls(this.RegionPingThreaded, 0, "RegionPing_" + this.region.Code+"_"+this.region.Cluster);
-            #endif
+#else
+            SupportClass.StartBackgroundCalls(this.RegionPingThreaded, 0,
+                "RegionPing_" + this.region.Code + "_" + this.region.Cluster);
+#endif
 
             return true;
         }
@@ -425,7 +437,9 @@ namespace Photon.Realtime
                 }
                 catch (Exception e)
                 {
-                    System.Diagnostics.Debug.WriteLine("RegionPinger.RegionPingThreaded() catched an exception for ping.StartPing(). Exception: " + e + " Source: " + e.Source + " Message: " + e.Message);
+                    System.Diagnostics.Debug.WriteLine(
+                        "RegionPinger.RegionPingThreaded() catched an exception for ping.StartPing(). Exception: " + e +
+                        " Source: " + e.Source + " Message: " + e.Message);
                     break;
                 }
 
@@ -437,14 +451,14 @@ namespace Photon.Realtime
                         overtime = true;
                         break;
                     }
-                    #if !NETFX_CORE
+#if !NETFX_CORE
                     System.Threading.Thread.Sleep(0);
-                    #endif
+#endif
                 }
 
 
                 sw.Stop();
-                int rtt = (int)sw.ElapsedMilliseconds;
+                int rtt = (int) sw.ElapsedMilliseconds;
                 this.rttResults.Add(rtt);
 
                 if (IgnoreInitialAttempt && this.CurrentAttempt == 0)
@@ -455,12 +469,12 @@ namespace Photon.Realtime
                 {
                     rttSum += rtt;
                     replyCount++;
-                    this.region.Ping = (int)((rttSum) / replyCount);
+                    this.region.Ping = (int) ((rttSum) / replyCount);
                 }
 
-                #if !NETFX_CORE
+#if !NETFX_CORE
                 System.Threading.Thread.Sleep(10);
-                #endif
+#endif
             }
 
             //Debug.Log("Done: "+ this.region.Code);
@@ -473,7 +487,7 @@ namespace Photon.Realtime
         }
 
 
-        #if SUPPORTED_UNITY
+#if SUPPORTED_UNITY
         /// <remarks>
         /// Affected by frame-rate of app, as this Coroutine checks the socket for a result once per frame.
         /// </remarks>
@@ -510,12 +524,13 @@ namespace Photon.Realtime
                         overtime = true;
                         break;
                     }
+
                     yield return 0; // keep this loop tight, to avoid adding local lag to rtt.
                 }
 
 
                 sw.Stop();
-                int rtt = (int)sw.ElapsedMilliseconds;
+                int rtt = (int) sw.ElapsedMilliseconds;
                 this.rttResults.Add(rtt);
 
 
@@ -527,7 +542,7 @@ namespace Photon.Realtime
                 {
                     rttSum += rtt;
                     replyCount++;
-                    this.region.Ping = (int)((rttSum) / replyCount);
+                    this.region.Ping = (int) ((rttSum) / replyCount);
                 }
 
                 yield return new WaitForSeconds(0.1f);
@@ -535,11 +550,11 @@ namespace Photon.Realtime
 
             //Debug.Log("Done: "+ this.region.Code);
             this.Done = true;
-			this.ping.Dispose();
+            this.ping.Dispose();
             this.onDoneCall(this.region);
             yield return null;
         }
-        #endif
+#endif
 
         public string GetResults()
         {
@@ -557,23 +572,23 @@ namespace Photon.Realtime
         /// <returns>IP string or empty string if resolution fails</returns>
         public static string ResolveHost(string hostName)
         {
+            if (hostName.StartsWith("wss://"))
+            {
+                hostName = hostName.Substring(6);
+            }
 
-			if (hostName.StartsWith("wss://"))
-			{
-				hostName = hostName.Substring(6);
-			}
-			if (hostName.StartsWith("ws://"))
-			{
-				hostName = hostName.Substring(5);
-			}
+            if (hostName.StartsWith("ws://"))
+            {
+                hostName = hostName.Substring(5);
+            }
 
             string ipv4Address = string.Empty;
 
             try
             {
-                #if UNITY_WSA || NETFX_CORE || UNITY_WEBGL
+#if UNITY_WSA || NETFX_CORE || UNITY_WEBGL
                 return hostName;
-                #else
+#else
 
                 IPAddress[] address = Dns.GetHostAddresses(hostName);
                 if (address.Length == 1)
@@ -592,17 +607,20 @@ namespace Photon.Realtime
                         {
                             return ipAddress.ToString();
                         }
+
                         if (string.IsNullOrEmpty(ipv4Address))
                         {
                             ipv4Address = address.ToString();
                         }
                     }
                 }
-                #endif
+#endif
             }
             catch (System.Exception e)
             {
-                System.Diagnostics.Debug.WriteLine("RegionPinger.ResolveHost() catched an exception for Dns.GetHostAddresses(). Exception: " + e + " Source: " + e.Source + " Message: " + e.Message);
+                System.Diagnostics.Debug.WriteLine(
+                    "RegionPinger.ResolveHost() catched an exception for Dns.GetHostAddresses(). Exception: " + e +
+                    " Source: " + e.Source + " Message: " + e.Message);
             }
 
             return ipv4Address;

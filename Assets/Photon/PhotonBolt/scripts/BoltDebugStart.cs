@@ -11,7 +11,7 @@ public partial class BoltDebugStart : BoltInternal.GlobalEventListenerBase
     {
         DontDestroyOnLoad(gameObject);
 
-		Application.targetFrameRate = 60;
+        Application.targetFrameRate = 60;
     }
 
     void Start()
@@ -20,7 +20,6 @@ public partial class BoltDebugStart : BoltInternal.GlobalEventListenerBase
         Process p = new Process();
         p.StartInfo.FileName = "osascript";
         p.StartInfo.Arguments =
-
     @"-e 'tell application """ + UnityEditor.PlayerSettings.productName + @"""
   activate
 end tell'";
@@ -30,7 +29,7 @@ end tell'";
 
         BoltRuntimeSettings settings = BoltRuntimeSettings.instance;
 
-        _serverEndPoint = new UdpEndPoint(UdpIPv4Address.Localhost, (ushort)settings.debugStartPort);
+        _serverEndPoint = new UdpEndPoint(UdpIPv4Address.Localhost, (ushort) settings.debugStartPort);
         _clientEndPoint = new UdpEndPoint(UdpIPv4Address.Localhost, 0);
 
         BoltConfig cfg;
@@ -72,7 +71,7 @@ end tell'";
         }
         else
         {
-            BoltNetwork.Connect((ushort)BoltRuntimeSettings.instance.debugStartPort);
+            BoltNetwork.Connect((ushort) BoltRuntimeSettings.instance.debugStartPort);
         }
     }
 
@@ -81,4 +80,3 @@ end tell'";
         Destroy(gameObject);
     }
 }
-

@@ -18,11 +18,11 @@ namespace Photon.Realtime
 {
     using System.Collections;
     using ExitGames.Client.Photon;
-
-    #if SUPPORTED_UNITY || NETFX_CORE
+#if SUPPORTED_UNITY || NETFX_CORE
     using Hashtable = ExitGames.Client.Photon.Hashtable;
     using SupportClass = ExitGames.Client.Photon.SupportClass;
-    #endif
+
+#endif
 
 
     /// <summary>
@@ -76,26 +76,20 @@ namespace Photon.Realtime
         /// <see cref="Room.SetCustomProperties"/>
         public Hashtable CustomProperties
         {
-            get
-            {
-                return this.customProperties;
-            }
+            get { return this.customProperties; }
         }
 
         /// <summary>The name of a room. Unique identifier for a room/match (per AppId + game-Version).</summary>
         public string Name
         {
-            get
-            {
-                return this.name;
-            }
+            get { return this.name; }
         }
 
         /// <summary>
         /// Count of players currently in room. This property is overwritten by the Room class (used when you're in a Room).
         /// </summary>
         public int PlayerCount { get; private set; }
-        
+
         /// <summary>
         /// The limit of players for this room. This property is shown in lobby, too.
         /// If the room is full (players count == maxplayers), joining this room will fail.
@@ -106,10 +100,7 @@ namespace Photon.Realtime
         /// </remarks>
         public byte MaxPlayers
         {
-            get
-            {
-                return this.maxPlayers;
-            }
+            get { return this.maxPlayers; }
         }
 
         /// <summary>
@@ -126,10 +117,7 @@ namespace Photon.Realtime
         /// </remarks>
         public bool IsOpen
         {
-            get
-            {
-                return this.isOpen;
-            }
+            get { return this.isOpen; }
         }
 
         /// <summary>
@@ -143,10 +131,7 @@ namespace Photon.Realtime
         /// </remarks>
         public bool IsVisible
         {
-            get
-            {
-                return this.isVisible;
-            }
+            get { return this.isVisible; }
         }
 
         /// <summary>
@@ -184,21 +169,26 @@ namespace Photon.Realtime
         /// <returns>Summary of this RoomInfo instance.</returns>
         public override string ToString()
         {
-            return string.Format("Room: '{0}' {1},{2} {4}/{3} players.", this.name, this.isVisible ? "visible" : "hidden", this.isOpen ? "open" : "closed", this.maxPlayers, this.PlayerCount);
+            return string.Format("Room: '{0}' {1},{2} {4}/{3} players.", this.name,
+                this.isVisible ? "visible" : "hidden", this.isOpen ? "open" : "closed", this.maxPlayers,
+                this.PlayerCount);
         }
 
         /// <summary>Returns most interesting room values as string, including custom properties.</summary>
         /// <returns>Summary of this RoomInfo instance.</returns>
         public string ToStringFull()
         {
-            return string.Format("Room: '{0}' {1},{2} {4}/{3} players.\ncustomProps: {5}", this.name, this.isVisible ? "visible" : "hidden", this.isOpen ? "open" : "closed", this.maxPlayers, this.PlayerCount, this.customProperties.ToStringFull());
+            return string.Format("Room: '{0}' {1},{2} {4}/{3} players.\ncustomProps: {5}", this.name,
+                this.isVisible ? "visible" : "hidden", this.isOpen ? "open" : "closed", this.maxPlayers,
+                this.PlayerCount, this.customProperties.ToStringFull());
         }
 
         /// <summary>Copies "well known" properties to fields (IsVisible, etc) and caches the custom properties (string-keys only) in a local hashtable.</summary>
         /// <param name="propertiesToCache">New or updated properties to store in this RoomInfo.</param>
         protected internal virtual void InternalCacheProperties(Hashtable propertiesToCache)
         {
-            if (propertiesToCache == null || propertiesToCache.Count == 0 || this.customProperties.Equals(propertiesToCache))
+            if (propertiesToCache == null || propertiesToCache.Count == 0 ||
+                this.customProperties.Equals(propertiesToCache))
             {
                 return;
             }
@@ -208,7 +198,7 @@ namespace Photon.Realtime
             // list updates will remove this game from the game listing
             if (propertiesToCache.ContainsKey(GamePropertyKey.Removed))
             {
-                this.RemovedFromList = (bool)propertiesToCache[GamePropertyKey.Removed];
+                this.RemovedFromList = (bool) propertiesToCache[GamePropertyKey.Removed];
                 if (this.RemovedFromList)
                 {
                     return;
@@ -218,32 +208,32 @@ namespace Photon.Realtime
             // fetch the "well known" properties of the room, if available
             if (propertiesToCache.ContainsKey(GamePropertyKey.MaxPlayers))
             {
-                this.maxPlayers = (byte)propertiesToCache[GamePropertyKey.MaxPlayers];
+                this.maxPlayers = (byte) propertiesToCache[GamePropertyKey.MaxPlayers];
             }
 
             if (propertiesToCache.ContainsKey(GamePropertyKey.IsOpen))
             {
-                this.isOpen = (bool)propertiesToCache[GamePropertyKey.IsOpen];
+                this.isOpen = (bool) propertiesToCache[GamePropertyKey.IsOpen];
             }
 
             if (propertiesToCache.ContainsKey(GamePropertyKey.IsVisible))
             {
-                this.isVisible = (bool)propertiesToCache[GamePropertyKey.IsVisible];
+                this.isVisible = (bool) propertiesToCache[GamePropertyKey.IsVisible];
             }
 
             if (propertiesToCache.ContainsKey(GamePropertyKey.PlayerCount))
             {
-                this.PlayerCount = (int)((byte)propertiesToCache[GamePropertyKey.PlayerCount]);
+                this.PlayerCount = (int) ((byte) propertiesToCache[GamePropertyKey.PlayerCount]);
             }
 
             if (propertiesToCache.ContainsKey(GamePropertyKey.CleanupCacheOnLeave))
             {
-                this.autoCleanUp = (bool)propertiesToCache[GamePropertyKey.CleanupCacheOnLeave];
+                this.autoCleanUp = (bool) propertiesToCache[GamePropertyKey.CleanupCacheOnLeave];
             }
 
             if (propertiesToCache.ContainsKey(GamePropertyKey.MasterClientId))
             {
-                this.masterClientId = (int)propertiesToCache[GamePropertyKey.MasterClientId];
+                this.masterClientId = (int) propertiesToCache[GamePropertyKey.MasterClientId];
             }
 
             if (propertiesToCache.ContainsKey(GamePropertyKey.PropsListedInLobby))
@@ -251,19 +241,19 @@ namespace Photon.Realtime
                 this.propertiesListedInLobby = propertiesToCache[GamePropertyKey.PropsListedInLobby] as string[];
             }
 
-            if (propertiesToCache.ContainsKey((byte)GamePropertyKey.ExpectedUsers))
+            if (propertiesToCache.ContainsKey((byte) GamePropertyKey.ExpectedUsers))
             {
-                this.expectedUsers = (string[])propertiesToCache[GamePropertyKey.ExpectedUsers];
+                this.expectedUsers = (string[]) propertiesToCache[GamePropertyKey.ExpectedUsers];
             }
 
-            if (propertiesToCache.ContainsKey((byte)GamePropertyKey.EmptyRoomTtl))
+            if (propertiesToCache.ContainsKey((byte) GamePropertyKey.EmptyRoomTtl))
             {
-                this.emptyRoomTtl = (int)propertiesToCache[GamePropertyKey.EmptyRoomTtl];
+                this.emptyRoomTtl = (int) propertiesToCache[GamePropertyKey.EmptyRoomTtl];
             }
 
-            if (propertiesToCache.ContainsKey((byte)GamePropertyKey.PlayerTtl))
+            if (propertiesToCache.ContainsKey((byte) GamePropertyKey.PlayerTtl))
             {
-                this.playerTtl = (int)propertiesToCache[GamePropertyKey.PlayerTtl];
+                this.playerTtl = (int) propertiesToCache[GamePropertyKey.PlayerTtl];
             }
 
             // merge the custom properties (from your application) to the cache (only string-typed keys will be kept)

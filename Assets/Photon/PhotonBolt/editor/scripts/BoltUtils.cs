@@ -9,162 +9,173 @@ using UnityEngine;
 
 namespace Bolt.Utils
 {
-	public static class MenuUtililies
-	{
-		// ======= PUBLIC METHODS =====================================================================================
+    public static class MenuUtililies
+    {
+        // ======= PUBLIC METHODS =====================================================================================
 
-		[MenuItem("Bolt/Utils/Find Missing Scripts", priority = 25)]
-		public static void FindMissingScriptsMenu()
-		{
-			BoltLog.Info("Searching for Missing Scripts");
-			if (FindMissingComponents() == 0)
-			{
-				BoltLog.Info("Not found any prefab with missing scripts");
-			}
-		}
+        [MenuItem("Bolt/Utils/Find Missing Scripts", priority = 25)]
+        public static void FindMissingScriptsMenu()
+        {
+            BoltLog.Info("Searching for Missing Scripts");
+            if (FindMissingComponents() == 0)
+            {
+                BoltLog.Info("Not found any prefab with missing scripts");
+            }
+        }
 
-		[MenuItem("Bolt/Utils/Change DLL Mode", priority = 26)]
-		public static void ChangeDllModeMenu()
-		{
-			var current = BoltNetwork.IsDebugMode ? "Debug" : "Release";
-			var target = !BoltNetwork.IsDebugMode ? "Debug" : "Release";
+        [MenuItem("Bolt/Utils/Change DLL Mode", priority = 26)]
+        public static void ChangeDllModeMenu()
+        {
+            var current = BoltNetwork.IsDebugMode ? "Debug" : "Release";
+            var target = !BoltNetwork.IsDebugMode ? "Debug" : "Release";
 
-			var msg = string.Format("Bolt is in {0} mode, want to change to {1}?", current, target);
+            var msg = string.Format("Bolt is in {0} mode, want to change to {1}?", current, target);
 
-			if (EditorUtility.DisplayDialog("Change Bolt DLL Mode", msg, "Yes", "Cancel"))
-			{
-				if (ChangeDllMode())
-				{
-					UnityEngine.Debug.LogFormat("Bolt Mode swiched to {0}.", target);
-				}
-				else
-				{
-					UnityEngine.Debug.LogError("Error while swithing Bolt Mode, changes were reverted.");
-				}
-			}
-		}
+            if (EditorUtility.DisplayDialog("Change Bolt DLL Mode", msg, "Yes", "Cancel"))
+            {
+                if (ChangeDllMode())
+                {
+                    UnityEngine.Debug.LogFormat("Bolt Mode swiched to {0}.", target);
+                }
+                else
+                {
+                    UnityEngine.Debug.LogError("Error while swithing Bolt Mode, changes were reverted.");
+                }
+            }
+        }
 
-		public static bool ChangeDllMode()
-		{
-			return SwitchDebugReleaseMode(BoltNetwork.IsDebugMode);
-		}
-		
-		// ======= PRIVATE METHODS =====================================================================================
+        public static bool ChangeDllMode()
+        {
+            return SwitchDebugReleaseMode(BoltNetwork.IsDebugMode);
+        }
 
-		public static int FindMissingComponents()
-		{
-			int missingScriptsCount = 0;
-			List<Component> components = new List<Component>();
+        // ======= PRIVATE METHODS =====================================================================================
 
-            var folders = new string[] { "Assets" };
-			var iter = AssetDatabase.FindAssets("t:Prefab", folders).GetEnumerator();
+        public static int FindMissingComponents()
+        {
+            int missingScriptsCount = 0;
+            List<Component> components = new List<Component>();
 
-			while (iter.MoveNext())
-			{
-				var guid = (string) iter.Current;
-				var path = AssetDatabase.GUIDToAssetPath(guid);
-				var go = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+            var folders = new string[] {"Assets"};
+            var iter = AssetDatabase.FindAssets("t:Prefab", folders).GetEnumerator();
 
-				go.GetComponentsInChildren(true, components);
-				for (int j = 0; j < components.Count; ++j)
-				{
-					if (components[j] == null)
-					{
-						++missingScriptsCount;
-						BoltLog.Error("Missing script: " + path);
-					}
-				}
-				components.Clear();
-			}
+            while (iter.MoveNext())
+            {
+                var guid = (string) iter.Current;
+                var path = AssetDatabase.GUIDToAssetPath(guid);
+                var go = AssetDatabase.LoadAssetAtPath<GameObject>(path);
 
-			if (missingScriptsCount != 0)
-			{
-				BoltLog.Info("Found {0} Missing Scripts", missingScriptsCount);
-			}
+                go.GetComponentsInChildren(true, components);
+                for (int j = 0; j < components.Count; ++j)
+                {
+                    if (components[j] == null)
+                    {
+                        ++missingScriptsCount;
+                        BoltLog.Error("Missing script: " + path);
+                    }
+                }
 
-			return missingScriptsCount;
-		}
+                components.Clear();
+            }
 
-		private static bool SwitchDebugReleaseMode(bool debug)
-		{
-			var from = debug ? ".debug" : ".release";
-			var to = debug ? ".release" : ".debug";
+            if (missingScriptsCount != 0)
+            {
+                BoltLog.Info("Found {0} Missing Scripts", missingScriptsCount);
+            }
 
-			var paths = new string[]
-			{
-				BoltPathUtility.BoltDllPath,
-				BoltPathUtility.BoltCompilerDLLPath,
-				BoltPathUtility.BoltEditorDLLPath
-			};
+            return missingScriptsCount;
+        }
 
-			var abort = false;
-			var backup = "";
+        private static bool SwitchDebugReleaseMode(bool debug)
+        {
+            var from = debug ? ".debug" : ".release";
+            var to = debug ? ".release" : ".debug";
 
-			foreach (var path in paths)
-			{
-				if (abort == true) { break; }
+            var paths = new string[]
+            {
+                BoltPathUtility.BoltDllPath,
+                BoltPathUtility.BoltCompilerDLLPath,
+                BoltPathUtility.BoltEditorDLLPath
+            };
 
-				try
-				{
-					backup = FileUtils.BackupFile(path);
-					FileUtils.ExchangeFile(path, from, to);
-				}
-				catch (IOException)
-				{
-					FileUtils.BackupFile(path, true);
-					abort = true;
-				}
-				finally
-				{
-					FileUtils.DeleteFile(backup);
-				}
-			}
+            var abort = false;
+            var backup = "";
 
-			if (abort == false)
-			{
-				AssetDatabase.Refresh(ImportAssetOptions.ForceUpdate);
-			}
+            foreach (var path in paths)
+            {
+                if (abort == true)
+                {
+                    break;
+                }
 
-			return abort == false;
-		}
+                try
+                {
+                    backup = FileUtils.BackupFile(path);
+                    FileUtils.ExchangeFile(path, from, to);
+                }
+                catch (IOException)
+                {
+                    FileUtils.BackupFile(path, true);
+                    abort = true;
+                }
+                finally
+                {
+                    FileUtils.DeleteFile(backup);
+                }
+            }
 
-		private class FileUtils
-		{
-			public static void ExchangeFile(string basePath, string fromSuffix, string toSuffix)
-			{
-				MoveFile(basePath, basePath + fromSuffix);
-				MoveFile(basePath + toSuffix, basePath);
-			}
+            if (abort == false)
+            {
+                AssetDatabase.Refresh(ImportAssetOptions.ForceUpdate);
+            }
 
-			public static void MoveFile(string from, string to)
-			{
-				if (File.Exists(to)) { return; }
+            return abort == false;
+        }
 
-				UnityEngine.Debug.LogFormat("Moving file from {0} to {1}", from, to);
-				File.Move(from, to);
-			}
+        private class FileUtils
+        {
+            public static void ExchangeFile(string basePath, string fromSuffix, string toSuffix)
+            {
+                MoveFile(basePath, basePath + fromSuffix);
+                MoveFile(basePath + toSuffix, basePath);
+            }
 
-			public static string BackupFile(string path, bool restore = false)
-			{
-				var backup = path + ".backup";
+            public static void MoveFile(string from, string to)
+            {
+                if (File.Exists(to))
+                {
+                    return;
+                }
 
-				if (restore)
-				{
-					File.Copy(backup, path, true);
-				}
-				else
-				{
-					File.Copy(path, backup, true);
-				}
+                UnityEngine.Debug.LogFormat("Moving file from {0} to {1}", from, to);
+                File.Move(from, to);
+            }
 
-				return backup;
-			}
+            public static string BackupFile(string path, bool restore = false)
+            {
+                var backup = path + ".backup";
 
-			public static void DeleteFile(string path)
-			{
-				if (string.IsNullOrEmpty(path) || File.Exists(path) == false) { return; }
-				File.Delete(path);
-			}
-		}
-	}
+                if (restore)
+                {
+                    File.Copy(backup, path, true);
+                }
+                else
+                {
+                    File.Copy(path, backup, true);
+                }
+
+                return backup;
+            }
+
+            public static void DeleteFile(string path)
+            {
+                if (string.IsNullOrEmpty(path) || File.Exists(path) == false)
+                {
+                    return;
+                }
+
+                File.Delete(path);
+            }
+        }
+    }
 }

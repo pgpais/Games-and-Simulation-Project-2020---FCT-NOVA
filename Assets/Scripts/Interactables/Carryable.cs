@@ -1,10 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pickup : MonoBehaviour
+public class Carryable : MonoBehaviour
 {
-
     public Transform player;
 
     public Transform playerCamera;
@@ -30,11 +30,9 @@ public class Pickup : MonoBehaviour
 
         if (closePlayer && Input.GetButtonDown("Use"))
         {
-
             GetComponent<Rigidbody>().isKinematic = true;
             transform.parent = playerCamera;
             beingCarried = true;
-
         }
 
         if (beingCarried)
@@ -52,6 +50,5 @@ public class Pickup : MonoBehaviour
                 transform.parent = null;
             }
         }
-
     }
 }

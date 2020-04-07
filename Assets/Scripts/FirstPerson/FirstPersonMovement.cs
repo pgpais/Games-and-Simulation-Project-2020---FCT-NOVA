@@ -8,18 +8,15 @@ public class FirstPersonMovement : Bolt.EntityBehaviour<ICustomPlayerState>
 {
     public float speed = 10f;
     public float jumpForce = 10f;
-    
-    [SerializeField]
-    private bool isGrounded = true;
 
-    [Header("OverlapBox Points")]
-    [SerializeField]
+    [SerializeField] private bool isGrounded = true;
+
+    [Header("OverlapBox Points")] [SerializeField]
     private Transform GroundCheck;
+
     private Vector3 boxCenter;
-    [SerializeField]
-    private Vector3 boxRadiuses;
-    [SerializeField]
-    private LayerMask boxMask;
+    [SerializeField] private Vector3 boxRadiuses;
+    [SerializeField] private LayerMask boxMask;
 
     private float movH, movV;
     private bool triedJumping;
@@ -71,7 +68,7 @@ public class FirstPersonMovement : Bolt.EntityBehaviour<ICustomPlayerState>
     #endregion
 
     #region Movement
-    
+
     void HandleMovement()
     {
         // TODO: total mid-air control
@@ -88,7 +85,8 @@ public class FirstPersonMovement : Bolt.EntityBehaviour<ICustomPlayerState>
         Gizmos.color = Color.green;
         var position = GroundCheck.position;
         Gizmos.DrawSphere(position, 0.05f);
-        Gizmos.DrawWireCube(position, boxRadiuses*2);
+        Gizmos.DrawWireCube(position, boxRadiuses * 2);
     }
+
     #endregion
 }

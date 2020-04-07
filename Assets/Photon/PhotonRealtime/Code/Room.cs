@@ -20,11 +20,11 @@ namespace Photon.Realtime
     using System.Collections;
     using System.Collections.Generic;
     using ExitGames.Client.Photon;
-
-    #if SUPPORTED_UNITY || NETFX_CORE
+#if SUPPORTED_UNITY || NETFX_CORE
     using Hashtable = ExitGames.Client.Photon.Hashtable;
     using SupportClass = ExitGames.Client.Photon.SupportClass;
-    #endif
+
+#endif
 
 
     /// <summary>
@@ -48,30 +48,18 @@ namespace Photon.Realtime
         /// <remarks>The name can't be changed once it's set by the server.</remarks>
         public new string Name
         {
-            get
-            {
-                return this.name;
-            }
+            get { return this.name; }
 
-            internal set
-            {
-                this.name = value;
-            }
+            internal set { this.name = value; }
         }
 
         private bool isOffline;
 
         public bool IsOffline
         {
-            get
-            {
-                return isOffline;
-            }
+            get { return isOffline; }
 
-            private set
-            {
-                isOffline = value;
-            }
+            private set { isOffline = value; }
         }
 
         /// <summary>
@@ -89,10 +77,7 @@ namespace Photon.Realtime
         /// </remarks>
         public new bool IsOpen
         {
-            get
-            {
-                return this.isOpen;
-            }
+            get { return this.isOpen; }
 
             set
             {
@@ -100,7 +85,8 @@ namespace Photon.Realtime
                 {
                     if (!this.isOffline)
                     {
-                        this.LoadBalancingClient.OpSetPropertiesOfRoom(new Hashtable() { { GamePropertyKey.IsOpen, value } });
+                        this.LoadBalancingClient.OpSetPropertiesOfRoom(
+                            new Hashtable() {{GamePropertyKey.IsOpen, value}});
                     }
                 }
 
@@ -120,10 +106,7 @@ namespace Photon.Realtime
         /// </remarks>
         public new bool IsVisible
         {
-            get
-            {
-                return this.isVisible;
-            }
+            get { return this.isVisible; }
 
             set
             {
@@ -131,7 +114,8 @@ namespace Photon.Realtime
                 {
                     if (!this.isOffline)
                     {
-                        this.LoadBalancingClient.OpSetPropertiesOfRoom(new Hashtable() { { GamePropertyKey.IsVisible, value } });
+                        this.LoadBalancingClient.OpSetPropertiesOfRoom(new Hashtable()
+                            {{GamePropertyKey.IsVisible, value}});
                     }
                 }
 
@@ -149,10 +133,7 @@ namespace Photon.Realtime
         /// </remarks>
         public new byte MaxPlayers
         {
-            get
-            {
-                return this.maxPlayers;
-            }
+            get { return this.maxPlayers; }
 
             set
             {
@@ -160,7 +141,8 @@ namespace Photon.Realtime
                 {
                     if (!this.isOffline)
                     {
-                        this.LoadBalancingClient.OpSetPropertiesOfRoom(new Hashtable() { { GamePropertyKey.MaxPlayers, value } });
+                        this.LoadBalancingClient.OpSetPropertiesOfRoom(new Hashtable()
+                            {{GamePropertyKey.MaxPlayers, value}});
                     }
                 }
 
@@ -178,7 +160,7 @@ namespace Photon.Realtime
                     return 0;
                 }
 
-                return (byte)this.Players.Count;
+                return (byte) this.Players.Count;
             }
         }
 
@@ -188,15 +170,9 @@ namespace Photon.Realtime
         /// <summary>While inside a Room, this is the list of players who are also in that room.</summary>
         public Dictionary<int, Player> Players
         {
-            get
-            {
-                return this.players;
-            }
+            get { return this.players; }
 
-            private set
-            {
-                this.players = value;
-            }
+            private set { this.players = value; }
         }
 
         /// <summary>
@@ -222,7 +198,8 @@ namespace Photon.Realtime
                 {
                     if (!this.isOffline)
                     {
-                        this.LoadBalancingClient.OpSetPropertyOfRoom(GamePropertyKey.PlayerTtl, value);  // TODO: implement Offline Mode
+                        this.LoadBalancingClient.OpSetPropertyOfRoom(GamePropertyKey.PlayerTtl,
+                            value); // TODO: implement Offline Mode
                     }
                 }
 
@@ -241,7 +218,8 @@ namespace Photon.Realtime
                 {
                     if (!this.isOffline)
                     {
-                        this.LoadBalancingClient.OpSetPropertyOfRoom(GamePropertyKey.EmptyRoomTtl, value);  // TODO: implement Offline Mode
+                        this.LoadBalancingClient.OpSetPropertyOfRoom(GamePropertyKey.EmptyRoomTtl,
+                            value); // TODO: implement Offline Mode
                     }
                 }
 
@@ -253,7 +231,10 @@ namespace Photon.Realtime
         /// The ID (actorNumber, actorNumber) of the player who's the master of this Room.
         /// Note: This changes when the current master leaves the room.
         /// </summary>
-        public int MasterClientId { get { return this.masterClientId; } }
+        public int MasterClientId
+        {
+            get { return this.masterClientId; }
+        }
 
         /// <summary>
         /// Gets a list of custom properties that are in the RoomInfo of the Lobby.
@@ -262,15 +243,9 @@ namespace Photon.Realtime
         /// <remarks>You could name properties that are not set from the beginning. Those will be synced with the lobby when added later on.</remarks>
         public string[] PropertiesListedInLobby
         {
-            get
-            {
-                return this.propertiesListedInLobby;
-            }
+            get { return this.propertiesListedInLobby; }
 
-            private set
-            {
-                this.propertiesListedInLobby = value;
-            }
+            private set { this.propertiesListedInLobby = value; }
         }
 
         /// <summary>
@@ -278,17 +253,15 @@ namespace Photon.Realtime
         /// </summary>
         public bool AutoCleanUp
         {
-            get
-            {
-                return this.autoCleanUp;
-            }
+            get { return this.autoCleanUp; }
         }
 
 
         /// <summary>Creates a Room (representation) with given name and properties and the "listing options" as provided by parameters.</summary>
         /// <param name="roomName">Name of the room (can be null until it's actually created on server).</param>
         /// <param name="options">Room options.</param>
-        public Room(string roomName, RoomOptions options, bool isOffline = false) : base(roomName, options != null ? options.CustomRoomProperties : null)
+        public Room(string roomName, RoomOptions options, bool isOffline = false) : base(roomName,
+            options != null ? options.CustomRoomProperties : null)
         {
             // base() sets name and (custom)properties. here we set "well known" properties
             if (options != null)
@@ -309,11 +282,13 @@ namespace Photon.Realtime
         {
             int oldMasterId = this.masterClientId;
 
-            base.InternalCacheProperties(propertiesToCache);    // important: updating the properties fields has no way to do callbacks on change
+            base.InternalCacheProperties(
+                propertiesToCache); // important: updating the properties fields has no way to do callbacks on change
 
             if (oldMasterId != 0 && this.masterClientId != oldMasterId)
             {
-                this.LoadBalancingClient.InRoomCallbackTargets.OnMasterClientSwitched(this.GetPlayer(this.masterClientId));
+                this.LoadBalancingClient.InRoomCallbackTargets.OnMasterClientSwitched(
+                    this.GetPlayer(this.masterClientId));
             }
         }
 
@@ -358,7 +333,8 @@ namespace Photon.Realtime
         /// <param name="propertiesToSet">Hashtable of Custom Properties that changes.</param>
         /// <param name="expectedProperties">Provide some keys/values to use as condition for setting the new values. Client must be in room.</param>
         /// <param name="webFlags">Defines if this SetCustomProperties-operation gets forwarded to your WebHooks. Client must be in room.</param>
-        public virtual void SetCustomProperties(Hashtable propertiesToSet, Hashtable expectedProperties = null, WebFlags webFlags = null)
+        public virtual void SetCustomProperties(Hashtable propertiesToSet, Hashtable expectedProperties = null,
+            WebFlags webFlags = null)
         {
             Hashtable customProps = propertiesToSet.StripToStringKeys() as Hashtable;
 
@@ -370,19 +346,19 @@ namespace Photon.Realtime
 
                 // invoking callbacks
                 this.LoadBalancingClient.InRoomCallbackTargets.OnRoomPropertiesUpdate(propertiesToSet);
-               
             }
             else
             {
-				// merge (and delete null-values), unless we use CAS (expected props)
-				if (expectedProperties == null || expectedProperties.Count == 0)
-				{
-					this.CustomProperties.Merge(customProps);
-					this.CustomProperties.StripKeysWithNullValues();
-				}
+                // merge (and delete null-values), unless we use CAS (expected props)
+                if (expectedProperties == null || expectedProperties.Count == 0)
+                {
+                    this.CustomProperties.Merge(customProps);
+                    this.CustomProperties.StripKeysWithNullValues();
+                }
 
                 // send (sync) these new values if in online room
-                this.LoadBalancingClient.LoadBalancingPeer.OpSetPropertiesOfRoom(customProps, expectedProperties, webFlags);
+                this.LoadBalancingClient.LoadBalancingPeer.OpSetPropertiesOfRoom(customProps, expectedProperties,
+                    webFlags);
             }
         }
 
@@ -446,8 +422,8 @@ namespace Photon.Realtime
         /// <returns>False when this operation couldn't be done currently. Requires a v4 Photon Server.</returns>
         public bool SetMasterClient(Player masterClientPlayer)
         {
-            Hashtable newProps = new Hashtable() { { GamePropertyKey.MasterClientId, masterClientPlayer.ActorNumber } };
-            Hashtable prevProps = new Hashtable() { { GamePropertyKey.MasterClientId, this.MasterClientId } };
+            Hashtable newProps = new Hashtable() {{GamePropertyKey.MasterClientId, masterClientPlayer.ActorNumber}};
+            Hashtable prevProps = new Hashtable() {{GamePropertyKey.MasterClientId, this.MasterClientId}};
             return this.LoadBalancingClient.OpSetPropertiesOfRoom(newProps, prevProps);
         }
 
@@ -524,14 +500,18 @@ namespace Photon.Realtime
         /// <returns>Summary of this Room instance.</returns>
         public override string ToString()
         {
-            return string.Format("Room: '{0}' {1},{2} {4}/{3} players.", this.name, this.isVisible ? "visible" : "hidden", this.isOpen ? "open" : "closed", this.maxPlayers, this.PlayerCount);
+            return string.Format("Room: '{0}' {1},{2} {4}/{3} players.", this.name,
+                this.isVisible ? "visible" : "hidden", this.isOpen ? "open" : "closed", this.maxPlayers,
+                this.PlayerCount);
         }
 
         /// <summary>Returns a summary of this Room instance as longer string, including Custom Properties.</summary>
         /// <returns>Summary of this Room instance.</returns>
         public new string ToStringFull()
         {
-            return string.Format("Room: '{0}' {1},{2} {4}/{3} players.\ncustomProps: {5}", this.name, this.isVisible ? "visible" : "hidden", this.isOpen ? "open" : "closed", this.maxPlayers, this.PlayerCount, this.CustomProperties.ToStringFull());
+            return string.Format("Room: '{0}' {1},{2} {4}/{3} players.\ncustomProps: {5}", this.name,
+                this.isVisible ? "visible" : "hidden", this.isOpen ? "open" : "closed", this.maxPlayers,
+                this.PlayerCount, this.CustomProperties.ToStringFull());
         }
     }
 }

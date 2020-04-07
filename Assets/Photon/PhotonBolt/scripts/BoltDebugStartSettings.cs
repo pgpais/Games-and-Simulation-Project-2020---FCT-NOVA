@@ -157,7 +157,6 @@ public class BoltDebugStartSettings
 #else
     public static void PositionWindow()
     {
-
     }
 #endif
 }

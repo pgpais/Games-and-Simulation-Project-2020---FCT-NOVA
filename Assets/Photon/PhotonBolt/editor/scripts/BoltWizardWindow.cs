@@ -556,7 +556,7 @@ public partial class BoltWizardWindow : EditorWindow
             {
                 GUILayout.BeginVertical();
                 GUILayout.Space(5);
-                
+
                 foreach (var text in items)
                 {
                     GUILayout.Label(string.Format("- {0}.", text), textLabel);
@@ -1042,8 +1042,8 @@ public partial class BoltWizardWindow : EditorWindow
             if (ProjectExists())
             {
                 if (EditorUtility.DisplayDialog("Warning",
-                        "Importing this package will overwrite the existing bolt project file that contains all your states, events, etc. Are you sure?",
-                        "Yes", "No") == false)
+                    "Importing this package will overwrite the existing bolt project file that contains all your states, events, etc. Are you sure?",
+                    "Yes", "No") == false)
                 {
                     return;
                 }

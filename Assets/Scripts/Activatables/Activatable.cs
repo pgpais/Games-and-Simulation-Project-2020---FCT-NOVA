@@ -7,7 +7,7 @@ namespace Activatables
     /// Objects that can be activated.
     /// Meaning that they don't go back to a "deactivated" state. 
     /// </summary>
-    public abstract class Activatable: MonoBehaviour
+    public abstract class Activatable : MonoBehaviour
     {
         private void Start()
         {

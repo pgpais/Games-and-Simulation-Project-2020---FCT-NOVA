@@ -15,17 +15,14 @@ namespace DefaultNamespace
             public bool West;
             public bool East;
         }
-        
+
         //TODO: wtf editor?
         [Tooltip("Prefab to instantiate puzzle with")]
         public GameObject puzzlePrefab;
 
-        [Header("Properties")]
-        [Range(1, 5)]
-        public float difficulty;
+        [Header("Properties")] [Range(1, 5)] public float difficulty;
+
         [Tooltip("Position set to true if N, S, W, E exist, respectively")]
         public PathWays pathWays;
     }
-
-    
 }

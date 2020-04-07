@@ -1,5 +1,4 @@
 ﻿#if UNITY_WEBGL || UNITY_XBOXONE || WEBSOCKET
-
 using System;
 using System.Text;
 
@@ -122,7 +121,8 @@ public class WebSocket
     public void Connect()
     {
         m_Socket = new WebSocketSharp.WebSocket(mUrl.ToString(), new string[] { this.protocols });
-        m_Socket.SslConfiguration.EnabledSslProtocols = m_Socket.SslConfiguration.EnabledSslProtocols | (SslProtocols)(3072| 768);
+        m_Socket.SslConfiguration.EnabledSslProtocols =
+ m_Socket.SslConfiguration.EnabledSslProtocols | (SslProtocols)(3072| 768);
         m_Socket.OnMessage += (sender, e) => m_Messages.Enqueue(e.RawData);
         m_Socket.OnOpen += (sender, e) => m_IsConnected = true;
         m_Socket.OnError += (sender, e) => m_Error = e.Message + (e.Exception == null ? "" : " / " + e.Exception);

@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Diagnostics;
-
 #if UNITY_EDITOR
 using UnityEditor;
+
 #endif
 
 namespace BoltInternal
@@ -88,6 +88,5 @@ namespace BoltInternal
 
             GUILayout.Space(2);
         }
-
     }
 }

@@ -21,14 +21,14 @@ namespace Photon.Realtime
     using System.Collections;
     using System.Collections.Generic;
     using ExitGames.Client.Photon;
-
-    #if SUPPORTED_UNITY
+#if SUPPORTED_UNITY
     using UnityEngine;
-    #endif
-    #if SUPPORTED_UNITY || NETFX_CORE
+#endif
+#if SUPPORTED_UNITY || NETFX_CORE
     using Hashtable = ExitGames.Client.Photon.Hashtable;
     using SupportClass = ExitGames.Client.Photon.SupportClass;
-    #endif
+
+#endif
 
 
     /// <summary>
@@ -61,7 +61,7 @@ namespace Photon.Realtime
 
 
         /// <summary>Background field for nickName.</summary>
-		private string nickName = string.Empty;
+        private string nickName = string.Empty;
 
         /// <summary>Non-unique nickname of this player. Synced automatically in a room.</summary>
         /// <remarks>
@@ -70,10 +70,7 @@ namespace Photon.Realtime
         /// </remarks>
         public string NickName
         {
-            get
-            {
-                return this.nickName;
-            }
+            get { return this.nickName; }
             set
             {
                 if (!string.IsNullOrEmpty(this.nickName) && this.nickName.Equals(value))
@@ -140,7 +137,8 @@ namespace Photon.Realtime
         /// <param name="nickName">NickName of the player (a "well known property").</param>
         /// <param name="actorNumber">ID or ActorNumber of this player in the current room (a shortcut to identify each player in room)</param>
         /// <param name="isLocal">If this is the local peer's player (or a remote one).</param>
-        protected internal Player(string nickName, int actorNumber, bool isLocal) : this(nickName, actorNumber, isLocal, null)
+        protected internal Player(string nickName, int actorNumber, bool isLocal) : this(nickName, actorNumber, isLocal,
+            null)
         {
         }
 
@@ -195,6 +193,7 @@ namespace Photon.Realtime
             {
                 return null;
             }
+
             return GetNextFor(currentPlayer.ActorNumber);
         }
 
@@ -204,24 +203,26 @@ namespace Photon.Realtime
         /// <returns>Player or null.</returns>
         public Player GetNextFor(int currentPlayerId)
         {
-            if (this.RoomReference == null || this.RoomReference.Players == null || this.RoomReference.Players.Count < 2)
+            if (this.RoomReference == null || this.RoomReference.Players == null ||
+                this.RoomReference.Players.Count < 2)
             {
                 return null;
             }
 
             Dictionary<int, Player> players = this.RoomReference.Players;
-            int nextHigherId = int.MaxValue;    // we look for the next higher ID
-            int lowestId = currentPlayerId;     // if we are the player with the highest ID, there is no higher and we return to the lowest player's id
+            int nextHigherId = int.MaxValue; // we look for the next higher ID
+            int lowestId =
+                currentPlayerId; // if we are the player with the highest ID, there is no higher and we return to the lowest player's id
 
             foreach (int playerid in players.Keys)
             {
                 if (playerid < lowestId)
                 {
-                    lowestId = playerid;        // less than any other ID (which must be at least less than this player's id).
+                    lowestId = playerid; // less than any other ID (which must be at least less than this player's id).
                 }
                 else if (playerid > currentPlayerId && playerid < nextHigherId)
                 {
-                    nextHigherId = playerid;    // more than our ID and less than those found so far.
+                    nextHigherId = playerid; // more than our ID and less than those found so far.
                 }
             }
 
@@ -247,7 +248,7 @@ namespace Photon.Realtime
 
             if (properties.ContainsKey(ActorProperties.PlayerName))
             {
-                string nameInServersProperties = (string)properties[ActorProperties.PlayerName];
+                string nameInServersProperties = (string) properties[ActorProperties.PlayerName];
                 if (nameInServersProperties != null)
                 {
                     if (this.IsLocal)
@@ -266,13 +267,16 @@ namespace Photon.Realtime
                     }
                 }
             }
+
             if (properties.ContainsKey(ActorProperties.UserId))
             {
-                this.UserId = (string)properties[ActorProperties.UserId];
+                this.UserId = (string) properties[ActorProperties.UserId];
             }
+
             if (properties.ContainsKey(ActorProperties.IsInactive))
             {
-                this.IsInactive = (bool)properties[ActorProperties.IsInactive]; //TURNBASED new well-known propery for players
+                this.IsInactive =
+                    (bool) properties[ActorProperties.IsInactive]; //TURNBASED new well-known propery for players
             }
 
             this.CustomProperties.MergeStringKeys(properties);
@@ -285,7 +289,7 @@ namespace Photon.Realtime
         /// </summary>
         public override string ToString()
         {
-            return string.Format("#{0:00} '{1}'",this.ActorNumber, this.NickName);
+            return string.Format("#{0:00} '{1}'", this.ActorNumber, this.NickName);
         }
 
         /// <summary>
@@ -297,7 +301,8 @@ namespace Photon.Realtime
         /// </remarks>
         public string ToStringFull()
         {
-            return string.Format("#{0:00} '{1}'{2} {3}", this.ActorNumber, this.NickName, this.IsInactive ? " (inactive)" : "", this.CustomProperties.ToStringFull());
+            return string.Format("#{0:00} '{1}'{2} {3}", this.ActorNumber, this.NickName,
+                this.IsInactive ? " (inactive)" : "", this.CustomProperties.ToStringFull());
         }
 
         /// <summary>
@@ -330,7 +335,6 @@ namespace Photon.Realtime
 
             this.actorNumber = newID;
         }
-
 
 
         /// <summary>
@@ -374,7 +378,8 @@ namespace Photon.Realtime
         /// <param name="propertiesToSet">Hashtable of Custom Properties to be set. </param>
         /// <param name="expectedValues">If non-null, these are the property-values the server will check as condition for this update.</param>
         /// <param name="webFlags">Defines if this SetCustomProperties-operation gets forwarded to your WebHooks. Client must be in room.</param>
-        public void SetCustomProperties(Hashtable propertiesToSet, Hashtable expectedValues = null, WebFlags webFlags = null)
+        public void SetCustomProperties(Hashtable propertiesToSet, Hashtable expectedValues = null,
+            WebFlags webFlags = null)
         {
             if (propertiesToSet == null)
             {
@@ -400,12 +405,14 @@ namespace Photon.Realtime
                 if (this.RoomReference.IsOffline)
                 {
                     // invoking callbacks
-                    this.RoomReference.LoadBalancingClient.InRoomCallbackTargets.OnPlayerPropertiesUpdate(this, customProps);
+                    this.RoomReference.LoadBalancingClient.InRoomCallbackTargets.OnPlayerPropertiesUpdate(this,
+                        customProps);
                 }
                 else
                 {
                     // send (sync) these new values if in online room
-                    this.RoomReference.LoadBalancingClient.LoadBalancingPeer.OpSetPropertiesOfActor(this.actorNumber, customProps, customPropsToCheck, webFlags);
+                    this.RoomReference.LoadBalancingClient.LoadBalancingPeer.OpSetPropertiesOfActor(this.actorNumber,
+                        customProps, customPropsToCheck, webFlags);
                 }
             }
         }
@@ -418,7 +425,8 @@ namespace Photon.Realtime
             {
                 Hashtable properties = new Hashtable();
                 properties[ActorProperties.PlayerName] = this.nickName;
-                this.RoomReference.LoadBalancingClient.LoadBalancingPeer.OpSetPropertiesOfActor(this.ActorNumber, properties);
+                this.RoomReference.LoadBalancingClient.LoadBalancingPeer.OpSetPropertiesOfActor(this.ActorNumber,
+                    properties);
             }
         }
     }

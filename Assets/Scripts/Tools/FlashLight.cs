@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FlashLight : Tool
 {
-
     [SerializeField] private Light flashLight;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +15,6 @@ public class FlashLight : Tool
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public override void UseTool()
