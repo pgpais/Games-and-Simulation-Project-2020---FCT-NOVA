@@ -1,9 +1,15 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 //detect if network has been instantiated if not it'll do it automatically and on disconnect it'll destroy it
 [BoltGlobalBehaviour]
 public class NetworkCallbacks : Bolt.GlobalEventListener
 {
+    public override void OnEvent(ActivatedObject evnt)
+    {
+        
+    }
+
     public override void SceneLoadLocalDone(string scene)
     {
         if (BoltNetwork.IsServer)
@@ -16,4 +22,6 @@ public class NetworkCallbacks : Bolt.GlobalEventListener
                 new Vector3(-3, 1, -1), Quaternion.identity).TakeControl();
         }
     }
+    
+    
 }

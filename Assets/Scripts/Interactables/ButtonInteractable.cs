@@ -25,6 +25,9 @@ namespace Interactables
             Debug.Log("Button activated", gameObject);
             anim.SetTrigger(Activated);
             activatable.Activate();
+            ActivatedObject ev = ActivatedObject.Create();
+            ev.Send();
+            
         }
     }
 }
