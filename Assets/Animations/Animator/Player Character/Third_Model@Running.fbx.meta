@@ -1,159 +1,12 @@
 fileFormatVersion: 2
-guid: e148c95e4ddcc2e4eb5d39a94ffc6152
+guid: 5a703317fe2a12544860590659a47213
 ModelImporter:
   serializedVersion: 19300
-  internalIDToNameTable: []
-  externalObjects:
+  internalIDToNameTable:
   - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Bodymat
-    second: {fileID: 2100000, guid: 6475367e799ed1747a533fd8fcb59393, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Bottommat
-    second: {fileID: 2100000, guid: 5825529380fba2942b4d4af4107b9c2d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Hairmat
-    second: {fileID: 2100000, guid: 7b43ad16a4adb2948a89ca129daf5cf9, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Shoesmat
-    second: {fileID: 2100000, guid: b83d4b9e9269a7c4a82411d9e0d0b612, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Topmat
-    second: {fileID: 2100000, guid: a140cf41c61e3a2408a47feee7fa8098, type: 2}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Third_Model_Body_Diffuse
-    second: {fileID: 2800000, guid: 23fb80fa7807d41498f2fb8f0697f3d8, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Third_Model_Body_Gloss
-    second: {fileID: 2800000, guid: 74908f7e48215664d80810512870d2fd, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Third_Model_Body_Normal
-    second: {fileID: 2800000, guid: d44fad4535bfdea44aee8c2d375fb014, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Third_Model_Body_Opacity
-    second: {fileID: 2800000, guid: b033cc7a2de11aa4286a221f483318f0, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Third_Model_Body_Specular
-    second: {fileID: 2800000, guid: 190e53cb17209a9458c316a4381ba77d, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Third_Model_Bottom_Diffuse
-    second: {fileID: 2800000, guid: 0c064c00763a489449839b1f4567c986, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Third_Model_Bottom_Gloss
-    second: {fileID: 2800000, guid: 6a0d437953da1884aad1d746248e9ad7, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Third_Model_Bottom_Normal
-    second: {fileID: 2800000, guid: 69edf70e34fcfc14c880c1672489ed38, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Third_Model_Bottom_Opacity
-    second: {fileID: 2800000, guid: 4cfd7b8a78dfded48b7541152b3eedca, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Third_Model_Bottom_Specular
-    second: {fileID: 2800000, guid: b6cd2b701c9959f4d9b95180ea3a9ba7, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Third_Model_Hair_Diffuse
-    second: {fileID: 2800000, guid: ab40467522c2c07478cb422a2cb8a6ad, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Third_Model_Hair_Gloss
-    second: {fileID: 2800000, guid: 9c12769b408a5cc4fbc578457d1f257f, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Third_Model_Hair_Normal
-    second: {fileID: 2800000, guid: c22223efb7a713240a08747102a76db0, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Third_Model_Hair_Opacity
-    second: {fileID: 2800000, guid: 5472ca06a45eb564fadfae1891753608, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Third_Model_Hair_Specular
-    second: {fileID: 2800000, guid: 131824ae9a902984f97d44008aa697f9, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Third_Model_Shoes_Diffuse
-    second: {fileID: 2800000, guid: 9a4726dbe5b2ad0458b16b586cc12b81, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Third_Model_Shoes_Gloss
-    second: {fileID: 2800000, guid: 0a2d78e63e331d44c9877c1fb9311cff, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Third_Model_Shoes_Normal
-    second: {fileID: 2800000, guid: 29c12ea1babfecd4e938cb7edb671d2a, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Third_Model_Shoes_Opacity
-    second: {fileID: 2800000, guid: 23047bfe12bc10547987fd226831ab8f, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Third_Model_Shoes_Specular
-    second: {fileID: 2800000, guid: dcc93eb0e2cb60d4b83b74c06035753b, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Third_Model_Top_Diffuse
-    second: {fileID: 2800000, guid: 0cacd04e679dcb54294047e8ee77d525, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Third_Model_Top_Gloss
-    second: {fileID: 2800000, guid: b41b63e02543ee143a665011a940349b, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Third_Model_Top_Normal
-    second: {fileID: 2800000, guid: 45f0cf9cfe3da2242bc5ba420a455731, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Third_Model_Top_Opacity
-    second: {fileID: 2800000, guid: 6affde7ef5d04c241bf5ffe6801a43b4, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Third_Model_Top_Specular
-    second: {fileID: 2800000, guid: ce3b352f4c5c3024ab9cb3168a50565b, type: 3}
+      74: -203655887218126122
+    second: Running
+  externalObjects: {}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -173,14 +26,43 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Running
+      takeName: mixamo.com
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 38
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -1042,11 +924,12 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: e148c95e4ddcc2e4eb5d39a94ffc6152,
+    type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 2
   additionalBone: 0
   userData: 
   assetBundleName: 

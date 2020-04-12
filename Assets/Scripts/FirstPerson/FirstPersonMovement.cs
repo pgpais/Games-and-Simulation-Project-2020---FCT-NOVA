@@ -6,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class FirstPersonMovement : Bolt.EntityBehaviour<ICustomPlayerState>
 {
+    private static readonly int Speed = Animator.StringToHash("Speed");
+    
     public float speed = 10f;
     public float jumpForce = 10f;
 
@@ -21,6 +23,7 @@ public class FirstPersonMovement : Bolt.EntityBehaviour<ICustomPlayerState>
     private float movH, movV;
     private bool triedJumping;
     private Rigidbody rb;
+    private Animator animator;
 
     public override void Attached()
     {
@@ -31,6 +34,8 @@ public class FirstPersonMovement : Bolt.EntityBehaviour<ICustomPlayerState>
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -76,6 +81,9 @@ public class FirstPersonMovement : Bolt.EntityBehaviour<ICustomPlayerState>
         Vector3 mov = transform.forward * movV + transform.right * movH;
         mov.Normalize();
         mov *= speed;
+        
+        animator.SetFloat(Speed, mov.magnitude);
+        
         mov += new Vector3(0, rb.velocity.y, 0);
         rb.velocity = mov;
     }

@@ -34,11 +34,6 @@ public class FirstPersonAiming : Bolt.EntityBehaviour<ICustomPlayerState>
         camTransform = cam.transform;
         minClamp = -maxClamp;
 
-        if (!entity.HasControl)
-        {
-            cam.gameObject.SetActive(false);
-        }
-
 
         rotX = 0;
         rotY = 0;
