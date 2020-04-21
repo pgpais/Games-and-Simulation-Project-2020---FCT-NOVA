@@ -16,7 +16,7 @@ namespace Activatables
 
         public virtual void Activate()
         {
-            var ev = ActivatedObject.Create();
+           
         }
     }
 }

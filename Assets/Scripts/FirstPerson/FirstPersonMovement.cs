@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class FirstPersonMovement : Bolt.EntityBehaviour<ICustomPlayerState>
+public class FirstPersonMovement : MonoBehaviourPun
 {
     private static readonly int Speed = Animator.StringToHash("Speed");
     
@@ -25,11 +26,6 @@ public class FirstPersonMovement : Bolt.EntityBehaviour<ICustomPlayerState>
     private Rigidbody rb;
     private Animator animator;
 
-    public override void Attached()
-    {
-        state.SetTransforms(state.PlayerMovement, transform);
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -41,9 +37,7 @@ public class FirstPersonMovement : Bolt.EntityBehaviour<ICustomPlayerState>
     // Update is called once per frame
     void Update()
     {
-        movH = Input.GetAxisRaw("Horizontal");
-        movV = Input.GetAxisRaw("Vertical");
-        triedJumping = Input.GetButtonDown("Jump");
+        
     }
 
     private void FixedUpdate()
@@ -54,6 +48,11 @@ public class FirstPersonMovement : Bolt.EntityBehaviour<ICustomPlayerState>
 
     #region Jumping
 
+    public void ReceiveJumpInput()
+    {
+        triedJumping = true;
+    }
+    
     private void HandleJumping()
     {
         CheckGrounded();
@@ -62,6 +61,7 @@ public class FirstPersonMovement : Bolt.EntityBehaviour<ICustomPlayerState>
             // TODO: check different ForceModes for different feels
             rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
         }
+        triedJumping = false;
     }
 
     private void CheckGrounded()
@@ -74,6 +74,12 @@ public class FirstPersonMovement : Bolt.EntityBehaviour<ICustomPlayerState>
 
     #region Movement
 
+    public void ReceiveMovementInput(float movX, float movY)
+    {
+        movH = movX;
+        movV = movY;
+    }
+    
     void HandleMovement()
     {
         // TODO: total mid-air control
@@ -81,8 +87,8 @@ public class FirstPersonMovement : Bolt.EntityBehaviour<ICustomPlayerState>
         Vector3 mov = transform.forward * movV + transform.right * movH;
         mov.Normalize();
         mov *= speed;
-        
-        animator.SetFloat(Speed, mov.magnitude);
+        if(animator != null)
+            animator.SetFloat(Speed, mov.magnitude);
         
         mov += new Vector3(0, rb.velocity.y, 0);
         rb.velocity = mov;

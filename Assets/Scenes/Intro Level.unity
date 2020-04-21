@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -148,6 +148,26 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1623827401}
+    - target: {fileID: 369428796803293957, guid: c85739c26f46b2446803a6029b2d1e47,
+        type: 3}
+      propertyPath: viewIdField
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069176894464358188, guid: c85739c26f46b2446803a6029b2d1e47,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1184550364190387663, guid: c85739c26f46b2446803a6029b2d1e47,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4941650800366888049, guid: c85739c26f46b2446803a6029b2d1e47,
+        type: 3}
+      propertyPath: viewIdField
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5397416740430290169, guid: c85739c26f46b2446803a6029b2d1e47,
         type: 3}
       propertyPath: m_IsActive
@@ -166,7 +186,7 @@ PrefabInstance:
     - target: {fileID: 5397416741137440589, guid: c85739c26f46b2446803a6029b2d1e47,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5397416741137440590, guid: c85739c26f46b2446803a6029b2d1e47,
         type: 3}
@@ -2558,6 +2578,21 @@ PrefabInstance:
     - target: {fileID: 1798287107, guid: c85739c26f46b2446803a6029b2d1e47, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 369428796803293957, guid: c85739c26f46b2446803a6029b2d1e47,
+        type: 3}
+      propertyPath: viewIdField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4941650800366888049, guid: c85739c26f46b2446803a6029b2d1e47,
+        type: 3}
+      propertyPath: viewIdField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5397416741137440577, guid: c85739c26f46b2446803a6029b2d1e47,
+        type: 3}
+      propertyPath: sensitivity
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5397416741137440589, guid: c85739c26f46b2446803a6029b2d1e47,
         type: 3}

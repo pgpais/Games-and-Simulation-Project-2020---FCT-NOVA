@@ -18,11 +18,11 @@ namespace Photon.Realtime
 {
     using System.Collections.Generic;
     using ExitGames.Client.Photon;
-#if SUPPORTED_UNITY || NETFX_CORE
+
+    #if SUPPORTED_UNITY || NETFX_CORE
     using Hashtable = ExitGames.Client.Photon.Hashtable;
     using SupportClass = ExitGames.Client.Photon.SupportClass;
-
-#endif
+    #endif
 
 
     /// <summary>Reads an operation response of a WebRpc and provides convenient access to most common values.</summary>
@@ -43,7 +43,6 @@ namespace Photon.Realtime
         /// Other ResultCode are defined by the individual WebRpc and service.
         /// </remarks>
         public int ResultCode { get; private set; }
-
         [System.Obsolete("Use ResultCode instead")]
         public int ReturnCode
         {
@@ -52,7 +51,6 @@ namespace Photon.Realtime
 
         /// <summary>Might be empty or null.</summary>
         public string Message { get; private set; }
-
         [System.Obsolete("Use Message instead")]
         public string DebugMessage
         {
@@ -75,7 +73,7 @@ namespace Photon.Realtime
             this.ResultCode = -1;
             if (response.Parameters.TryGetValue(ParameterCode.WebRpcReturnCode, out value))
             {
-                this.ResultCode = (byte) value;
+                this.ResultCode = (byte)value;
             }
 
             if (response.Parameters.TryGetValue(ParameterCode.WebRpcParameters, out value))
@@ -93,8 +91,7 @@ namespace Photon.Realtime
         /// <returns>String resembling the result.</returns>
         public string ToStringFull()
         {
-            return string.Format("{0}={2}: {1} \"{3}\"", this.Name, SupportClass.DictionaryToString(this.Parameters),
-                this.ResultCode, this.Message);
+            return string.Format("{0}={2}: {1} \"{3}\"", this.Name, SupportClass.DictionaryToString(this.Parameters), this.ResultCode, this.Message);
         }
     }
 
@@ -105,17 +102,16 @@ namespace Photon.Realtime
     /// </summary>
     public class WebFlags
     {
+
         public readonly static WebFlags Default = new WebFlags(0);
         public byte WebhookFlags;
-
         /// <summary>
         /// Indicates whether to forward HTTP request to web service or not.
         /// </summary>
         public bool HttpForward
         {
             get { return (WebhookFlags & HttpForwardConst) != 0; }
-            set
-            {
+            set {
                 if (value)
                 {
                     WebhookFlags |= HttpForwardConst;
@@ -126,70 +122,60 @@ namespace Photon.Realtime
                 }
             }
         }
-
         public const byte HttpForwardConst = 0x01;
-
         /// <summary>
         /// Indicates whether to send AuthCookie of actor in the HTTP request to web service or not.
         /// </summary>
         public bool SendAuthCookie
         {
             get { return (WebhookFlags & SendAuthCookieConst) != 0; }
-            set
-            {
+            set {
                 if (value)
                 {
                     WebhookFlags |= SendAuthCookieConst;
                 }
                 else
                 {
-                    WebhookFlags = (byte) (WebhookFlags & ~(1 << 1));
+                    WebhookFlags = (byte)(WebhookFlags & ~(1 << 1));
                 }
             }
         }
-
         public const byte SendAuthCookieConst = 0x02;
-
         /// <summary>
         /// Indicates whether to send HTTP request synchronously or asynchronously to web service.
         /// </summary>
         public bool SendSync
         {
             get { return (WebhookFlags & SendSyncConst) != 0; }
-            set
-            {
+            set {
                 if (value)
                 {
                     WebhookFlags |= SendSyncConst;
                 }
                 else
                 {
-                    WebhookFlags = (byte) (WebhookFlags & ~(1 << 2));
+                    WebhookFlags = (byte)(WebhookFlags & ~(1 << 2));
                 }
             }
         }
-
         public const byte SendSyncConst = 0x04;
-
         /// <summary>
         /// Indicates whether to send serialized game state in HTTP request to web service or not.
         /// </summary>
         public bool SendState
         {
             get { return (WebhookFlags & SendStateConst) != 0; }
-            set
-            {
+            set {
                 if (value)
                 {
                     WebhookFlags |= SendStateConst;
                 }
                 else
                 {
-                    WebhookFlags = (byte) (WebhookFlags & ~(1 << 3));
+                    WebhookFlags = (byte)(WebhookFlags & ~(1 << 3));
                 }
             }
         }
-
         public const byte SendStateConst = 0x08;
 
         public WebFlags(byte webhookFlags)
@@ -197,4 +183,5 @@ namespace Photon.Realtime
             WebhookFlags = webhookFlags;
         }
     }
+
 }

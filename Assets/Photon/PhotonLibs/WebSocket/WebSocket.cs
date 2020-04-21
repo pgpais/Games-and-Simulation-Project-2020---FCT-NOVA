@@ -1,4 +1,5 @@
 ﻿#if UNITY_WEBGL || UNITY_XBOXONE || WEBSOCKET
+
 using System;
 using System.Text;
 
@@ -16,12 +17,12 @@ public class WebSocket
     /// <summary>Photon uses this to agree on a serialization protocol. Either: GpBinaryV16 or GpBinaryV18. Based on enum SerializationProtocol.</summary>
     private string protocols = "GpBinaryV16";
 
-    public WebSocket(Uri url, string protocols = null)
+    public WebSocket(Uri url, string serialization = null)
     {
         this.mUrl = url;
-        if (protocols != null)
+        if (serialization != null)
         {
-            this.protocols = protocols;
+            this.protocols = serialization;
         }
 
         string protocol = mUrl.Scheme;
@@ -121,8 +122,7 @@ public class WebSocket
     public void Connect()
     {
         m_Socket = new WebSocketSharp.WebSocket(mUrl.ToString(), new string[] { this.protocols });
-        m_Socket.SslConfiguration.EnabledSslProtocols =
- m_Socket.SslConfiguration.EnabledSslProtocols | (SslProtocols)(3072| 768);
+        m_Socket.SslConfiguration.EnabledSslProtocols = m_Socket.SslConfiguration.EnabledSslProtocols | (SslProtocols)(3072| 768);
         m_Socket.OnMessage += (sender, e) => m_Messages.Enqueue(e.RawData);
         m_Socket.OnOpen += (sender, e) => m_IsConnected = true;
         m_Socket.OnError += (sender, e) => m_Error = e.Message + (e.Exception == null ? "" : " / " + e.Exception);

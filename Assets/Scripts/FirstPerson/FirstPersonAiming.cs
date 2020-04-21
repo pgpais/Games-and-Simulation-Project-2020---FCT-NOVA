@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Interactables;
+using Photon.Pun;
 using UnityEditor;
 using UnityEngine;
 
-public class FirstPersonAiming : Bolt.EntityBehaviour<ICustomPlayerState>
+public class FirstPersonAiming : MonoBehaviour
 {
-    [Header("Controls Parameters")] public float sensitivity = 10f;
+    [Header("Controls Parameters")] public float sensitivity = 0.1f;
 
+    private float aimX, aimY;
     private float rotY;
 
     [Header("Interact Parameters")] [SerializeField]
@@ -18,7 +20,6 @@ public class FirstPersonAiming : Bolt.EntityBehaviour<ICustomPlayerState>
 
     [Header("Camera Parameters")] [Range(0f, 90f)]
     public float maxClamp = 90.0f;
-
     private float minClamp;
 
     private Camera cam;
@@ -28,13 +29,13 @@ public class FirstPersonAiming : Bolt.EntityBehaviour<ICustomPlayerState>
     // Start is called before the first frame update
     void Start()
     {
+        
         Cursor.lockState = CursorLockMode.Locked;
 
         cam = GetComponentInChildren<Camera>();
         camTransform = cam.transform;
         minClamp = -maxClamp;
-
-
+        
         rotX = 0;
         rotY = 0;
     }
@@ -43,14 +44,18 @@ public class FirstPersonAiming : Bolt.EntityBehaviour<ICustomPlayerState>
     // Update is called once per frame
     void Update()
     {
-        HandleAiming(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
-        if (Input.GetButtonDown("Use"))
-        {
-            TryInteracting();
-        }
+        HandleAiming();
+        //TryInteracting();
     }
 
-    void HandleAiming(float aimX, float aimY)
+    // TODO: can this be done as soon as input is received?
+    public void ReceiveAimInput(float mouseX, float mouseY)
+    {
+        aimX = mouseX;
+        aimY = mouseY;
+    }
+    
+    void HandleAiming()
     {
         // Add rotations
         rotX -= aimY * sensitivity;
@@ -89,4 +94,12 @@ public class FirstPersonAiming : Bolt.EntityBehaviour<ICustomPlayerState>
             }
         }
     }
+    
+    #region Helpers
+
+    public void DisableCamera()
+    {
+        cam.enabled = false;
+    }
+    #endregion
 }
