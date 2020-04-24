@@ -7,7 +7,7 @@ namespace FirstPerson
     [RequireComponent(typeof(PlayerInput))]
     [RequireComponent(typeof(FirstPersonMovement))]
     [RequireComponent(typeof(FirstPersonAiming))]
-    public class FirstPersonPlayer : MonoBehaviourPunCallbacks, IPunObservable
+    public class FirstPersonPlayer : MonoBehaviourPun
     {
         [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
         public static GameObject localPlayerInstance;
@@ -57,6 +57,16 @@ namespace FirstPerson
             }
         }
 
+        /// <summary>
+        /// This is simply a wrapper for the Tool.UseTool method so we can tag it as a PunRPC.
+        /// </summary>
+        [PunRPC]
+        public void UseTool()
+        {
+            Debug.Log("RPC UseTool called", this);
+            tool.UseTool();
+        }
+
 
 
         #region Handle Input
@@ -82,14 +92,9 @@ namespace FirstPerson
         public void OnToolUse(InputAction.CallbackContext ctx)
         {
             if(ctx.performed)
-                tool.UseTool();
+                this.photonView.RPC("UseTool", RpcTarget.All);
         }
         
         #endregion
-    
-        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-        {
-        
-        }
     }
 }

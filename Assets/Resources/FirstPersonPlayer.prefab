@@ -540,7 +540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4ff7a0f69b1e044fa6260a6b91cf54f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 10
+  sensitivity: 0.1
   interactRange: 10
   interactMask:
     serializedVersion: 2
