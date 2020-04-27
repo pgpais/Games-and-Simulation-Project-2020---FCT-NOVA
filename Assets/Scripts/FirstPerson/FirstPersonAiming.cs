@@ -76,16 +76,18 @@ public class FirstPersonAiming : MonoBehaviour
     /// <summary>
     /// Shoots a Raycast forward to look for an Interactable
     /// </summary>
-    void TryInteracting()
+    public void TryInteracting()
     {
         RaycastHit hit;
         Debug.DrawRay(camTransform.position, camTransform.forward, Color.red, 3f);
         if (Physics.Raycast(camTransform.position, camTransform.forward, out hit, interactRange, interactMask))
         {
+            Debug.Log("Hit an object " + hit.collider.name, this);
             if (hit.collider.CompareTag("Interactable"))
             {
                 // TODO: This but with better performance? SendMessage?
-                hit.collider.GetComponent<Interactable>().Interact();
+                
+                hit.collider.GetComponentInParent<Interactable>().Interact();
             }
 
             if (hit.collider.CompareTag("Carryable"))

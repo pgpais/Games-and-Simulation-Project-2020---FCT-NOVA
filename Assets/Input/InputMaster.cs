@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Settings/InputMaster.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Input/InputMaster.inputactions'
 
 using System;
 using System.Collections;
@@ -46,6 +46,14 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""name"": ""UseTool"",
                     ""type"": ""Button"",
                     ""id"": ""7171b0ae-ec56-495e-b359-26891136f38f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""578753ef-c66c-4f63-a65e-6800305872de"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -183,6 +191,17 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""action"": ""UseTool"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""851c1e00-82d2-4831-afdb-9931e17e4849"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -223,6 +242,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_UseTool = m_Player.FindAction("UseTool", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -276,6 +296,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_UseTool;
+    private readonly InputAction m_Player_Interact;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -284,6 +305,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @UseTool => m_Wrapper.m_Player_UseTool;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -305,6 +327,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @UseTool.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseTool;
                 @UseTool.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseTool;
                 @UseTool.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseTool;
+                @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -321,6 +346,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @UseTool.started += instance.OnUseTool;
                 @UseTool.performed += instance.OnUseTool;
                 @UseTool.canceled += instance.OnUseTool;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -349,5 +377,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnUseTool(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }

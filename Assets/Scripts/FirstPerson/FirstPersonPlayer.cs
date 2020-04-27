@@ -98,6 +98,14 @@ namespace FirstPerson
                     photonView.RPC("UseTool", RpcTarget.All);
 
         }
+
+        public void OnInteract(InputAction.CallbackContext ctx)
+        {
+            if (ctx.performed)
+            {
+                aim.TryInteracting();
+            }
+        }
         
         #endregion
     }
