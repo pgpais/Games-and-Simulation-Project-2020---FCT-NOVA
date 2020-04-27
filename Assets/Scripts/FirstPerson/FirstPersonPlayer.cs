@@ -92,7 +92,11 @@ namespace FirstPerson
         public void OnToolUse(InputAction.CallbackContext ctx)
         {
             if(ctx.performed)
-                this.photonView.RPC("UseTool", RpcTarget.All);
+                if (PhotonNetwork.OfflineMode)
+                    tool.UseTool();
+                else
+                    photonView.RPC("UseTool", RpcTarget.All);
+
         }
         
         #endregion
