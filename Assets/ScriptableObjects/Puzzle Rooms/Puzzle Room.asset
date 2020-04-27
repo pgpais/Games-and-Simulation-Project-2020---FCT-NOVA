@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cec8a8f1c3cf2f40ba94470e82e708a, type: 3}
   m_Name: Puzzle Room
   m_EditorClassIdentifier: 
-  scene: {fileID: 102900000, guid: 47f2dd90bd7b94f4dbba5d3533637d2b, type: 3}
+  puzzlePrefab: {fileID: 0}
   difficulty: 0
   pathWays:
     North: 0
