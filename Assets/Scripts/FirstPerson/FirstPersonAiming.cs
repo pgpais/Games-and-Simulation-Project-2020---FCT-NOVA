@@ -12,10 +12,7 @@ public class FirstPersonAiming : MonoBehaviour
     private float aimX, aimY;
     private float rotY;
 
-    [Header("Interact Parameters")] [SerializeField]
-    private float interactRange = 10f;
-
-    [SerializeField] private LayerMask interactMask;
+    
 
 
     [Header("Camera Parameters")] [Range(0f, 90f)]
@@ -23,7 +20,10 @@ public class FirstPersonAiming : MonoBehaviour
     private float minClamp;
 
     private Camera cam;
-    [SerializeField] private Transform camTransform;
+    [SerializeField] private Transform camTrans;
+
+    public Transform camTransform => camTrans;
+    
     private float rotX;
 
     // Start is called before the first frame update
@@ -33,7 +33,7 @@ public class FirstPersonAiming : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         cam = GetComponentInChildren<Camera>();
-        camTransform = cam.transform;
+        camTrans = cam.transform;
         minClamp = -maxClamp;
         
         rotX = 0;
@@ -66,36 +66,14 @@ public class FirstPersonAiming : MonoBehaviour
 
         // Set rotations
         Vector3 bodyRotation = transform.eulerAngles;
-        Vector3 camRotation = camTransform.localRotation.eulerAngles;
+        Vector3 camRotation = camTrans.localRotation.eulerAngles;
         bodyRotation.y = rotY;
         camRotation.x = rotX;
-        camTransform.localRotation = Quaternion.Euler(camRotation);
+        camTrans.localRotation = Quaternion.Euler(camRotation);
         transform.eulerAngles = bodyRotation;
     }
 
-    /// <summary>
-    /// Shoots a Raycast forward to look for an Interactable
-    /// </summary>
-    public void TryInteracting()
-    {
-        RaycastHit hit;
-        Debug.DrawRay(camTransform.position, camTransform.forward, Color.red, 3f);
-        if (Physics.Raycast(camTransform.position, camTransform.forward, out hit, interactRange, interactMask))
-        {
-            Debug.Log("Hit an object " + hit.collider.name, this);
-            if (hit.collider.CompareTag("Interactable"))
-            {
-                // TODO: This but with better performance? SendMessage?
-                
-                hit.collider.GetComponentInParent<Interactable>().Interact();
-            }
-
-            if (hit.collider.CompareTag("Carryable"))
-            {
-                
-            }
-        }
-    }
+    
     
     #region Helpers
 

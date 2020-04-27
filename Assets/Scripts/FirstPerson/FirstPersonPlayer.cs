@@ -1,4 +1,5 @@
-﻿using Photon.Pun;
+﻿using Interactables;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +10,10 @@ namespace FirstPerson
     [RequireComponent(typeof(FirstPersonAiming))]
     public class FirstPersonPlayer : MonoBehaviourPun
     {
+        [Header("Interact Parameters")] [SerializeField]
+        private float interactRange = 10f;
+        [SerializeField] private LayerMask interactMask;
+        
         [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
         public static GameObject localPlayerInstance;
 
@@ -103,10 +108,41 @@ namespace FirstPerson
         {
             if (ctx.performed)
             {
-                aim.TryInteracting();
+                Transform camTransform = aim.camTransform;
+                RaycastHit hit;
+                Debug.DrawRay(camTransform.position, camTransform.forward, Color.red, 3f);
+                if (Physics.Raycast(camTransform.position, camTransform.forward, out hit, interactRange, interactMask))
+                {
+                    if (hit.collider.CompareTag("Interactable"))
+                    {
+                        // TODO: This but with better performance? SendMessage?
+
+                        if (PhotonNetwork.OfflineMode)
+                        {
+                            TryInteracting(hit.collider.GetComponentInParent<Interactable>());
+                        }
+                        else
+                        {
+                            photonView.RPC("TryInteracting", RpcTarget.All, hit.collider.GetComponentInParent<Interactable>());
+                        }
+                    }
+
+                    if (hit.collider.CompareTag("Carryable"))
+                    {
+                
+                    }
+                }
             }
         }
         
+        /// <summary>
+        /// Shoots a Raycast forward to look for an Interactable
+        /// </summary>
+        [PunRPC]
+        private void TryInteracting(Interactable interactable)
+        {
+            interactable.Interact();
+        }
         #endregion
     }
 }

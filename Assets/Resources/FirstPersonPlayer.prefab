@@ -210,7 +210,18 @@ MonoBehaviour:
     m_ActionId: 7171b0ae-ec56-495e-b359-26891136f38f
     m_ActionName: Player/UseTool[/Mouse/leftButton]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1069176894464358188}
+        m_MethodName: OnInteract
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 578753ef-c66c-4f63-a65e-6800305872de
     m_ActionName: Player/Interact[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
@@ -230,6 +241,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8e9b5db1045ac449972cd5ea44045da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactRange: 10
+  interactMask:
+    serializedVersion: 2
+    m_Bits: 1331
   tool: {fileID: 0}
 --- !u!114 &5397416741137440590
 MonoBehaviour:
@@ -264,12 +279,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 0.1
-  interactRange: 10
-  interactMask:
-    serializedVersion: 2
-    m_Bits: 1331
   maxClamp: 60
-  camTransform: {fileID: 0}
+  camTrans: {fileID: 0}
 --- !u!95 &8493094693628844810
 Animator:
   serializedVersion: 3
