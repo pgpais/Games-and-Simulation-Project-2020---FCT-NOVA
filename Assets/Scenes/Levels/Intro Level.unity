@@ -515,8 +515,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4941650800366888049, guid: c85739c26f46b2446803a6029b2d1e47,
         type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4941650800366888049, guid: c85739c26f46b2446803a6029b2d1e47,
+        type: 3}
       propertyPath: viewIdField
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4941650800366888049, guid: c85739c26f46b2446803a6029b2d1e47,
+        type: 3}
+      propertyPath: Synchronization
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5397416741137440589, guid: c85739c26f46b2446803a6029b2d1e47,
         type: 3}

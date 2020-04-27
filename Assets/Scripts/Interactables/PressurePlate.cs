@@ -12,6 +12,8 @@ public class PressurePlate : MonoBehaviour
     [SerializeField]
     public GameObject plate;
 
+    public float height;
+
     public bool allowPlayer = false;
     
 
@@ -23,7 +25,7 @@ public class PressurePlate : MonoBehaviour
             if (other.CompareTag("Carryable") || allowPlayer)
             {
                 open = true;
-                door.transform.position += new Vector3(0, 4, 0);
+                door.transform.position += new Vector3(0, height, 0);
                 plate.GetComponent<Renderer>().material = Resources.Load("Materials/GreenMat", typeof(Material)) as Material;;
 
             }
@@ -39,7 +41,7 @@ public class PressurePlate : MonoBehaviour
         Debug.Log("I'm out");
         if (open)
         {
-            door.transform.position += new Vector3(0, -4, 0);
+            door.transform.position += new Vector3(0, -height, 0);
             open = false;
 
         }
