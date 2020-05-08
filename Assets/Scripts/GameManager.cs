@@ -31,12 +31,18 @@ public class GameManager : MonoBehaviour
         if (NetworkManager.instance == null)
         {
             PhotonNetwork.OfflineMode = true;
+            LocalSpawnPlayers();
         }
         else
         {
             if(PhotonNetwork.IsMasterClient)
                 NetworkManager.instance.LaunchSpawnPlayers();
         }
+    }
+
+    private void LocalSpawnPlayers()
+    {
+        Instantiate(LocalPlayerPrefab, masterSpawnPoint.position, Quaternion.identity);
     }
 
     // Update is called once per frame
