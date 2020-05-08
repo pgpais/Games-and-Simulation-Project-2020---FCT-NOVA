@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class FlashLight : Tool
 {
@@ -17,7 +18,7 @@ public class FlashLight : Tool
     {
     }
 
-    public override void UseTool()
+    public override void UseTool(InputAction.CallbackContext ctx)
     {
         flashLight.enabled = !flashLight.enabled;
     }

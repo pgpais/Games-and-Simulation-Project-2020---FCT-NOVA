@@ -42,9 +42,26 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7695287652193379194}
+  - {fileID: 7481651990275791194}
   m_Father: {fileID: 970639357919427642}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6018746556256348389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7248917159171901705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1deb10f17150fb940853d2dfcf69e912, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectRadius: 0
+  effectDistance: 0
+  force: 10
+  gravityGunTransform: {fileID: 0}
 --- !u!1 &8476110284863447140
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,6 +277,87 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 647950548527506019}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5668552950962041817
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4047746848364841614}
+    m_Modifications:
+    - target: {fileID: 2989990172301339267, guid: 48fa9505db9b5ab4990894c6e3e6e11d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989990172301339267, guid: 48fa9505db9b5ab4990894c6e3e6e11d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989990172301339267, guid: 48fa9505db9b5ab4990894c6e3e6e11d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989990172301339267, guid: 48fa9505db9b5ab4990894c6e3e6e11d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989990172301339267, guid: 48fa9505db9b5ab4990894c6e3e6e11d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989990172301339267, guid: 48fa9505db9b5ab4990894c6e3e6e11d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989990172301339267, guid: 48fa9505db9b5ab4990894c6e3e6e11d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989990172301339267, guid: 48fa9505db9b5ab4990894c6e3e6e11d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989990172301339267, guid: 48fa9505db9b5ab4990894c6e3e6e11d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989990172301339267, guid: 48fa9505db9b5ab4990894c6e3e6e11d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989990172301339267, guid: 48fa9505db9b5ab4990894c6e3e6e11d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3041035169411201744, guid: 48fa9505db9b5ab4990894c6e3e6e11d,
+        type: 3}
+      propertyPath: m_Name
+      value: Gravity Gun
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 48fa9505db9b5ab4990894c6e3e6e11d, type: 3}
+--- !u!1 &7248917159171901705 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3041035169411201744, guid: 48fa9505db9b5ab4990894c6e3e6e11d,
+    type: 3}
+  m_PrefabInstance: {fileID: 5668552950962041817}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7481651990275791194 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2989990172301339267, guid: 48fa9505db9b5ab4990894c6e3e6e11d,
+    type: 3}
+  m_PrefabInstance: {fileID: 5668552950962041817}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6788973181891481667
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -361,6 +459,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FlashLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 273823569014980760, guid: 6db4c00afe75a184cb13227f08956224,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 273823569014980763, guid: 6db4c00afe75a184cb13227f08956224,
         type: 3}

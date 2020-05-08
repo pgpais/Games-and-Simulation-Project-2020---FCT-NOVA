@@ -69,7 +69,9 @@ namespace FirstPerson
         public void UseTool()
         {
             Debug.Log("RPC UseTool called", this);
-            tool.UseTool();
+            // Criar um ENUM que representa o Tipo de Input realizado
+            // Investigar metodos de disntinção de Input
+            //tool.UseTool();
         }
 
 
@@ -96,11 +98,11 @@ namespace FirstPerson
 
         public void OnToolUse(InputAction.CallbackContext ctx)
         {
-            if(ctx.performed)
+            if(ctx.started)
                 if (PhotonNetwork.OfflineMode)
-                    tool.UseTool();
+                    tool.UseTool(ctx);
                 else
-                    photonView.RPC("UseTool", RpcTarget.All);
+                    photonView.RPC("UseTool", RpcTarget.All, ctx);
 
         }
 

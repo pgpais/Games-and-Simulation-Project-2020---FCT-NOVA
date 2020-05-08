@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public abstract class Tool : MonoBehaviour
 {
@@ -14,5 +15,5 @@ public abstract class Tool : MonoBehaviour
     {
     }
 
-    public abstract void UseTool();
+    public abstract void UseTool(InputAction.CallbackContext ctx);
 }
