@@ -136,5 +136,22 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         }
     }
 
+    public void triggerReadyRPC(string readyFunc, Player player)
+    {
+        photonView.RPC(readyFunc, RpcTarget.All, player);
+    }
+    
+    [PunRPC]
+    public void PlayerReadied(Player player)
+    {
+        LobbyManager.instance.ReadyPlayer();
+    }
+    
+    [PunRPC]
+    public void PlayerUnreadied(Player player)
+    {
+        LobbyManager.instance.UnreadyPlayer();
+    }
+
     #endregion
 }
