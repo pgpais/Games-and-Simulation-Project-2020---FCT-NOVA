@@ -60,9 +60,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     #endregion
     
-
-    
-
     #region Room Management
 
     public override void OnLeftRoom()
@@ -151,6 +148,21 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public void PlayerUnreadied(Player player)
     {
         LobbyManager.instance.UnreadyPlayer();
+    }
+
+    #endregion
+
+    #region In-Game
+
+    public void LaunchSpawnPlayers()
+    {
+        photonView.RPC("SpawnPlayers", RpcTarget.All);
+    }
+    
+    [PunRPC]
+    void SpawnPlayers()
+    {
+        GameManager.instance.SpawnPlayers();
     }
 
     #endregion
