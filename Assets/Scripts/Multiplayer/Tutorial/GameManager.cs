@@ -20,9 +20,9 @@ namespace Multiplayer.Tutorial
         #region Photon Callbacks
 
 
-        public override void OnPlayerEnteredRoom(Player other)
+        public override void OnPlayerEnteredRoom(Player player)
         {
-            Debug.LogFormat("OnPlayerEnteredRoom() {0}", other.NickName); // not seen if you're the player connecting
+            Debug.LogFormat("OnPlayerEnteredRoom() {0}", player.NickName); // not seen if you're the player connecting
 
 
             if (PhotonNetwork.IsMasterClient)
@@ -35,9 +35,9 @@ namespace Multiplayer.Tutorial
         }
 
 
-        public override void OnPlayerLeftRoom(Player other)
+        public override void OnPlayerLeftRoom(Player player)
         {
-            Debug.LogFormat("OnPlayerLeftRoom() {0}", other.NickName); // seen when other disconnects
+            Debug.LogFormat("OnPlayerLeftRoom() {0}", player.NickName); // seen when other disconnects
 
 
             if (PhotonNetwork.IsMasterClient)

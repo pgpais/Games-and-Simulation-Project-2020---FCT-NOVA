@@ -33,30 +33,12 @@ public class MenuManager : MonoBehaviour
 
     public void CreateLobby()
     {
-        if (roomNameInput.text.Equals(""))
-        {
-            Debug.Log("Trying to Host Lobby lobby");
-            //PhotonNetwork.CreateRoom("lobby"); //TODO: check if this works with nulls
-        }
-        else
-        {
-            Debug.Log("Trying to Host Lobby " + roomNameInput.text);
-            //PhotonNetwork.CreateRoom(roomNameInput.text); //TODO: check if this works with nulls
-        }
+        NetworkManager.instance.CreateLobby(roomNameInput.text);
     }
     
     public void JoinLobby()
     {
-        if (roomNameInput.text.Equals(""))
-        {
-            Debug.Log("Trying to Join Lobby lobby");
-            //PhotonNetwork.JoinRoom("lobby"); //TODO: check if this works with nulls
-        }
-        else
-        {
-            Debug.Log("Trying to Join Lobby " + roomNameInput.text);
-            //PhotonNetwork.JoinRoom(roomNameInput.text); //TODO: check if this works with nulls
-        }
+        NetworkManager.instance.JoinLobby(roomNameInput.text);
     }
 
     public void ActivateButtons()
