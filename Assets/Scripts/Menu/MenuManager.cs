@@ -48,5 +48,14 @@ public class MenuManager : MonoBehaviour
             obj.SetActive(true);
         }
     }
-    
+
+    public void QuitGame()
+    {
+        //TODO: maybe confirm?
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+        
+        Application.Quit();
+    }
 }
