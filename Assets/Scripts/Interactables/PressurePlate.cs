@@ -15,6 +15,8 @@ public class PressurePlate : MonoBehaviour
     public float height;
 
     public bool allowPlayer = false;
+
+    public bool colorChange = false;
     
 
     private void OnTriggerEnter(Collider other)
@@ -26,12 +28,16 @@ public class PressurePlate : MonoBehaviour
             {
                 open = true;
                 door.transform.position += new Vector3(0, height, 0);
-                plate.GetComponent<Renderer>().material = Resources.Load("Materials/GreenMat", typeof(Material)) as Material;;
+                
+                if(colorChange)
+                    plate.GetComponent<Renderer>().material = Resources.Load("Materials/GreenMat", typeof(Material)) as Material;;
 
             }
             else
             {
-                plate.GetComponent<Renderer>().material = Resources.Load("Materials/RedMat", typeof(Material)) as Material;
+                if(colorChange)
+
+                    plate.GetComponent<Renderer>().material = Resources.Load("Materials/RedMat", typeof(Material)) as Material;
             }
         }
     }
@@ -45,7 +51,7 @@ public class PressurePlate : MonoBehaviour
             open = false;
 
         }
-        
-        plate.GetComponent<Renderer>().material = Resources.Load("Materials/Grey", typeof(Material)) as Material;;
+        if(colorChange)
+            plate.GetComponent<Renderer>().material = Resources.Load("Materials/Grey", typeof(Material)) as Material;;
     }
 }
