@@ -9,16 +9,18 @@ namespace Interactables
         public bool allowPlayer = false;
 
         public bool colorChange = false;
-
-
+        
         private void OnTriggerEnter(Collider other)
         {
+            
             Debug.Log("I'm in");
+            
             if (!open)
             {
                 if (other.CompareTag("Carryable") || allowPlayer)
                 {
                     open = true;
+                    switchOn.Invoke();
                     //door.transform.position += new Vector3(0, height, 0);
                 
                     if(colorChange)
@@ -39,6 +41,7 @@ namespace Interactables
             Debug.Log("I'm out");
             if (open)
             {
+                switchOff.Invoke();
                 //door.transform.position += new Vector3(0, -height, 0);
                 open = false;
 
