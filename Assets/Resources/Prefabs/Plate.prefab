@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 5776358753341417131}
   - component: {fileID: 5776358753341417128}
   - component: {fileID: 5776358753341417129}
-  - component: {fileID: 5776358753341417134}
   - component: {fileID: 5776358753341417109}
+  - component: {fileID: 4486398057508754749}
   m_Layer: 0
   m_Name: Plate
   m_TagString: Untagged
@@ -95,21 +95,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &5776358753341417134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5776358753341417135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aac54a218c80b5c41a19bf1170aef2da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  door: {fileID: 0}
-  plate: {fileID: 5776358753341417135}
-  allowPlayer: 1
 --- !u!54 &5776358753341417109
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -126,3 +111,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4486398057508754749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5776358753341417135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aac54a218c80b5c41a19bf1170aef2da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  changeSwitchState:
+    m_PersistentCalls:
+      m_Calls: []
+  door: {fileID: 0}
+  plate: {fileID: 0}
+  height: 0
+  allowPlayer: 0
+  colorChange: 0

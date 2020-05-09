@@ -1,57 +1,50 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Serialization;
+﻿using UnityEngine;
 
-public class PressurePlate : MonoBehaviour
+namespace Interactables
 {
-    [SerializeField] private GameObject door;
-
-    private bool open = false;
-    [SerializeField]
-    public GameObject plate;
-
-    public float height;
-
-    public bool allowPlayer = false;
-
-    public bool colorChange = false;
-    
-
-    private void OnTriggerEnter(Collider other)
+    public class PressurePlate : Switchable
     {
-        Debug.Log("I'm in");
-        if (!open)
+        private bool open = false;
+        
+        public bool allowPlayer = false;
+
+        public bool colorChange = false;
+
+
+        private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Carryable") || allowPlayer)
+            Debug.Log("I'm in");
+            if (!open)
             {
-                open = true;
-                door.transform.position += new Vector3(0, height, 0);
+                if (other.CompareTag("Carryable") || allowPlayer)
+                {
+                    open = true;
+                    //door.transform.position += new Vector3(0, height, 0);
                 
-                if(colorChange)
-                    plate.GetComponent<Renderer>().material = Resources.Load("Materials/GreenMat", typeof(Material)) as Material;;
+                    if(colorChange)
+                        GetComponent<Renderer>().material = Resources.Load("Materials/GreenMat", typeof(Material)) as Material;;
 
-            }
-            else
-            {
-                if(colorChange)
+                }
+                else
+                {
+                    if(colorChange)
 
-                    plate.GetComponent<Renderer>().material = Resources.Load("Materials/RedMat", typeof(Material)) as Material;
+                        GetComponent<Renderer>().material = Resources.Load("Materials/RedMat", typeof(Material)) as Material;
+                }
             }
         }
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        Debug.Log("I'm out");
-        if (open)
+        private void OnTriggerExit(Collider other)
         {
-            door.transform.position += new Vector3(0, -height, 0);
-            open = false;
+            Debug.Log("I'm out");
+            if (open)
+            {
+                //door.transform.position += new Vector3(0, -height, 0);
+                open = false;
 
+            }
+            if(colorChange)
+                GetComponent<Renderer>().material = Resources.Load("Materials/Grey", typeof(Material)) as Material;;
         }
-        if(colorChange)
-            plate.GetComponent<Renderer>().material = Resources.Load("Materials/Grey", typeof(Material)) as Material;;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Activatables;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Interactables
 {
@@ -10,13 +11,14 @@ namespace Interactables
         [Tooltip("Object this button will activate")]
         public Activatable activatable;
 
+        public UnityEvent activateButton;
+
         private Animator anim;
         private static readonly int Activated = Animator.StringToHash("Activated");
 
         protected override void Start()
         {
             base.Start();
-
             anim = GetComponent<Animator>();
         }
 
@@ -24,7 +26,8 @@ namespace Interactables
         {
             Debug.Log("Button activated", gameObject);
             anim.SetTrigger(Activated);
-            activatable.Activate();
+            //activatable.Activate();
+            activateButton.Invoke();
         }
     }
 }

@@ -2903,9 +2903,49 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7880039448233141771, guid: 76ebf7ea86045354bb92a7a9879cd042,
         type: 3}
+      propertyPath: activateButton.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7880039448233141771, guid: 76ebf7ea86045354bb92a7a9879cd042,
+        type: 3}
       propertyPath: activatable
       value: 
       objectReference: {fileID: 2097657689}
+    - target: {fileID: 7880039448233141771, guid: 76ebf7ea86045354bb92a7a9879cd042,
+        type: 3}
+      propertyPath: activateButton.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7880039448233141771, guid: 76ebf7ea86045354bb92a7a9879cd042,
+        type: 3}
+      propertyPath: activateButton.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7880039448233141771, guid: 76ebf7ea86045354bb92a7a9879cd042,
+        type: 3}
+      propertyPath: activateButton.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2097657689}
+    - target: {fileID: 7880039448233141771, guid: 76ebf7ea86045354bb92a7a9879cd042,
+        type: 3}
+      propertyPath: activateButton.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Activate
+      objectReference: {fileID: 0}
+    - target: {fileID: 7880039448233141771, guid: 76ebf7ea86045354bb92a7a9879cd042,
+        type: 3}
+      propertyPath: activateButton.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7880039448233141771, guid: 76ebf7ea86045354bb92a7a9879cd042,
+        type: 3}
+      propertyPath: activateButton.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7880039448233141771, guid: 76ebf7ea86045354bb92a7a9879cd042,
+        type: 3}
+      propertyPath: activateButton.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8961259287880240386, guid: 76ebf7ea86045354bb92a7a9879cd042,
         type: 3}
       propertyPath: m_LocalPosition.x
