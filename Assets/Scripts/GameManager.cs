@@ -9,6 +9,17 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [SerializeField]
+    private List<GameObject> puzzles; // List of all puzzles
+    private int nextPuzzleToSpawnIndex;
+    private List<GameObject> spawnedPuzzles; // List of spawned and active;
+    
+    private PuzzleRoom nextPuzzle; // Script of next puzzle
+    
+    [SerializeField] 
+    private List<Transform> puzzleSpawnList; 
+    private int nextSpawnIndex = 0;
+    
+    [SerializeField]
     private GameObject LocalPlayerPrefab;
     [SerializeField]
     private GameObject RemotePlayerPrefab;
@@ -31,6 +42,7 @@ public class GameManager : MonoBehaviour
         if (NetworkManager.instance == null)
         {
             PhotonNetwork.OfflineMode = true;
+            Debug.LogError("OFFLINE MODE");
             LocalSpawnPlayers();
         }
         else
@@ -38,6 +50,9 @@ public class GameManager : MonoBehaviour
             if(PhotonNetwork.IsMasterClient)
                 NetworkManager.instance.LaunchSpawnPlayers();
         }
+
+        spawnedPuzzles = new List<GameObject>(puzzleSpawnList.Count);
+        SpawnPuzzleRooms(1);
     }
 
     private void LocalSpawnPlayers()
@@ -51,6 +66,22 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void SpawnPuzzleRooms(int howMany)
+    {
+        for (int i = 0; i < howMany; i++)
+        {
+            GameObject nextPuzzleObj = Instantiate(puzzles[nextPuzzleToSpawnIndex], puzzleSpawnList[nextSpawnIndex].position, Quaternion.identity);
+            nextPuzzle = nextPuzzleObj.GetComponent<PuzzleRoom>();
+            spawnedPuzzles.Insert(nextSpawnIndex, nextPuzzleObj);
+            nextPuzzleToSpawnIndex = ++nextPuzzleToSpawnIndex % puzzles.Count;
+            nextSpawnIndex = ++nextSpawnIndex % puzzleSpawnList.Count;
+            if (nextPuzzleToSpawnIndex == puzzles.Count)
+            {
+                Debug.LogWarning("All puzzles have been spawned");
+                //TODO: Do something here. Game will soon end
+            }
+        }
+    }
 
     public void SpawnPlayers()
     {
@@ -64,5 +95,10 @@ public class GameManager : MonoBehaviour
             Debug.Log("Client instantiated");
             PhotonNetwork.Instantiate(LocalPlayerPrefab.name, clientSpawnPoint.position, Quaternion.identity);;
         }
+    }
+
+    public void TeleportPlayer(Transform player)
+    {
+        player.position = PhotonNetwork.IsMasterClient? nextPuzzle.MasterSpawnPoint.position : nextPuzzle.ClientSpawnPoint.position;
     }
 }

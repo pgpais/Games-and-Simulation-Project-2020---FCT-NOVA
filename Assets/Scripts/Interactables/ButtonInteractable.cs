@@ -1,4 +1,5 @@
 ﻿using Activatables;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -23,6 +24,12 @@ namespace Interactables
         }
 
         public override void Interact()
+        {
+            PhotonView.Get(this).RPC("RpcInteract", RpcTarget.All);
+        }
+        
+        [PunRPC]
+        private void RpcInteract()
         {
             Debug.Log("Button activated", gameObject);
             anim.SetTrigger(Activated);

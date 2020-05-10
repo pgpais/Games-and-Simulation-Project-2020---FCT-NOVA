@@ -246,6 +246,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1331
   tool: {fileID: 0}
+  pullForce: 0
+  launchForce: 100
+  carryingPoint: {fileID: 0}
 --- !u!114 &5397416741137440590
 MonoBehaviour:
   m_ObjectHideFlags: 0

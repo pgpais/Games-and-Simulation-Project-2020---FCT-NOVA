@@ -21,6 +21,8 @@ namespace Activatables
         private Vector3 destination;
         private Vector3 initialPosition;
         private Transform trans;
+        [SerializeField]
+        private GameObject objectToShow;
 
         protected override void Start()
         {
@@ -41,7 +43,7 @@ namespace Activatables
             while (travelCurrentTime <= travelTime)
             {
                 transform.position = Vector3.Lerp(initialPosition, destination, travelCurve.Evaluate(travelCurrentTime/travelTime));
-                Debug.Log("Time = " + travelCurrentTime/travelTime + " | Evaluate result = " + travelCurve.Evaluate(travelCurrentTime/travelTime));
+                //Debug.Log("Time = " + travelCurrentTime/travelTime + " | Evaluate result = " + travelCurve.Evaluate(travelCurrentTime/travelTime));
                 travelCurrentTime += Time.fixedDeltaTime;
                 yield return new WaitForSeconds(Time.fixedDeltaTime);
             }
@@ -50,13 +52,16 @@ namespace Activatables
 
         private void OnDrawGizmosSelected()
         {
+            if (objectToShow == null)
+            {
+                objectToShow = gameObject;
+            }
             Gizmos.color = Color.green;
             var position = transform.position;
             Gizmos.DrawLine(position, position + distanceToTravel);
             Gizmos.color = Color.red;
             Gizmos.DrawSphere(position + distanceToTravel, gizmoSphereRadius);
-            Transform transform1;
-            Gizmos.DrawWireMesh(GetComponent<MeshFilter>().sharedMesh, position + distanceToTravel, (transform1 = transform).rotation, transform1.lossyScale);
+            Gizmos.DrawWireMesh(objectToShow.GetComponent<MeshFilter>().sharedMesh, position + distanceToTravel, objectToShow.GetComponent<Transform>().rotation, objectToShow.GetComponent<Transform>().lossyScale);
         }
     }
 }

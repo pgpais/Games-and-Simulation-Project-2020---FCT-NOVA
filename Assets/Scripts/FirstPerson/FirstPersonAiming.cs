@@ -80,6 +80,7 @@ public class FirstPersonAiming : MonoBehaviour
     public void DisableCamera()
     {
         cam.enabled = false;
+        cam.GetComponent<AudioListener>().enabled = false;
     }
     #endregion
 }

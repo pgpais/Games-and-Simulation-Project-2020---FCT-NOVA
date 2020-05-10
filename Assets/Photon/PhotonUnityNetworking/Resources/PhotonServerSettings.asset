@@ -41,6 +41,8 @@ MonoBehaviour:
   - PlayerReadied
   - PlayerUnreadied
   - SpawnPlayers
+  - rpcInteract
+  - RpcInteract
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

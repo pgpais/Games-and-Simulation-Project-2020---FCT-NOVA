@@ -10,12 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7cec8a8f1c3cf2f40ba94470e82e708a, type: 3}
-  m_Name: Puzzle Room
+  m_Name: Puzzle Room 1
   m_EditorClassIdentifier: 
-  puzzlePrefab: {fileID: 0}
-  difficulty: 0
-  pathWays:
-    North: 0
-    South: 0
-    West: 0
-    East: 0

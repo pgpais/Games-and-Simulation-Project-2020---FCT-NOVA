@@ -50,6 +50,7 @@ public class FirstPersonMovement : MonoBehaviourPun
 
     public void ReceiveJumpInput()
     {
+        Debug.Log("Wanna jump");
         triedJumping = true;
     }
     

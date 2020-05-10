@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using Photon.Pun;
+using UnityEngine;
 
 namespace Interactables
 {
+    [RequireComponent(typeof(PhotonView))]
     public abstract class Interactable : MonoBehaviour
     {
         protected virtual void Start()

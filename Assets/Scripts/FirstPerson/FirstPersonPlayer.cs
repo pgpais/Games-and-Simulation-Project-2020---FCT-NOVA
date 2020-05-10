@@ -1,7 +1,10 @@
-﻿using Interactables;
+﻿using System;
+using Interactables;
 using Photon.Pun;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
+using UnityEngine.PlayerLoop;
 
 namespace FirstPerson
 {
@@ -12,20 +15,37 @@ namespace FirstPerson
     {
         [Header("Interact Parameters")] [SerializeField]
         private float interactRange = 10f;
+
         [SerializeField] private LayerMask interactMask;
-        
+
         [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
         public static GameObject localPlayerInstance;
 
         #region Required Components
+
         private FirstPersonAiming aim;
         private FirstPersonMovement mov;
         private PlayerInput input;
+
         #endregion
 
         #region Player Stuff
 
         public Tool tool;
+
+        #endregion
+
+        #region Carryable Stuff
+
+        [Tooltip("Carrying stuff")] 
+        [SerializeField] private float pullForce;
+        [SerializeField] private float launchForce = 100f;
+        [SerializeField] private Transform carryingPoint;
+        private bool isCarrying;
+        private GameObject carryingObject;
+        private Transform carryingTrans;
+        private Rigidbody carryingRb;
+        
 
         #endregion
         
@@ -53,13 +73,16 @@ namespace FirstPerson
             if (!photonView.IsMine && PhotonNetwork.IsConnected)
             {
                 input.enabled = false;
-                //TODO: camera might not be initialized yet. Check
                 aim.DisableCamera();
             }
             else
             {
                 input.enabled = true;
             }
+        }
+
+        private void FixedUpdate()
+        {
         }
 
         /// <summary>
@@ -99,7 +122,11 @@ namespace FirstPerson
         public void OnToolUse(InputAction.CallbackContext ctx)
         {
             if(ctx.started)
-                if (PhotonNetwork.OfflineMode)
+                if (isCarrying)
+                {
+                    LaunchObject();
+                }
+                else if (PhotonNetwork.OfflineMode)
                     tool.UseTool(ctx);
                 else
                     photonView.RPC("UseTool", RpcTarget.All, ctx);
@@ -113,25 +140,23 @@ namespace FirstPerson
                 Transform camTransform = aim.camTransform;
                 RaycastHit hit;
                 Debug.DrawRay(camTransform.position, camTransform.forward, Color.red, 3f);
-                if (Physics.Raycast(camTransform.position, camTransform.forward, out hit, interactRange, interactMask))
+                
+                if (isCarrying)
+                {
+                    DropObject();
+                }
+                else if (Physics.Raycast(camTransform.position, camTransform.forward, out hit, interactRange, interactMask))
                 {
                     if (hit.collider.CompareTag("Interactable"))
                     {
-                        // TODO: This but with better performance? SendMessage?
-
-                        if (PhotonNetwork.OfflineMode)
-                        {
-                            TryInteracting(hit.collider.GetComponentInParent<Interactable>());
-                        }
-                        else
-                        {
-                            photonView.RPC("TryInteracting", RpcTarget.All, hit.collider.GetComponentInParent<Interactable>());
-                        }
+                        
+                         hit.collider.GetComponentInParent<Interactable>().Interact();
+                        
                     }
 
                     if (hit.collider.CompareTag("Carryable"))
                     {
-                
+                        CarryObject(hit.collider.gameObject);
                     }
                 }
             }
@@ -141,9 +166,41 @@ namespace FirstPerson
         /// Shoots a Raycast forward to look for an Interactable
         /// </summary>
         [PunRPC]
-        private void TryInteracting(Interactable interactable)
+        private void TryInteracting(GameObject interactable)
         {
-            interactable.Interact();
+            interactable.GetComponent<Interactable>().Interact();
+        }
+
+        private void CarryObject(GameObject carryAble)
+        {
+            isCarrying = true;
+            carryingObject = carryAble;
+            carryingRb = carryAble.GetComponent<Rigidbody>();
+            carryingTrans = carryAble.transform;
+            carryingTrans.parent = carryingPoint;
+            carryingTrans.localPosition = Vector3.zero;
+            carryingRb.isKinematic = true;
+        }
+
+        private void DropObject()
+        {
+            isCarrying = false;
+            carryingTrans.parent = null;
+            carryingRb.isKinematic = false;
+            carryingRb = null;
+            carryingTrans = null;
+            carryingObject = null;
+        }
+
+        private void LaunchObject()
+        {
+            isCarrying = false;
+            carryingTrans.parent = null;
+            carryingRb.isKinematic = false;
+            carryingRb.AddForce(aim.camTransform.forward*launchForce, ForceMode.Impulse);
+            carryingRb = null;
+            carryingTrans = null;
+            carryingObject = null;
         }
         #endregion
     }
