@@ -9,9 +9,13 @@ public class SettingsMenu : MonoBehaviour
     private Resolution[] resolutions;
 
     public TMP_Dropdown resolutionDropdown;
+    public Toggle fullScreenToggle;
+    
     
     void Start()
     {
+        fullScreenToggle.isOn = Screen.fullScreen;
+        
         resolutions = Screen.resolutions;
         
         resolutionDropdown.ClearOptions();
