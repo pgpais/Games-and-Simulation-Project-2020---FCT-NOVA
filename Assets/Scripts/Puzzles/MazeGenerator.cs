@@ -5,6 +5,9 @@
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Configuration;
+    using Random = System.Random;
+
     public class MazeGenerator : MonoBehaviour {
         public int width, height;
         public Material brick;
@@ -15,7 +18,8 @@
         private System.Random rnd = new System.Random();
         private int _width, _height;
         private Vector2 _currentTile;
-        public String MazeString;
+        public List<String> Mazes;
+        private string MazeString;
      
         public Vector2 CurrentTile {
             get { return _currentTile; }
@@ -41,7 +45,7 @@
        
             
             Maze = new int[width, height];
-            if (MazeString == null)
+            if (Mazes == null)
             {
                 for (int x = 0; x < width; x++) {
                     for (int y = 0; y < height; y++)  {
@@ -52,13 +56,21 @@
             }
             else
             {
+                
+                var random = new Random();
+                MazeString = Mazes[random.Next(0, Mazes.Count)];
+                
+                MazeString = MazeString.Replace(" ", String.Empty);
+                
                 Debug.Log(MazeString);
                 Debug.Log(MazeString.Length);
                 var idx = 0;
+                var i = 0;
                 for (var x = 0; x < width; x++)
                 {
                     for (var y = 0; y < height; y++)
                     {
+                        
                         if (MazeString[idx].Equals('X'))
                         {
                             Maze[x, y] = 1;
@@ -77,19 +89,34 @@
                 _tiletoTry.Push(CurrentTile);
             
                 GameObject ptype = null;
-                for (int i = 0; i <= Maze.GetUpperBound(0); i++)  {
-                    for (int j = 0; j <= Maze.GetUpperBound(1); j++) {
-                        if (Maze[i, j] == 1)  {
-                            MazeString=MazeString+"X";  // added to create String
-                            ptype = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                            ptype.transform.position = new Vector3(i * ptype.transform.localScale.x, 0, j * ptype.transform.localScale.z);
-                   
-                            if (brick != null)  { ptype.GetComponent<Renderer>().material = brick; }
-                            ptype.transform.parent = transform;
-                        }
-                        else if (Maze[i, j] == 0) {
-                            MazeString=MazeString+"0"; // added to create String
-                            pathMazes.Add(new Vector3(i, 0, j));
+                for (var i = 0; i <= Maze.GetUpperBound(0); i++)  {
+                    for (var j = 0; j <= Maze.GetUpperBound(1); j++)
+                    {
+                        switch (Maze[i, j])
+                        {
+                            case 1:
+                            {
+                                MazeString=MazeString+"X";  // added to create String
+                                var prefab = Resources.Load("Prefabs/MazeCube", typeof(GameObject));
+                                ptype = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
+                                var localScale = ptype.transform.localScale;
+                                
+                                var position = gameObject.transform.position;
+                                var newPos = new Vector3(position.x + i * localScale.x, 0, position.z + j * localScale.z);
+
+                                newPos = transform.forward * newPos.z + transform.right * newPos.x;
+
+                                ptype.transform.localPosition = newPos;
+                                
+                                
+                                if (brick != null)  { ptype.GetComponent<Renderer>().material = brick; }
+                                ptype.transform.parent = transform;
+                                break;
+                            }
+                            case 0:
+                                MazeString=MazeString+"0"; // added to create String
+                                pathMazes.Add(new Vector3(i, 0, j));
+                                break;
                         }
                     }
                     MazeString=MazeString+"\n";  // added to create String
@@ -156,14 +183,14 @@
             // Counts the number of intact walls around a tile
             //"Vector2ToCheck">The coordinates of the tile to check
             //Whether there are three intact walls (the tile has not been dug into earlier.
-            private bool HasThreeWallsIntact(Vector2 Vector2ToCheck) {
+            private bool HasThreeWallsIntact(Vector2 vector2ToCheck) {
            
                 int intactWallCounter = 0;
                 //Check all four directions around the tile
                 foreach (var offset in offsets) {
                
                     //find the neighbor's position
-                    Vector2 neighborToCheck = new Vector2(Vector2ToCheck.x + offset.x, Vector2ToCheck.y + offset.y);
+                    Vector2 neighborToCheck = new Vector2(vector2ToCheck.x + offset.x, vector2ToCheck.y + offset.y);
                     //make sure it is inside the maze, and it hasn't been dug out yet
                     if (IsInside(neighborToCheck) && Maze[(int)neighborToCheck.x, (int)neighborToCheck.y] == 1) {
                         intactWallCounter++;
