@@ -65,6 +65,14 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Analitics"",
+                    ""type"": ""Button"",
+                    ""id"": ""371bf5c2-5504-4902-b29c-5b03a0ad091e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -232,6 +240,17 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""action"": ""Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5b0c58a7-d452-4962-bbfc-e7b45b66e28e"",
+                    ""path"": ""<Keyboard>/f3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Analitics"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -274,6 +293,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_UseTool = m_Player.FindAction("UseTool", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Menu = m_Player.FindAction("Menu", throwIfNotFound: true);
+        m_Player_Analitics = m_Player.FindAction("Analitics", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -329,6 +349,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_UseTool;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Menu;
+    private readonly InputAction m_Player_Analitics;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -339,6 +360,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         public InputAction @UseTool => m_Wrapper.m_Player_UseTool;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Menu => m_Wrapper.m_Player_Menu;
+        public InputAction @Analitics => m_Wrapper.m_Player_Analitics;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -366,6 +388,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Menu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenu;
                 @Menu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenu;
                 @Menu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenu;
+                @Analitics.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAnalitics;
+                @Analitics.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAnalitics;
+                @Analitics.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAnalitics;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -388,6 +413,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Menu.started += instance.OnMenu;
                 @Menu.performed += instance.OnMenu;
                 @Menu.canceled += instance.OnMenu;
+                @Analitics.started += instance.OnAnalitics;
+                @Analitics.performed += instance.OnAnalitics;
+                @Analitics.canceled += instance.OnAnalitics;
             }
         }
     }
@@ -418,5 +446,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnUseTool(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
+        void OnAnalitics(InputAction.CallbackContext context);
     }
 }
