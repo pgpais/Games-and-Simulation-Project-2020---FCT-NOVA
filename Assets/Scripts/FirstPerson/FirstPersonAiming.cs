@@ -12,7 +12,6 @@ public class FirstPersonAiming : MonoBehaviour
     private float aimX, aimY;
     private float rotY;
 
-    
 
 
     [Header("Camera Parameters")] [Range(0f, 90f)]
@@ -29,8 +28,8 @@ public class FirstPersonAiming : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         cam = GetComponentInChildren<Camera>();
         camTrans = cam.transform;
@@ -44,7 +43,8 @@ public class FirstPersonAiming : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HandleAiming();
+        if (!PauseMenu.instance.isPaused())
+            HandleAiming();
         //TryInteracting();
     }
 
@@ -77,6 +77,16 @@ public class FirstPersonAiming : MonoBehaviour
     
     #region Helpers
 
+    public void EnableAiming()
+    {
+        
+    }
+
+    public void DisableAiming()
+    {
+        
+    }
+    
     public void DisableCamera()
     {
         cam.enabled = false;
