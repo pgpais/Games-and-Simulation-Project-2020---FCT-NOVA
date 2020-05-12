@@ -78,6 +78,8 @@ namespace FirstPerson
             aim = GetComponent<FirstPersonAiming>();
             mov = GetComponent<FirstPersonMovement>();
             input = GetComponent<PlayerInput>();
+
+            gameObject.tag = "Player";
             
             Setup();
         }

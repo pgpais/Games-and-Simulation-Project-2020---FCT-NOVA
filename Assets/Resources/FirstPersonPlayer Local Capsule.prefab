@@ -376,6 +376,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1056923821832261581, guid: f83b78c52b6c3454fa8269ddfcc4273e,
+        type: 3}
+      propertyPath: m_SpotAngle
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056923821832261581, guid: f83b78c52b6c3454fa8269ddfcc4273e,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 2500105860746425067, guid: f83b78c52b6c3454fa8269ddfcc4273e,
         type: 3}
       propertyPath: m_LocalRotation.x
