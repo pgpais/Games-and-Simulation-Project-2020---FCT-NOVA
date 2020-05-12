@@ -31,21 +31,23 @@ public class PuzzleRoom : MonoBehaviour
             Application.Quit();
         }
 
-        for (int i = 0; i < objectsToSpawn.Count; i++)
-        {
-            PhotonNetwork.Instantiate(objectsToSpawn[i].name, whereToSpawn[i].position, whereToSpawn[i].rotation);
-        }
+        if(PhotonNetwork.IsMasterClient)
+            for (int i = 0; i < objectsToSpawn.Count; i++)
+            {
+                PhotonNetwork.Instantiate(objectsToSpawn[i].name, whereToSpawn[i].position, whereToSpawn[i].rotation);
+            }
     }
 
 
     public void InstantiatePuzzleSphere(Transform pos)
     {
-        PhotonNetwork.Instantiate("Sphere", pos.position, pos.rotation);
+        if(PhotonNetwork.IsMasterClient)
+            PhotonNetwork.Instantiate("Sphere", pos.position, pos.rotation);
     }
     
     public void InstantiatePuzzleBox(Transform pos)
     {
-        GameObject obj = new GameObject(); 
-        PhotonNetwork.Instantiate("Box", pos.position, pos.rotation);
+        if(PhotonNetwork.IsMasterClient) 
+            PhotonNetwork.Instantiate("Box", pos.position, pos.rotation);
     }
 }
