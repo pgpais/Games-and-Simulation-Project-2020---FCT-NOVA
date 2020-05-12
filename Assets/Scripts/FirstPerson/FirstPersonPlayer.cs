@@ -29,6 +29,7 @@ namespace FirstPerson
 
         [SerializeField] private GameObject capsuleModel;
         [SerializeField] private GameObject animatedModel;
+        [SerializeField] private GameObject flashLight;
         
         #endregion
 
@@ -123,6 +124,7 @@ namespace FirstPerson
         void ChangeModels(bool isLocal)
         {
             capsuleModel.SetActive(isLocal);
+            flashLight.GetComponent<MeshRenderer>().enabled = !isLocal;
             animatedModel.SetActive(!isLocal);
         }
 
