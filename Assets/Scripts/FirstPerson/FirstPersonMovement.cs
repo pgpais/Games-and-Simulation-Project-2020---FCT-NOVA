@@ -24,6 +24,7 @@ public class FirstPersonMovement : MonoBehaviourPun
     private float movH, movV;
     private bool triedJumping;
     private Rigidbody rb;
+    [SerializeField]
     private Animator animator;
 
     // Start is called before the first frame update
@@ -31,7 +32,6 @@ public class FirstPersonMovement : MonoBehaviourPun
     {
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotation;
-        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame

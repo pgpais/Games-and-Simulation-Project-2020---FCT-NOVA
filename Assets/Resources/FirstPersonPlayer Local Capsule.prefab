@@ -281,6 +281,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FirstPersonPlayer Local Capsule
       objectReference: {fileID: 0}
+    - target: {fileID: 358075516558283374, guid: f83b78c52b6c3454fa8269ddfcc4273e,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 4765301036189303759}
     - target: {fileID: 358075516558283375, guid: f83b78c52b6c3454fa8269ddfcc4273e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -605,6 +610,12 @@ PrefabInstance:
 --- !u!1 &1941220842375421094 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2488796307926520901, guid: a8ddedc94af447047a4d34e039571f27,
+    type: 3}
+  m_PrefabInstance: {fileID: 4069390513208068323}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4765301036189303759 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8815973390964869932, guid: a8ddedc94af447047a4d34e039571f27,
     type: 3}
   m_PrefabInstance: {fileID: 4069390513208068323}
   m_PrefabAsset: {fileID: 0}
