@@ -126,7 +126,7 @@ namespace FirstPerson
 
         void ChangeModels(bool isLocal)
         {
-            capsuleModel.SetActive(isLocal);
+            capsuleModel.SetActive(false);
             flashLight.GetComponent<MeshRenderer>().enabled = isLocal;
             animatedModel.SetActive(!isLocal);
         }
@@ -190,7 +190,7 @@ namespace FirstPerson
 
                     if (hit.collider.CompareTag("Carryable"))
                     {
-                        photonView.RPC("CarryObjectFromView", RpcTarget.All, hit.collider.gameObject as object);
+                        photonView.RPC("CarryObjectFromView", RpcTarget.All, (hit.collider.gameObject as object));
                     }
                 }
             }

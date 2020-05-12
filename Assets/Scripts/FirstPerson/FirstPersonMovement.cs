@@ -32,6 +32,9 @@ public class FirstPersonMovement : MonoBehaviourPun
     {
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotation;
+
+        if (photonView.IsMine)
+            animator = null;
     }
 
     // Update is called once per frame
@@ -84,8 +87,6 @@ public class FirstPersonMovement : MonoBehaviourPun
     void HandleMovement()
     {
         // TODO: total mid-air control
-        if(animator == null)
-            Debug.LogError("idiots. I have no animator component", this);
         if (!photonView.IsMine)
         {
             Vector3 horizontalVelocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
