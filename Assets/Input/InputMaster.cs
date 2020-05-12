@@ -48,7 +48,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""id"": ""7171b0ae-ec56-495e-b359-26891136f38f"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press""
                 },
                 {
                     ""name"": ""Interact"",

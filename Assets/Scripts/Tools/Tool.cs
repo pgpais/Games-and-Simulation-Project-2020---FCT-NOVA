@@ -15,5 +15,5 @@ public abstract class Tool : MonoBehaviour
     {
     }
 
-    public abstract void UseTool(InputAction.CallbackContext ctx);
+    public abstract void UseTool(InputActionPhase phase);
 }

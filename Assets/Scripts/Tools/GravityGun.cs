@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -18,6 +19,8 @@ public class GravityGun : Tool
     public float force = 10f;
     
     public Transform gravityGunTransform;
+
+    private bool isActive;
     
     // Start is called before the first frame update
     void Start()
@@ -31,14 +34,20 @@ public class GravityGun : Tool
         
     }
 
-    public override void UseTool(InputAction.CallbackContext ctx)
-    { 
+    private void FixedUpdate()
+    {
+        if (isActive)
+            PushObject();
+    }
+
+    private void PushObject()
+    {
         RaycastHit hit;
 
         if (Physics.SphereCast(Camera.main.transform.position, effectRadius, Camera.main.transform.forward, out hit,
             effectDistance))
         {
-            Debug.Log("Hit an object " + hit.collider.name, this);
+            //Debug.Log("Hit an object " + hit.collider.name, this);
 
             if (hit.collider.CompareTag("Carryable"))
             {
@@ -55,8 +64,18 @@ public class GravityGun : Tool
             }
             
         }
+    }
 
-
-
+    public override void UseTool(InputActionPhase phase)
+    {
+        switch (phase)
+        {
+            case InputActionPhase.Performed:
+                isActive = true;
+                break;
+            case InputActionPhase.Canceled:
+                isActive = false;
+                break;
+        }
     }
 }

@@ -153,15 +153,13 @@ namespace FirstPerson
 
         public void OnToolUse(InputAction.CallbackContext ctx)
         {
-            if(ctx.started)
-                if (isCarrying)
-                {
-                    LaunchObject();
-                }
-                else if (PhotonNetwork.OfflineMode)
-                    tool.UseTool(ctx);
-                else
-                    photonView.RPC("UseTool", RpcTarget.All, ctx);
+            if (isCarrying)
+            {
+                LaunchObject();
+            } else if (PhotonNetwork.OfflineMode) 
+                tool.UseTool(ctx.phase);
+            else
+                photonView.RPC("UseTool", RpcTarget.All, ctx.phase);
 
         }
 

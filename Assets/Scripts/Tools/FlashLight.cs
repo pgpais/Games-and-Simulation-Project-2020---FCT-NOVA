@@ -18,8 +18,9 @@ public class FlashLight : Tool
     {
     }
 
-    public override void UseTool(InputAction.CallbackContext ctx)
+    public override void UseTool(InputActionPhase phase)
     {
-        flashLight.enabled = !flashLight.enabled;
+        if (phase == InputActionPhase.Performed) 
+            flashLight.enabled = !flashLight.enabled;
     }
 }
