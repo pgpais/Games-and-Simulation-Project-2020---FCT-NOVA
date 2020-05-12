@@ -16,7 +16,7 @@ public class Teleport : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.gameObject.transform.position = PhotonNetwork.IsMasterClient? masterTeleportPoint.position: clientTeleportPoint.position;
-            if (GameManager.instance != null)
+            if (GameManager.instance != null && PhotonView.Get(other.gameObject).IsMine)
             {
                 GameManager.instance.DeletePuzzle();
                 GameManager.instance.SpawnPuzzleRooms(1);
