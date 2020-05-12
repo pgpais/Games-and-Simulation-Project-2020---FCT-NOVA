@@ -4123,69 +4123,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2357728049786478266, guid: 43dc09942593396409d36a620594b86f,
         type: 3}
-      propertyPath: puzzles.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2357728049786478266, guid: 43dc09942593396409d36a620594b86f,
-        type: 3}
-      propertyPath: puzzleSpawn.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2357728049786478266, guid: 43dc09942593396409d36a620594b86f,
-        type: 3}
-      propertyPath: puzzleSpawnList.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2357728049786478266, guid: 43dc09942593396409d36a620594b86f,
-        type: 3}
-      propertyPath: LocalPlayerPrefab
-      value: 
-      objectReference: {fileID: 2329750830122688487, guid: 846145685254e8a48810ca24e0f97e2d,
-        type: 3}
-    - target: {fileID: 2357728049786478266, guid: 43dc09942593396409d36a620594b86f,
-        type: 3}
-      propertyPath: RemotePlayerPrefab
-      value: 
-      objectReference: {fileID: 5397416741137440589, guid: c85739c26f46b2446803a6029b2d1e47,
-        type: 3}
-    - target: {fileID: 2357728049786478266, guid: 43dc09942593396409d36a620594b86f,
-        type: 3}
-      propertyPath: masterSpawnPoint
-      value: 
-      objectReference: {fileID: 1867404379}
-    - target: {fileID: 2357728049786478266, guid: 43dc09942593396409d36a620594b86f,
-        type: 3}
-      propertyPath: clientSpawnPoint
-      value: 
-      objectReference: {fileID: 65003857}
-    - target: {fileID: 2357728049786478266, guid: 43dc09942593396409d36a620594b86f,
-        type: 3}
-      propertyPath: puzzles.Array.data[0]
-      value: 
-      objectReference: {fileID: 7722193107698895613, guid: cdc3a18dceea0814ebaaad036fae347a,
-        type: 3}
-    - target: {fileID: 2357728049786478266, guid: 43dc09942593396409d36a620594b86f,
-        type: 3}
-      propertyPath: puzzleSpawn.Array.data[0]
-      value: 
-      objectReference: {fileID: 1359755987}
-    - target: {fileID: 2357728049786478266, guid: 43dc09942593396409d36a620594b86f,
-        type: 3}
-      propertyPath: puzzleSpawn.Array.data[1]
-      value: 
-      objectReference: {fileID: 29543594}
-    - target: {fileID: 2357728049786478266, guid: 43dc09942593396409d36a620594b86f,
-        type: 3}
-      propertyPath: puzzleSpawn.Array.data[2]
-      value: 
-      objectReference: {fileID: 955079065}
-    - target: {fileID: 2357728049786478266, guid: 43dc09942593396409d36a620594b86f,
-        type: 3}
-      propertyPath: puzzleSpawn.Array.data[3]
-      value: 
-      objectReference: {fileID: 242797366}
-    - target: {fileID: 2357728049786478266, guid: 43dc09942593396409d36a620594b86f,
-        type: 3}
       propertyPath: puzzleSpawnList.Array.data[0]
       value: 
       objectReference: {fileID: 1359755987}
@@ -4206,20 +4143,19 @@ PrefabInstance:
       objectReference: {fileID: 242797366}
     - target: {fileID: 2357728049786478266, guid: 43dc09942593396409d36a620594b86f,
         type: 3}
+      propertyPath: masterSpawnPoint
+      value: 
+      objectReference: {fileID: 1867404379}
+    - target: {fileID: 2357728049786478266, guid: 43dc09942593396409d36a620594b86f,
+        type: 3}
+      propertyPath: clientSpawnPoint
+      value: 
+      objectReference: {fileID: 65003857}
+    - target: {fileID: 2357728049786478266, guid: 43dc09942593396409d36a620594b86f,
+        type: 3}
       propertyPath: firstPortal
       value: 
       objectReference: {fileID: 1708318775}
-    - target: {fileID: 2357728049786478266, guid: 43dc09942593396409d36a620594b86f,
-        type: 3}
-      propertyPath: settingsPrefab
-      value: 
-      objectReference: {fileID: 3099257330372107817, guid: 125d3b6acba69554e886c11a9ae973df,
-        type: 3}
-    - target: {fileID: 2357728049786478266, guid: 43dc09942593396409d36a620594b86f,
-        type: 3}
-      propertyPath: canvas
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3940769320282759609, guid: 43dc09942593396409d36a620594b86f,
         type: 3}
       propertyPath: m_LocalPosition.x
