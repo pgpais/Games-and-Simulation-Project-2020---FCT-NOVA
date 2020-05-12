@@ -158,7 +158,7 @@ namespace FirstPerson
         {
             if (isCarrying)
             {
-                LaunchObject();
+                photonView.RPC("LaunchObject", RpcTarget.All);
             } else if (PhotonNetwork.OfflineMode) 
                 tool.UseTool(ctx.phase);
             else
@@ -176,7 +176,7 @@ namespace FirstPerson
                 
                 if (isCarrying)
                 {
-                    DropObject();
+                    photonView.RPC("DropObject", RpcTarget.All);
                 }
                 else if (Physics.Raycast(camTransform.position, camTransform.forward, out hit, interactRange, interactMask))
                 {
@@ -189,7 +189,7 @@ namespace FirstPerson
 
                     if (hit.collider.CompareTag("Carryable"))
                     {
-                        CarryObject(hit.collider.gameObject);
+                        photonView.RPC("CarryObjectFromView", RpcTarget.All, PhotonView.Get(hit.collider));
                     }
                 }
             }
@@ -235,6 +235,12 @@ namespace FirstPerson
             interactable.GetComponent<Interactable>().Interact();
         }
 
+        [PunRPC]
+        private void CarryObjectFromView(PhotonView view)
+        {
+            CarryObject(view.gameObject);
+        }
+        
         private void CarryObject(GameObject carryAble)
         {
             isCarrying = true;
@@ -246,6 +252,7 @@ namespace FirstPerson
             carryingRb.isKinematic = true;
         }
 
+        [PunRPC]
         private void DropObject()
         {
             isCarrying = false;
@@ -256,6 +263,7 @@ namespace FirstPerson
             carryingObject = null;
         }
 
+        [PunRPC]
         private void LaunchObject()
         {
             isCarrying = false;

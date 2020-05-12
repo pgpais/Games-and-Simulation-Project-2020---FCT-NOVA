@@ -43,6 +43,10 @@ MonoBehaviour:
   - SpawnPlayers
   - rpcInteract
   - RpcInteract
+  - CarryObject
+  - DropObject
+  - LaunchObject
+  - CarryObjectFromView
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
