@@ -196,8 +196,26 @@ namespace FirstPerson
         {
             if (ctx.started)
             {
-                if(_pauseMenu != null)
-                    _pauseMenu.MenuTrigger();
+                if (_pauseMenu != null)
+                {
+                    _pauseMenu.MenuTrigger(); 
+                    input.SwitchCurrentActionMap(_pauseMenu.GameIsPaused? "Menu" : "Player");
+                }
+                else
+                {
+                    Debug.LogError("COULDN'T FIND PAUSEMENU, WHERE IS IT?", this);
+                }
+            }
+        }
+
+        public void OnAnalytics(InputAction.CallbackContext ctx)
+        {
+            if (ctx.started)
+            {
+                if (_pauseMenu != null)
+                {
+                    _pauseMenu.toggleAnalytics();
+                }
                 else
                 {
                     Debug.LogError("COULDN'T FIND PAUSEMENU, WHERE IS IT?", this);

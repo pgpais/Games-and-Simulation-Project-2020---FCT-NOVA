@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     [Header("UI")] 
     public GameObject settingsPrefab;
     public GameObject analyticsPrefab;
-    [SerializeField] private Transform canvas;
+    //[SerializeField] private Transform canvas;
     private GameObject settingsSpawned;
     public GameObject SettingsSpawned => settingsSpawned;
     private GameObject analyticsSpawned;
@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
         }
         instance = this;
 
-        //settingsSpawned = Instantiate(settingsPrefab, canvas.position, canvas.rotation, canvas);
+        settingsSpawned = Instantiate(settingsPrefab);
 
 
         if (NetworkManager.instance == null)

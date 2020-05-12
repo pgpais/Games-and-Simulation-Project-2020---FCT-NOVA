@@ -253,6 +253,63 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Menu"",
+            ""id"": ""b65da1f3-b68b-4c22-9fe0-2ad24eb4a738"",
+            ""actions"": [
+                {
+                    ""name"": ""Analitics"",
+                    ""type"": ""Button"",
+                    ""id"": ""fba66de4-204f-432f-a61e-9ba00fc9ce5c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""2a770155-a94f-4667-8a00-063a51057b62"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""4f9201f2-cbf5-4415-b090-c8bf8fbddf7f"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0531037c-356e-4568-8283-dbaad7885ee0"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a18cd606-be3e-4b9a-b14d-c47e090826ba"",
+                    ""path"": ""<Keyboard>/f3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Analitics"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -294,6 +351,10 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Menu = m_Player.FindAction("Menu", throwIfNotFound: true);
         m_Player_Analitics = m_Player.FindAction("Analitics", throwIfNotFound: true);
+        // Menu
+        m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
+        m_Menu_Analitics = m_Menu.FindAction("Analitics", throwIfNotFound: true);
+        m_Menu_Menu = m_Menu.FindAction("Menu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -420,6 +481,47 @@ public class @InputMaster : IInputActionCollection, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // Menu
+    private readonly InputActionMap m_Menu;
+    private IMenuActions m_MenuActionsCallbackInterface;
+    private readonly InputAction m_Menu_Analitics;
+    private readonly InputAction m_Menu_Menu;
+    public struct MenuActions
+    {
+        private @InputMaster m_Wrapper;
+        public MenuActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Analitics => m_Wrapper.m_Menu_Analitics;
+        public InputAction @Menu => m_Wrapper.m_Menu_Menu;
+        public InputActionMap Get() { return m_Wrapper.m_Menu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
+        public void SetCallbacks(IMenuActions instance)
+        {
+            if (m_Wrapper.m_MenuActionsCallbackInterface != null)
+            {
+                @Analitics.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnAnalitics;
+                @Analitics.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnAnalitics;
+                @Analitics.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnAnalitics;
+                @Menu.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnMenu;
+                @Menu.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnMenu;
+                @Menu.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnMenu;
+            }
+            m_Wrapper.m_MenuActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Analitics.started += instance.OnAnalitics;
+                @Analitics.performed += instance.OnAnalitics;
+                @Analitics.canceled += instance.OnAnalitics;
+                @Menu.started += instance.OnMenu;
+                @Menu.performed += instance.OnMenu;
+                @Menu.canceled += instance.OnMenu;
+            }
+        }
+    }
+    public MenuActions @Menu => new MenuActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -447,5 +549,10 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
         void OnAnalitics(InputAction.CallbackContext context);
+    }
+    public interface IMenuActions
+    {
+        void OnAnalitics(InputAction.CallbackContext context);
+        void OnMenu(InputAction.CallbackContext context);
     }
 }

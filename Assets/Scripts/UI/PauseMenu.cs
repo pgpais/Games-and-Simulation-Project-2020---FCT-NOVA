@@ -8,9 +8,11 @@ public class PauseMenu : MonoBehaviour
 
     public static PauseMenu instance;
     
-    private static bool _gameIsPaused;
+    private bool _gameIsPaused;
+    public bool GameIsPaused => _gameIsPaused;
 
     public GameObject pauseMenuUI;
+    public GameObject analyticsUI;
 
     private void Start()
     {
@@ -65,6 +67,11 @@ public class PauseMenu : MonoBehaviour
         // Time.timeScale = 0f;
 
         _gameIsPaused = true;
+    }
+    
+    public void toggleAnalytics()
+    {
+        analyticsUI.SetActive(!analyticsUI.activeSelf);
     }
     
 }
