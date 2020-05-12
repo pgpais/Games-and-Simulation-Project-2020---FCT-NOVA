@@ -341,16 +341,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 759735174121548113, guid: f83b78c52b6c3454fa8269ddfcc4273e,
-        type: 3}
-      propertyPath: ObservedComponents.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 759735174121548113, guid: f83b78c52b6c3454fa8269ddfcc4273e,
-        type: 3}
-      propertyPath: ObservedComponents.Array.data[1]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1056923821140620941, guid: f83b78c52b6c3454fa8269ddfcc4273e,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -443,11 +433,6 @@ PrefabInstance:
       objectReference: {fileID: 9000000, guid: e148c95e4ddcc2e4eb5d39a94ffc6152, type: 3}
     - target: {fileID: 4668298349904706060, guid: f83b78c52b6c3454fa8269ddfcc4273e,
         type: 3}
-      propertyPath: pullForce
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4668298349904706060, guid: f83b78c52b6c3454fa8269ddfcc4273e,
-        type: 3}
       propertyPath: carryingPoint
       value: 
       objectReference: {fileID: 3665211087560065730}
@@ -495,16 +480,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SynchronizeParameters.Array.data[1].SynchronizeType
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8559215625750528173, guid: f83b78c52b6c3454fa8269ddfcc4273e,
-        type: 3}
-      propertyPath: m_TeleportEnabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8559215625750528173, guid: f83b78c52b6c3454fa8269ddfcc4273e,
-        type: 3}
-      propertyPath: m_SynchronizeVelocity
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7713443115689550625, guid: f83b78c52b6c3454fa8269ddfcc4273e, type: 3}
