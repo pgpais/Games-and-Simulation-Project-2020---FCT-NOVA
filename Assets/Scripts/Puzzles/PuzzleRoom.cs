@@ -36,4 +36,16 @@ public class PuzzleRoom : MonoBehaviour
             PhotonNetwork.Instantiate(objectsToSpawn[i].name, whereToSpawn[i].position, whereToSpawn[i].rotation);
         }
     }
+
+
+    public void InstantiatePuzzleSphere(Transform pos)
+    {
+        PhotonNetwork.Instantiate("Sphere", pos.position, pos.rotation);
+    }
+    
+    public void InstantiatePuzzleBox(Transform pos)
+    {
+        GameObject obj = new GameObject(); 
+        PhotonNetwork.Instantiate("Box", pos.position, pos.rotation);
+    }
 }
