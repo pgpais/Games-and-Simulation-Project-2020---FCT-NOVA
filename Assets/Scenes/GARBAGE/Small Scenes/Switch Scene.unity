@@ -1784,6 +1784,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 6692907209207087397}
+  analyticsUI: {fileID: 0}
 --- !u!1001 &5703416885035775176
 PrefabInstance:
   m_ObjectHideFlags: 0

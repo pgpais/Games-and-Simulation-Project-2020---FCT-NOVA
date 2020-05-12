@@ -22,11 +22,14 @@ namespace FirstPerson
         public static GameObject localPlayerInstance;
 
         #region Required Components
-
+        
         private FirstPersonAiming aim;
         private FirstPersonMovement mov;
         private PlayerInput input;
 
+        [SerializeField] private GameObject capsuleModel;
+        [SerializeField] private GameObject animatedModel;
+        
         #endregion
 
         #region Player Stuff
@@ -106,25 +109,21 @@ namespace FirstPerson
             {
                 //TODO: Setup local player (change appearance and enable controls)
                 input.enabled = true;
+                ChangeModels(true);
             }
             else
             {
                 //TODO: Setup object as remote player (show the humanoid model and disable controls)
                 input.enabled = false;
                 aim.DisableCamera(); // Maybe this is going away, since we're changing the whole model
+                ChangeModels(false);
             }
         }
 
         void ChangeModels(bool isLocal)
         {
-            if (isLocal)
-            {
-                //TODO: No model here. Maybe disable all objects with models?
-            }
-            else
-            {
-                //TODO: Enable humanoid model here.
-            }
+            capsuleModel.SetActive(isLocal);
+            animatedModel.SetActive(!isLocal);
         }
 
         #endregion
