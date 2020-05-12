@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 143e6d9d3572e124594d99ae265ab1dc,
     type: 2}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -191,58 +191,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3325852095964816603, guid: 846145685254e8a48810ca24e0f97e2d,
         type: 3}
-      propertyPath: ObservedComponents.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3325852095964816603, guid: 846145685254e8a48810ca24e0f97e2d,
-        type: 3}
       propertyPath: viewIdField
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3325852095964816603, guid: 846145685254e8a48810ca24e0f97e2d,
-        type: 3}
-      propertyPath: Synchronization
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5392310032166498549, guid: 846145685254e8a48810ca24e0f97e2d,
-        type: 3}
-      propertyPath: ObservedComponents.Array.size
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5392310032166498549, guid: 846145685254e8a48810ca24e0f97e2d,
         type: 3}
       propertyPath: viewIdField
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5392310032166498549, guid: 846145685254e8a48810ca24e0f97e2d,
-        type: 3}
-      propertyPath: Synchronization
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8846151188177792357, guid: 846145685254e8a48810ca24e0f97e2d,
-        type: 3}
-      propertyPath: m_DeviceLostEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8846151188177792357, guid: 846145685254e8a48810ca24e0f97e2d,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8846151188177792357, guid: 846145685254e8a48810ca24e0f97e2d,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[6].m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8846151188177792357, guid: 846145685254e8a48810ca24e0f97e2d,
-        type: 3}
-      propertyPath: m_DeviceLostEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8846151188177792357, guid: 846145685254e8a48810ca24e0f97e2d,
-        type: 3}
-      propertyPath: m_DeviceLostEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8846151188177792357, guid: 846145685254e8a48810ca24e0f97e2d,
         type: 3}
@@ -251,49 +206,9 @@ PrefabInstance:
       objectReference: {fileID: 1858750465}
     - target: {fileID: 8846151188177792357, guid: 846145685254e8a48810ca24e0f97e2d,
         type: 3}
-      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MenuTrigger
-      objectReference: {fileID: 0}
-    - target: {fileID: 8846151188177792357, guid: 846145685254e8a48810ca24e0f97e2d,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 8846151188177792357, guid: 846145685254e8a48810ca24e0f97e2d,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[6].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8846151188177792357, guid: 846145685254e8a48810ca24e0f97e2d,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[6].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8846151188177792357, guid: 846145685254e8a48810ca24e0f97e2d,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[6].m_ActionId
-      value: 371bf5c2-5504-4902-b29c-5b03a0ad091e
-      objectReference: {fileID: 0}
-    - target: {fileID: 8846151188177792357, guid: 846145685254e8a48810ca24e0f97e2d,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[6].m_ActionName
-      value: Player/Analitics[/Keyboard/f3]
-      objectReference: {fileID: 0}
-    - target: {fileID: 8846151188177792357, guid: 846145685254e8a48810ca24e0f97e2d,
-        type: 3}
       propertyPath: m_ActionEvents.Array.data[6].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 56788972}
-    - target: {fileID: 8846151188177792357, guid: 846145685254e8a48810ca24e0f97e2d,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[6].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: toggleAnalytics
-      objectReference: {fileID: 0}
-    - target: {fileID: 8846151188177792357, guid: 846145685254e8a48810ca24e0f97e2d,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[6].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 846145685254e8a48810ca24e0f97e2d, type: 3}
 --- !u!1 &45943462
