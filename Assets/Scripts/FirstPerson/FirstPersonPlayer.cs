@@ -86,12 +86,12 @@ namespace FirstPerson
         /// This is simply a wrapper for the Tool.UseTool method so we can tag it as a PunRPC.
         /// </summary>
         [PunRPC]
-        public void UseTool()
+        public void UseTool(InputActionPhase phase)
         {
-            Debug.Log("RPC UseTool called", this);
+            //Debug.Log("RPC UseTool called", this);
             // Criar um ENUM que representa o Tipo de Input realizado
             // Investigar metodos de disntinção de Input
-            //tool.UseTool();
+            tool.UseTool(phase);
         }
 
         #region Local VS Remote setup
