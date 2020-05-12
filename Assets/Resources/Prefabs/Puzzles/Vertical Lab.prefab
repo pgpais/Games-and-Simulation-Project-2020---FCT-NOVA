@@ -5696,7 +5696,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clientSpawnPoint: {fileID: 4916000496612934444}
   masterSpawnPoint: {fileID: 1280727975051794508}
-  _teleport: {fileID: 4716752810316264675}
+  teleport: {fileID: 4716752810316264675}
 --- !u!1001 &4916000495248745133
 PrefabInstance:
   m_ObjectHideFlags: 0

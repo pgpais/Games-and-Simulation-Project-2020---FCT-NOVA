@@ -1392,7 +1392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clientSpawnPoint: {fileID: 1692191061202585462}
   masterSpawnPoint: {fileID: 8341855140782039959}
-  _teleport: {fileID: 7193851482677355769}
+  teleport: {fileID: 7193851482677355769}
 --- !u!1 &7393169066191269751
 GameObject:
   m_ObjectHideFlags: 0
