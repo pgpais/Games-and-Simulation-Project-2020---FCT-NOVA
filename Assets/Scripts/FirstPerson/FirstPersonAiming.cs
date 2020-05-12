@@ -5,7 +5,7 @@ using Photon.Pun;
 using UnityEditor;
 using UnityEngine;
 
-public class FirstPersonAiming : MonoBehaviour
+public class FirstPersonAiming : MonoBehaviourPun
 {
     [Header("Controls Parameters")] public float sensitivity = 0.1f;
 
@@ -56,6 +56,11 @@ public class FirstPersonAiming : MonoBehaviour
     
     void HandleAiming()
     {
+        if (!photonView.IsMine)
+        {
+            return;
+        }
+        
         // Add rotations
         rotX -= aimY * sensitivity;
         rotY += aimX * sensitivity;

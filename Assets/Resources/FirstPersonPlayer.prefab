@@ -41,13 +41,12 @@ GameObject:
   - component: {fileID: 5397416741137440591}
   - component: {fileID: 5397416741137440576}
   - component: {fileID: 4095790104408460685}
-  - component: {fileID: 2672039207263628801}
+  - component: {fileID: 8326956540534785999}
   - component: {fileID: 4941650800366888049}
   - component: {fileID: 1184550364190387663}
   - component: {fileID: 1069176894464358188}
   - component: {fileID: 5397416741137440590}
   - component: {fileID: 5397416741137440577}
-  - component: {fileID: 8493094693628844810}
   m_Layer: 9
   m_Name: FirstPersonPlayer
   m_TagString: Player
@@ -102,7 +101,7 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 1
   m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
---- !u!114 &2672039207263628801
+--- !u!114 &8326956540534785999
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,21 +110,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5397416741137440589}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowLayerWeightsInspector: 1
-  ShowParameterInspector: 1
-  m_SynchronizeParameters:
-  - Type: 1
-    SynchronizeType: 0
-    Name: Speed
-  - Type: 4
-    SynchronizeType: 0
-    Name: isJumping
-  m_SynchronizeLayers:
-  - SynchronizeType: 0
-    LayerIndex: 0
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
 --- !u!114 &4941650800366888049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,7 +135,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 4095790104408460685}
-  - {fileID: 2672039207263628801}
+  - {fileID: 8326956540534785999}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -357,6 +347,7 @@ MonoBehaviour:
   boxMask:
     serializedVersion: 2
     m_Bits: 1335
+  animator: {fileID: 0}
 --- !u!114 &5397416741137440577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,22 +363,3 @@ MonoBehaviour:
   sensitivity: 0.1
   maxClamp: 60
   camTrans: {fileID: 0}
---- !u!95 &8493094693628844810
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5397416741137440589}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 38c8831eeef8654478192420255a2013, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
