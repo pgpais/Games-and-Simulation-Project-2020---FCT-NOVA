@@ -84,6 +84,15 @@ public class FirstPersonMovement : MonoBehaviourPun
     void HandleMovement()
     {
         // TODO: total mid-air control
+        if(animator == null)
+            Debug.LogError("idiots. I have no animator component", this);
+        if (!photonView.IsMine)
+        {
+            Vector3 horizontalVelocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+            if(animator != null)
+                animator.SetFloat(Speed, horizontalVelocity.magnitude);
+            return;
+        }
 
         Vector3 mov = transform.forward * movV + transform.right * movH;
         mov.Normalize();
