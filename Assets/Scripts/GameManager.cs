@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Transform clientSpawnPoint;
 
-    public Transform firstPortal;
+    public Teleport nextPortal;
 
     [Header("UI")] 
     public GameObject settingsPrefab;
@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
         spawnedPuzzles = new List<GameObject>(puzzleSpawnList.Count);
         SpawnPuzzleRooms(1);
 
-        firstPortal.GetComponentInChildren<Teleport>().SetPoints(nextPuzzle.MasterSpawnPoint, nextPuzzle.ClientSpawnPoint);
+        nextPortal.SetPoints(nextPuzzle.MasterSpawnPoint, nextPuzzle.ClientSpawnPoint);
     }
 
     private void LocalSpawnPlayers()
@@ -92,8 +92,15 @@ public class GameManager : MonoBehaviour
             GameObject nextPuzzleObj = Instantiate(puzzles[nextPuzzleToSpawnIndex], puzzleSpawnList[nextSpawnIndex].position, Quaternion.identity);
             nextPuzzle = nextPuzzleObj.GetComponent<PuzzleRoom>();
             spawnedPuzzles.Insert(nextSpawnIndex, nextPuzzleObj);
-            nextPuzzleToSpawnIndex = ++nextPuzzleToSpawnIndex % puzzles.Count;
+            nextPuzzleToSpawnIndex = ++nextPuzzleToSpawnIndex;
             nextSpawnIndex = ++nextSpawnIndex % puzzleSpawnList.Count;
+
+            masterSpawnPoint = nextPuzzle.MasterSpawnPoint;
+            clientSpawnPoint = nextPuzzle.ClientSpawnPoint;
+            nextPortal = nextPuzzle.Teleport;
+            
+            nextPortal.SetPoints(masterSpawnPoint, clientSpawnPoint);
+            
             if (nextPuzzleToSpawnIndex == puzzles.Count)
             {
                 Debug.LogWarning("All puzzles have been spawned");
@@ -120,5 +127,12 @@ public class GameManager : MonoBehaviour
     public void TeleportPlayer(Transform player)
     {
         player.position = PhotonNetwork.IsMasterClient? nextPuzzle.MasterSpawnPoint.position : nextPuzzle.ClientSpawnPoint.position;
+    }
+
+    public void DeletePuzzle()
+    {
+        int puzzleToDelete = nextPuzzleToSpawnIndex - 3;
+        
+        Debug.Log("Tried to delete puzzle " + puzzleToDelete);
     }
 }

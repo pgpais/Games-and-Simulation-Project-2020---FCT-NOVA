@@ -9,6 +9,10 @@ public class PuzzleRoom : MonoBehaviour
 
     [SerializeField] private Transform masterSpawnPoint;
     public Transform MasterSpawnPoint => masterSpawnPoint;
+
+    [SerializeField] private Teleport _teleport;
+    public Teleport Teleport => _teleport;
+    
     // Start is called before the first frame update
     void Start()
     {
