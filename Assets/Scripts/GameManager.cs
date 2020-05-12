@@ -95,11 +95,7 @@ public class GameManager : MonoBehaviour
             nextPuzzleToSpawnIndex = ++nextPuzzleToSpawnIndex;
             nextSpawnIndex = ++nextSpawnIndex % puzzleSpawnList.Count;
 
-            masterSpawnPoint = nextPuzzle.MasterSpawnPoint;
-            clientSpawnPoint = nextPuzzle.ClientSpawnPoint;
-            nextPortal = nextPuzzle.Teleport;
             
-            nextPortal.SetPoints(masterSpawnPoint, clientSpawnPoint);
             
             if (nextPuzzleToSpawnIndex == puzzles.Count)
             {
@@ -107,6 +103,15 @@ public class GameManager : MonoBehaviour
                 //TODO: Do something here. Game will soon end
             }
         }
+    }
+
+    public void UpdateTeleport()
+    {
+        masterSpawnPoint = nextPuzzle.MasterSpawnPoint;
+        clientSpawnPoint = nextPuzzle.ClientSpawnPoint;
+        nextPortal = nextPuzzle.Teleport;
+            
+        nextPortal.SetPoints(masterSpawnPoint, clientSpawnPoint);
     }
 
     public void SpawnPlayers()

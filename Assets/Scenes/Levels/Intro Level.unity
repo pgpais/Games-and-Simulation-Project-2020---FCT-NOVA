@@ -2840,6 +2840,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1708318774}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1708318776 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2714548140067634038, guid: 1aa2da5015bd2bf4fbc941ab5a0e5752,
+    type: 3}
+  m_PrefabInstance: {fileID: 1708318774}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36fb44c844cf2804385e800270077565, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1741284785
 GameObject:
   m_ObjectHideFlags: 0
@@ -4156,6 +4168,21 @@ PrefabInstance:
       propertyPath: firstPortal
       value: 
       objectReference: {fileID: 1708318775}
+    - target: {fileID: 2357728049786478266, guid: 43dc09942593396409d36a620594b86f,
+        type: 3}
+      propertyPath: initialMasterSpawnPoint
+      value: 
+      objectReference: {fileID: 1867404379}
+    - target: {fileID: 2357728049786478266, guid: 43dc09942593396409d36a620594b86f,
+        type: 3}
+      propertyPath: initialClientSpawnPoint
+      value: 
+      objectReference: {fileID: 65003857}
+    - target: {fileID: 2357728049786478266, guid: 43dc09942593396409d36a620594b86f,
+        type: 3}
+      propertyPath: nextPortal
+      value: 
+      objectReference: {fileID: 1708318776}
     - target: {fileID: 3940769320282759609, guid: 43dc09942593396409d36a620594b86f,
         type: 3}
       propertyPath: m_LocalPosition.x

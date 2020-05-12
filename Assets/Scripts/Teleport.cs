@@ -20,6 +20,7 @@ public class Teleport : MonoBehaviour
             {
                 GameManager.instance.DeletePuzzle();
                 GameManager.instance.SpawnPuzzleRooms(1);
+                GameManager.instance.UpdateTeleport();
             }
         }
     }
