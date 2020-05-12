@@ -124,7 +124,7 @@ namespace FirstPerson
         void ChangeModels(bool isLocal)
         {
             capsuleModel.SetActive(isLocal);
-            flashLight.GetComponent<MeshRenderer>().enabled = !isLocal;
+            flashLight.GetComponent<MeshRenderer>().enabled = isLocal;
             animatedModel.SetActive(!isLocal);
         }
 
