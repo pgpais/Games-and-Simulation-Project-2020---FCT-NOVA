@@ -5,6 +5,9 @@ namespace Reflections.PlanarReflection
 {
     public class PlanarReflectionManager : MonoBehaviour
     {
+        public float reflectionRange = 300f;
+        public LayerMask layerMask;
+        
         private Camera reflectionCam;
         private Camera cam;
 
@@ -27,11 +30,24 @@ namespace Reflections.PlanarReflection
         void RenderReflection()
         {
             reflectionCam.CopyFrom(cam);
+
+            Vector3 reflectionPlaneNormal;
+            Ray ray = new Ray(transform.position, reflectionPlane.transform.position - transform.position);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, reflectionRange, layerMask))
+            {
+                reflectionPlaneNormal = hit.normal;
+            }
+            else
+            {
+                Debug.LogError("COULDN'T FIND SURFACE TO REFLECT ON");
+            }
             
+            //TODO: figure out where to put Vector3.Reflect
             Vector3 cameraDirectionWS = cam.transform.forward;
             Vector3 cameraUpWS = cam.transform.up;
             Vector3 cameraPos = cam.transform.position;
-
+            
             //Transform the vectors to the floor's space
             Vector3 cameraDirectionPlaneSpace = reflectionPlane.transform.InverseTransformDirection(cameraDirectionWS);
             Vector3 cameraUpPlaneSpace = reflectionPlane.transform.InverseTransformDirection(cameraUpWS);

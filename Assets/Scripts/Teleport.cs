@@ -18,4 +18,10 @@ public class Teleport : MonoBehaviour
             other.gameObject.transform.position = PhotonNetwork.IsMasterClient? masterTeleportPoint.position: clientTeleportPoint.position;
         }
     }
+
+    public void SetPoints(Transform masterSpawnPoint, Transform clientSpawnPoint)
+    {
+        masterTeleportPoint = masterSpawnPoint;
+        clientTeleportPoint = clientSpawnPoint;
+    }
 }

@@ -42,11 +42,8 @@ public class FirstPersonMovement : MonoBehaviourPun
 
     private void FixedUpdate()
     {
-        if (!PauseMenu.instance.isPaused())
-        { 
-            HandleMovement();
-            HandleJumping();   
-        }
+        HandleMovement();
+        HandleJumping();
     }
 
     #region Jumping

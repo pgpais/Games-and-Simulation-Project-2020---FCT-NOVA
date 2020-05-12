@@ -8,27 +8,41 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    [Header("Puzzles")]
     [SerializeField]
     private List<GameObject> puzzles; // List of all puzzles
     private int nextPuzzleToSpawnIndex;
     private List<GameObject> spawnedPuzzles; // List of spawned and active;
     
-    private PuzzleRoom nextPuzzle; // Script of next puzzle
-    
     [SerializeField] 
     private List<Transform> puzzleSpawnList; 
     private int nextSpawnIndex = 0;
     
+    private PuzzleRoom nextPuzzle; // Script of next puzzle
+    
+    [Header("Player settings")]
     [SerializeField]
     private GameObject LocalPlayerPrefab;
     [SerializeField]
     private GameObject RemotePlayerPrefab;
 
+    [Header("Game References")]
     [SerializeField]
     private Transform masterSpawnPoint;
     [SerializeField]
     private Transform clientSpawnPoint;
-    
+
+    public Transform firstPortal;
+
+    [Header("UI")] 
+    public GameObject settingsPrefab;
+    public GameObject analyticsPrefab;
+    [SerializeField] private Transform canvas;
+    private GameObject settingsSpawned;
+    public GameObject SettingsSpawned => settingsSpawned;
+    private GameObject analyticsSpawned;
+    public GameObject AnalyticsSpawned => analyticsSpawned;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +52,10 @@ public class GameManager : MonoBehaviour
             return;
         }
         instance = this;
-        
+
+        //settingsSpawned = Instantiate(settingsPrefab, canvas.position, canvas.rotation, canvas);
+
+
         if (NetworkManager.instance == null)
         {
             PhotonNetwork.OfflineMode = true;
@@ -53,6 +70,8 @@ public class GameManager : MonoBehaviour
 
         spawnedPuzzles = new List<GameObject>(puzzleSpawnList.Count);
         SpawnPuzzleRooms(1);
+
+        firstPortal.GetComponentInChildren<Teleport>().SetPoints(nextPuzzle.MasterSpawnPoint, nextPuzzle.ClientSpawnPoint);
     }
 
     private void LocalSpawnPlayers()
@@ -85,6 +104,7 @@ public class GameManager : MonoBehaviour
 
     public void SpawnPlayers()
     {
+        //TODO: Spawn a general prefab without any models in it and let players handle it
         if (PhotonNetwork.IsMasterClient)
         {
             Debug.Log("Master instantiated");

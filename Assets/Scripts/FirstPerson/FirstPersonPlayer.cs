@@ -48,6 +48,8 @@ namespace FirstPerson
         
 
         #endregion
+
+        private PauseMenu _pauseMenu;
         
         private void Awake()
         {
@@ -63,22 +65,17 @@ namespace FirstPerson
         }
 
     
-        // Start is called before the first frame update
+        /// <summary>
+        /// Start will be called for each players instance (4 in total) when the GameManager spawns the players through
+        /// PhotonNetwork. 
+        /// </summary>
         void Start()
         {
             aim = GetComponent<FirstPersonAiming>();
             mov = GetComponent<FirstPersonMovement>();
             input = GetComponent<PlayerInput>();
             
-            if (!photonView.IsMine && PhotonNetwork.IsConnected)
-            {
-                input.enabled = false;
-                aim.DisableCamera();
-            }
-            else
-            {
-                input.enabled = true;
-            }
+            Setup();
         }
 
         private void FixedUpdate()
@@ -96,6 +93,41 @@ namespace FirstPerson
             // Investigar metodos de disntinção de Input
             //tool.UseTool();
         }
+
+        #region Local VS Remote setup
+
+        /// <summary>
+        /// Setup players so there's no conflict between local and remote player
+        /// </summary>
+        void Setup()
+        {
+            _pauseMenu = GameManager.instance.SettingsSpawned.GetComponent<PauseMenu>();
+            if (photonView.IsMine || !PhotonNetwork.IsConnected)
+            {
+                //TODO: Setup local player (change appearance and enable controls)
+                input.enabled = true;
+            }
+            else
+            {
+                //TODO: Setup object as remote player (show the humanoid model and disable controls)
+                input.enabled = false;
+                aim.DisableCamera(); // Maybe this is going away, since we're changing the whole model
+            }
+        }
+
+        void ChangeModels(bool isLocal)
+        {
+            if (isLocal)
+            {
+                //TODO: No model here. Maybe disable all objects with models?
+            }
+            else
+            {
+                //TODO: Enable humanoid model here.
+            }
+        }
+
+        #endregion
 
 
 
@@ -158,6 +190,19 @@ namespace FirstPerson
                     {
                         CarryObject(hit.collider.gameObject);
                     }
+                }
+            }
+        }
+
+        public void OnMenu(InputAction.CallbackContext ctx)
+        {
+            if (ctx.started)
+            {
+                if(_pauseMenu != null)
+                    _pauseMenu.MenuTrigger();
+                else
+                {
+                    Debug.LogError("COULDN'T FIND PAUSEMENU, WHERE IS IT?", this);
                 }
             }
         }
