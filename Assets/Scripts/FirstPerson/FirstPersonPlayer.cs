@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
 using UnityEngine.PlayerLoop;
+using Object = UnityEngine.Object;
 
 namespace FirstPerson
 {
@@ -189,7 +190,7 @@ namespace FirstPerson
 
                     if (hit.collider.CompareTag("Carryable"))
                     {
-                        photonView.RPC("CarryObjectFromView", RpcTarget.All, PhotonView.Get(hit.collider));
+                        photonView.RPC("CarryObjectFromView", RpcTarget.All, hit.collider.gameObject as object);
                     }
                 }
             }
@@ -236,9 +237,9 @@ namespace FirstPerson
         }
 
         [PunRPC]
-        private void CarryObjectFromView(PhotonView view)
+        private void CarryObjectFromView(object view)
         {
-            CarryObject(view.gameObject);
+            CarryObject((view as GameObject).gameObject);
         }
         
         private void CarryObject(GameObject carryAble)
