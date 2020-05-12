@@ -190,7 +190,7 @@ namespace FirstPerson
 
                     if (hit.collider.CompareTag("Carryable"))
                     {
-                        photonView.RPC("CarryObjectFromView", RpcTarget.All, (hit.collider.gameObject as object));
+                        photonView.RPC("CarryObjectFromView", RpcTarget.All, PhotonView.Get(hit.collider).ViewID);
                     }
                 }
             }
@@ -237,9 +237,9 @@ namespace FirstPerson
         }
 
         [PunRPC]
-        private void CarryObjectFromView(object view)
+        private void CarryObjectFromView(int viewId)
         {
-            CarryObject((view as GameObject).gameObject);
+            CarryObject(PhotonView.Find(viewId).gameObject);
         }
         
         private void CarryObject(GameObject carryAble)
