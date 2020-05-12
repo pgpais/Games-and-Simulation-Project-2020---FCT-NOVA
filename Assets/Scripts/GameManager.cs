@@ -30,7 +30,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Transform masterSpawnPoint;
     [SerializeField]
+    private Transform initialMasterSpawnPoint;
+    [SerializeField]
     private Transform clientSpawnPoint;
+    [SerializeField]
+    private Transform initialClientSpawnPoint;
 
     public Teleport nextPortal;
 
