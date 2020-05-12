@@ -89,6 +89,8 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < howMany; i++)
         {
+            if (nextPuzzleToSpawnIndex >= puzzles.Count || nextSpawnIndex >= puzzleSpawnList.Count)
+                return;
             GameObject nextPuzzleObj = Instantiate(puzzles[nextPuzzleToSpawnIndex], puzzleSpawnList[nextSpawnIndex].position, Quaternion.identity);
             nextPuzzle = nextPuzzleObj.GetComponent<PuzzleRoom>();
             spawnedPuzzles.Insert(nextSpawnIndex, nextPuzzleObj);
@@ -109,9 +111,9 @@ public class GameManager : MonoBehaviour
     {
         masterSpawnPoint = nextPuzzle.MasterSpawnPoint;
         clientSpawnPoint = nextPuzzle.ClientSpawnPoint;
-        nextPortal = nextPuzzle.Teleport;
-            
         nextPortal.SetPoints(masterSpawnPoint, clientSpawnPoint);
+            
+        nextPortal = nextPuzzle.Teleport;
     }
 
     public void SpawnPlayers()
