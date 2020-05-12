@@ -1878,8 +1878,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3193100548379652620}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.25, z: -3.125}
-  m_LocalScale: {x: 2.75, y: 0.25, z: 2.25}
+  m_LocalPosition: {x: -0.07145786, y: -1.25, z: -2.9296904}
+  m_LocalScale: {x: 2, y: 0.25, z: 2}
   m_Children: []
   m_Father: {fileID: 3193100547024862335}
   m_RootOrder: 3
@@ -1926,7 +1926,6 @@ MonoBehaviour:
   switchOff:
     m_PersistentCalls:
       m_Calls: []
-  ball: {fileID: 0}
 --- !u!1 &3193100548437100701
 GameObject:
   m_ObjectHideFlags: 0
