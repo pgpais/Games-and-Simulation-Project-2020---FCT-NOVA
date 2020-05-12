@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
         SpawnPuzzleRooms(1);
 
         nextPortal.SetPoints(nextPuzzle.MasterSpawnPoint, nextPuzzle.ClientSpawnPoint);
+        UpdateTeleport();
     }
 
     private void LocalSpawnPlayers()

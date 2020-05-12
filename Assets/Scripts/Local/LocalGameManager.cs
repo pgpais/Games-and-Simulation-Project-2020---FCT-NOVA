@@ -8,6 +8,8 @@ namespace Local
         // Start is called before the first frame update
         void Start()
         {
+            if(PhotonNetwork.IsConnected)
+                Destroy(gameObject);
             PhotonNetwork.OfflineMode = true;
         }
 
