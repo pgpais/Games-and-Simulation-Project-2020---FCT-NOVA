@@ -127,12 +127,12 @@ public class GameManager : MonoBehaviour
         if (PhotonNetwork.IsMasterClient)
         {
             Debug.Log("Master instantiated");
-            PhotonNetwork.Instantiate(LocalPlayerPrefab.name, masterSpawnPoint.position, Quaternion.identity);
+            PhotonNetwork.Instantiate(LocalPlayerPrefab.name, initialMasterSpawnPoint.position, Quaternion.identity);
         }
         else
         {
             Debug.Log("Client instantiated");
-            PhotonNetwork.Instantiate(LocalPlayerPrefab.name, clientSpawnPoint.position, Quaternion.identity);;
+            PhotonNetwork.Instantiate(LocalPlayerPrefab.name, initialClientSpawnPoint.position, Quaternion.identity);;
         }
     }
 
