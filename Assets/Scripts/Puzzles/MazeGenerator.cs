@@ -2,6 +2,7 @@
     // to ensure we can get walls around all tunnels...  so use 21 x 13 , or 7 x 7 for examples.
 
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.Serialization;
@@ -81,43 +82,61 @@
 
                 CurrentTile = Vector2.one;
                 tiletoTry.Push(CurrentTile);
-            
+
+                putBlocks();
+                
+                mazeString=mazeString+"\n";  // added to create String
+                
+                print (mazeString);  // added to create String
+            }
+
+
+            void putBlocks()
+            {
                 GameObject ptype = null;
-                for (var i = 0; i <= maze.GetUpperBound(0); i++)  {
+
+
+                for (var i = 0; i <= maze.GetUpperBound(0); i++)
+                {
                     for (var j = 0; j <= maze.GetUpperBound(1); j++)
                     {
                         switch (maze[i, j])
                         {
                             case 1:
                             {
-                                mazeString=mazeString+"X";  // added to create String
+                                mazeString = mazeString + "X"; // added to create String
                                 var prefab = Resources.Load("Prefabs/MazeCube", typeof(GameObject));
                                 ptype = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
-                                var localScale = ptype.transform.localScale;
-                                
-                                var position = gameObject.transform.position;
-                                var newPos = new Vector3(position.x + i * localScale.x, 0, position.z + j * localScale.z);
+                                ptype.transform.parent = transform;
 
-                                newPos = transform.forward * newPos.z + transform.right * newPos.x;
+                                var localScale = ptype.transform.localScale;
+
+                                var position = Vector3.zero;
+                                var newPos = new Vector3(position.x + i * localScale.x, 0,
+                                    position.z + j * localScale.z);
+
+                                //newPos = transform.forward * newPos.z + transform.right * newPos.x;
 
                                 ptype.transform.localPosition = newPos;
-                                
-                                
-                                if (brick != null)  { ptype.GetComponent<Renderer>().material = brick; }
-                                ptype.transform.parent = transform;
+
+
+                                if (brick != null)
+                                {
+                                    ptype.GetComponent<Renderer>().material = brick;
+                                }
+
                                 break;
                             }
                             case 0:
-                                mazeString=mazeString+"0"; // added to create String
+                                mazeString = mazeString + "0"; // added to create String
                                 pathMazes.Add(new Vector3(i, 0, j));
                                 break;
-                        }
+                            
+                        } 
                     }
-                    mazeString=mazeString+"\n";  // added to create String
                 }
-                print (mazeString);  // added to create String
             }
-     
+
             // =======================================
             public int[,] CreateMaze() {
        
