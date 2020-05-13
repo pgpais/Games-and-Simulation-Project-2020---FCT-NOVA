@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace UI
 {
@@ -20,17 +21,17 @@ namespace UI
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
-            print(GetCurrentCpuUsage());
-            //cpuText.text = cpuCounter;
-            cpu = "CPU: " + GetCurrentCpuUsage ();
+            cpu = GetCurrentCpuUsage();
             
             
         }
 
-        private string GetCurrentCpuUsage(){
-            return cpuCounter.NextValue()+"%";
+        private string GetCurrentCpuUsage()
+        {
+            var temp = cpuCounter.NextValue();
+            return temp +"%";
         }
     }
 }
