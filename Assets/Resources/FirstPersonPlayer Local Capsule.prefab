@@ -245,6 +245,11 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1759954942231158765}
+    - target: {fileID: 5102491399328554855, guid: 48fa9505db9b5ab4990894c6e3e6e11d,
+        type: 3}
+      propertyPath: grabbingPoint
+      value: 
+      objectReference: {fileID: 3665211087560065730}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48fa9505db9b5ab4990894c6e3e6e11d, type: 3}
 --- !u!114 &6377228768002244306 stripped
@@ -484,7 +489,7 @@ PrefabInstance:
     - target: {fileID: 6804662383804834031, guid: f83b78c52b6c3454fa8269ddfcc4273e,
         type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6804662383804834031, guid: f83b78c52b6c3454fa8269ddfcc4273e,
         type: 3}
@@ -575,6 +580,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ActionEvents.Array.data[10].m_ActionName
       value: Player/Equip Gravity gun[/Keyboard/2]
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804662383804834031, guid: f83b78c52b6c3454fa8269ddfcc4273e,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[11].m_ActionId
+      value: 300ddf04-b38e-417e-a946-8b0618ee6c96
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804662383804834031, guid: f83b78c52b6c3454fa8269ddfcc4273e,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[11].m_ActionName
+      value: Player/UseToolSecondary[/Mouse/rightButton,/DualShock4GamepadHID/leftTrigger]
       objectReference: {fileID: 0}
     - target: {fileID: 7713443115689550625, guid: f83b78c52b6c3454fa8269ddfcc4273e,
         type: 3}
