@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Interactables;
+using System.Linq;
 using UnityEngine;
 
 public class SlidingCubesPuzzle : MonoBehaviour
 {
     [SerializeField]
     private List<Transform> cubes;
+
+    private List<Vector3> cubesFinalPositionsUp;
+    private List<Vector3> cubesFinalPositionsDown;
+    private List<Vector3> cubesDefaultPositions;
 
     [SerializeField]
     private float height;
@@ -16,9 +20,29 @@ public class SlidingCubesPuzzle : MonoBehaviour
 
     [SerializeField] private Transform exitTeleporter;
     
-    public float smoothTime = 0.3F;
-    private Vector3 velocity = Vector3.zero;
+    [SerializeField]private float maxTimer;
 
+    [SerializeField] private float steps;
+
+
+    private void Start()
+    {
+
+        cubesDefaultPositions = new List<Vector3>(cubes.Count); 
+        cubesFinalPositionsDown = new List<Vector3>(cubes.Count); 
+        cubesFinalPositionsUp = new List<Vector3>(cubes.Count); 
+        
+        
+        foreach (var position in cubes.Select(t => t.position))
+        {
+            cubesDefaultPositions.Add(position);
+            var newPositionUp = new Vector3(position.x, position.y + height, position.z);
+            var newPositionDown = new Vector3(position.x, position.y - height, position.z);
+            cubesFinalPositionsUp.Add(newPositionUp);
+            cubesFinalPositionsDown.Add(newPositionDown);
+        }
+    }
+    
     public void showTeleporter()
     {
         exitTeleporter.transform.position += new Vector3(0, teleporterHeight, 0);
@@ -32,23 +56,91 @@ public class SlidingCubesPuzzle : MonoBehaviour
 
     public void moveCubesUp()
     {
-        foreach (var cube in cubes)
+        for (var i = 0; i < cubes.Count; i++)
         {
             
-            var position = cube.transform.position;
-            var newPosition = new Vector3(position.x, position.y +  height, position.z);
+            var position = cubes[i].transform.position;
             
-            cube.transform.position = Vector3.SmoothDamp(position, newPosition, ref velocity, smoothTime, Mathf.Infinity,  deltaTime: Time.deltaTime);
-            
+            var newPosition = cubesFinalPositionsUp[i];
+
+            StartCoroutine(MoveCubesUpHelper(cubes[i], position, newPosition, maxTimer, steps));
         }
+    }
+
+    private static IEnumerator MoveCubesUpHelper(Component cube, Vector3 startMarker, Vector3 endMarker, float time, float step)
+    {
+        var elapsedTime = 0f;
+
+        while (elapsedTime <= time)
+        {
+            // Set our position as a fraction of the distance between the markers.
+            cube.transform.position = Vector3.Lerp(startMarker, endMarker, Mathf.Min(elapsedTime / time, 1f));
+
+            elapsedTime += step;
+
+            yield return new WaitForSeconds(step);
+
+        }
+
     }
     
     public void moveCubesDown()
     {
-        foreach (var cube in cubes)
+        for (var i = 0; i < cubes.Count; i++)
         {
             
-            cube.transform.position -= new Vector3(0, height, 0);
+            var position = cubes[i].transform.position;
+            
+            var newPosition = cubesFinalPositionsDown[i];
+
+            StartCoroutine(MoveCubesDownHelper(cubes[i], position, newPosition, maxTimer, steps));
         }
+    }
+    
+    private static IEnumerator MoveCubesDownHelper(Component cube, Vector3 startMarker, Vector3 endMarker, float time, float step)
+    {
+        var elapsedTime = 0f;
+
+        while (elapsedTime <= time)
+        {
+            // Set our position as a fraction of the distance between the markers.
+            cube.transform.position = Vector3.Lerp(startMarker, endMarker, Mathf.Min(elapsedTime / time, 1f));
+
+            elapsedTime += step;
+
+            yield return new WaitForSeconds(step);
+
+        }
+
+    }
+    
+    public void moveReset()
+    {
+        for (var i = 0; i < cubes.Count; i++)
+        {
+            
+            var position = cubes[i].transform.position;
+            
+            var newPosition = cubesDefaultPositions[i];
+
+            StartCoroutine(MoveCubesDefaultHelper(cubes[i], position, newPosition, maxTimer, steps));
+        }
+    }
+    
+    private static IEnumerator MoveCubesDefaultHelper(Component cube, Vector3 startMarker, Vector3 endMarker, float time, float step)
+    {
+        var elapsedTime = 0f;
+
+        while (elapsedTime <= time)
+        {
+            // Set our position as a fraction of the distance between the markers.
+            cube.transform.position = Vector3.Lerp(startMarker, endMarker, Mathf.Min(elapsedTime / time, 1f));
+
+            elapsedTime += step;
+
+            yield return new WaitForSeconds(step);
+
+        }
+
     }
 }

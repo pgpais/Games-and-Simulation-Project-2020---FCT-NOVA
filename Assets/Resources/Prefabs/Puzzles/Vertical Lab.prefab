@@ -79,9 +79,11 @@ MonoBehaviour:
   - {fileID: 4916000495720157868}
   - {fileID: 4916000495311488179}
   - {fileID: 4916000496038907960}
-  height: 3
+  height: 3.5
   teleporterHeight: 3
   exitTeleporter: {fileID: 7611188990475015297}
+  maxTimer: 0.5
+  steps: 0.2
 --- !u!1 &4916000495308375463
 GameObject:
   m_ObjectHideFlags: 0
@@ -5684,7 +5686,7 @@ PrefabInstance:
     - target: {fileID: 4486398057508754749, guid: ea87130746a36674dbbd421962afddaf,
         type: 3}
       propertyPath: allowPlayer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4486398057508754749, guid: ea87130746a36674dbbd421962afddaf,
         type: 3}
@@ -5884,7 +5886,7 @@ PrefabInstance:
     - target: {fileID: 4486398057508754749, guid: ea87130746a36674dbbd421962afddaf,
         type: 3}
       propertyPath: switchOff.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: moveCubesUp
+      value: moveReset
       objectReference: {fileID: 0}
     - target: {fileID: 4486398057508754749, guid: ea87130746a36674dbbd421962afddaf,
         type: 3}
@@ -6449,7 +6451,7 @@ PrefabInstance:
     - target: {fileID: 4486398057508754749, guid: ea87130746a36674dbbd421962afddaf,
         type: 3}
       propertyPath: switchOff.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: moveCubesDown
+      value: moveReset
       objectReference: {fileID: 0}
     - target: {fileID: 4486398057508754749, guid: ea87130746a36674dbbd421962afddaf,
         type: 3}
