@@ -4093,7 +4093,8 @@ GameObject:
   - component: {fileID: 4916000496860030967}
   - component: {fileID: 4916000496860030966}
   - component: {fileID: 4916000496860030965}
-  - component: {fileID: 4916000496860030964}
+  - component: {fileID: 3487007625655763191}
+  - component: {fileID: 4590924723355287296}
   m_Layer: 0
   m_Name: 'Dont be stupid and throw box down '
   m_TagString: Untagged
@@ -4109,8 +4110,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4916000496860030970}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -4.96, z: -7.08}
-  m_LocalScale: {x: 4.676152, y: 1, z: -2.2654557}
+  m_LocalPosition: {x: -0.5, y: -4.96, z: 2.14}
+  m_LocalScale: {x: 4.676152, y: 1, z: -3.7277386}
   m_Children: []
   m_Father: {fileID: 4916000496016581824}
   m_RootOrder: 8
@@ -4176,7 +4177,20 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &4916000496860030964
+--- !u!114 &3487007625655763191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4916000496860030970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e08bdfe3d5c46c4abeeef4489efff57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkpoint: {fileID: 4916000496612934444}
+--- !u!114 &4590924723355287296
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4188,9 +4202,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36fb44c844cf2804385e800270077565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bluePortal: 1
-  masterTeleportPoint: {fileID: 0}
-  clientTeleportPoint: {fileID: 0}
+  bluePortal: 0
+  masterTeleportPoint: {fileID: 1280727975051794508}
+  clientTeleportPoint: {fileID: 4916000496612934444}
 --- !u!1 &4916000496922071951
 GameObject:
   m_ObjectHideFlags: 0
@@ -6744,6 +6758,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1aa2da5015bd2bf4fbc941ab5a0e5752, type: 3}
+--- !u!1 &7611188990475015296 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 970849637440477973, guid: 1aa2da5015bd2bf4fbc941ab5a0e5752,
+    type: 3}
+  m_PrefabInstance: {fileID: 7266917085514846101}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7611188990475015297 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 970849637440477972, guid: 1aa2da5015bd2bf4fbc941ab5a0e5752,
@@ -6762,9 +6782,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36fb44c844cf2804385e800270077565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &7611188990475015296 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 970849637440477973, guid: 1aa2da5015bd2bf4fbc941ab5a0e5752,
-    type: 3}
-  m_PrefabInstance: {fileID: 7266917085514846101}
-  m_PrefabAsset: {fileID: 0}

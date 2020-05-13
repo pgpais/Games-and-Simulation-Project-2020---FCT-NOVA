@@ -44,10 +44,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzles:
-  - {fileID: 3295271152407063654, guid: 9b9c86e96f241804686aa2219cc05ee8, type: 3}
+  - {fileID: 7393169066150354520, guid: f80f5a5f255cfd941adfb11df652d643, type: 3}
   - {fileID: 6080371181286371690, guid: aa0b88cde27a3f3429877df08b8a5ec4, type: 3}
   - {fileID: 7722193107698895613, guid: cdc3a18dceea0814ebaaad036fae347a, type: 3}
-  - {fileID: 7393169066150354520, guid: f80f5a5f255cfd941adfb11df652d643, type: 3}
+  - {fileID: 3295271152407063654, guid: 9b9c86e96f241804686aa2219cc05ee8, type: 3}
   puzzleSpawnList:
   - {fileID: 0}
   - {fileID: 0}

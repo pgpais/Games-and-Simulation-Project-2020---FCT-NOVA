@@ -15,6 +15,9 @@ public class SlidingCubesPuzzle : MonoBehaviour
     private float teleporterHeight;
 
     [SerializeField] private Transform exitTeleporter;
+    
+    public float smoothTime = 0.3F;
+    private Vector3 velocity = Vector3.zero;
 
     public void showTeleporter()
     {
@@ -32,7 +35,11 @@ public class SlidingCubesPuzzle : MonoBehaviour
         foreach (var cube in cubes)
         {
             
-            cube.transform.position += new Vector3(0, height, 0);
+            var position = cube.transform.position;
+            var newPosition = new Vector3(position.x, position.y +  height, position.z);
+            
+            cube.transform.position = Vector3.SmoothDamp(position, newPosition, ref velocity, smoothTime, Mathf.Infinity,  deltaTime: Time.deltaTime);
+            
         }
     }
     

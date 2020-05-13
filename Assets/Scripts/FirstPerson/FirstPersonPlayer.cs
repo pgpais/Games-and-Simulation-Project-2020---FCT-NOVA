@@ -79,7 +79,8 @@ namespace FirstPerson
         /// </summary>
         void Start()
         {
-            PhotonNetwork.OfflineMode = !PhotonNetwork.IsConnected;
+            if(!PhotonNetwork.IsConnected)
+                PhotonNetwork.OfflineMode = true;
             aim = GetComponent<FirstPersonAiming>();
             mov = GetComponent<FirstPersonMovement>();
             input = GetComponent<PlayerInput>();
