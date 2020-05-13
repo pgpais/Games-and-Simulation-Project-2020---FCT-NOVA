@@ -38,6 +38,14 @@
                     "interactions": "Press"
                 },
                 {
+                    "name": "UseToolSecondary",
+                    "type": "Button",
+                    "id": "300ddf04-b38e-417e-a946-8b0618ee6c96",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Interact",
                     "type": "Button",
                     "id": "578753ef-c66c-4f63-a65e-6800305872de",
@@ -274,6 +282,28 @@
                     "processors": "",
                     "groups": "Keyboard & Mouse",
                     "action": "Equip Gravity gun",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "776d1b4f-62f4-49ac-9c88-77ad9689b825",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "UseToolSecondary",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f5e8c83c-5a7d-4ff2-b6b0-fa2444086d49",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "UseToolSecondary",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

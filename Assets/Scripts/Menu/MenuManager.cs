@@ -41,6 +41,12 @@ public class MenuManager : MonoBehaviour
         NetworkManager.instance.JoinLobby(roomNameInput.text);
     }
 
+    public void ChangeNickname(String newName)
+    {
+        Debug.Log("Changing nickname to " + newName);
+        PhotonNetwork.NickName = newName;
+    }
+
     public void ActivateButtons()
     {
         foreach (GameObject obj in objectsToActivateOnConnection)

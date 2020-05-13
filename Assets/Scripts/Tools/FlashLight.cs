@@ -23,4 +23,9 @@ public class FlashLight : Tool
         if (phase == InputActionPhase.Performed) 
             flashLight.enabled = !flashLight.enabled;
     }
+
+    public override void UseToolSecondary(InputActionPhase phase)
+    {
+        
+    }
 }

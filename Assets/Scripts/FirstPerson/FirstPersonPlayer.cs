@@ -105,6 +105,12 @@ namespace FirstPerson
             activeTool.UseTool(phase);
         }
 
+        [PunRPC]
+        public void UseToolSecondary(InputActionPhase phase)
+        {
+            activeTool.UseToolSecondary(phase);
+        }
+
         #region Local VS Remote setup
 
         /// <summary>
@@ -179,6 +185,14 @@ namespace FirstPerson
             else
                 photonView.RPC("UseTool", RpcTarget.All, ctx.phase);
 
+        }
+
+        public void OnToolUseSecondary(InputAction.CallbackContext ctx)
+        {
+            if(PhotonNetwork.OfflineMode)
+                activeTool.UseToolSecondary(ctx.phase);
+            else
+                photonView.RPC("UseToolSecondary", RpcTarget.All, ctx.phase);
         }
 
         public void OnInteract(InputAction.CallbackContext ctx)

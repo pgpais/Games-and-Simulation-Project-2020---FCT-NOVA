@@ -51,6 +51,14 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""interactions"": ""Press""
                 },
                 {
+                    ""name"": ""UseToolSecondary"",
+                    ""type"": ""Button"",
+                    ""id"": ""300ddf04-b38e-417e-a946-8b0618ee6c96"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""578753ef-c66c-4f63-a65e-6800305872de"",
@@ -289,6 +297,28 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""action"": ""Equip Gravity gun"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""776d1b4f-62f4-49ac-9c88-77ad9689b825"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""UseToolSecondary"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f5e8c83c-5a7d-4ff2-b6b0-fa2444086d49"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""UseToolSecondary"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -386,6 +416,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_UseTool = m_Player.FindAction("UseTool", throwIfNotFound: true);
+        m_Player_UseToolSecondary = m_Player.FindAction("UseToolSecondary", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Menu = m_Player.FindAction("Menu", throwIfNotFound: true);
         m_Player_Analitics = m_Player.FindAction("Analitics", throwIfNotFound: true);
@@ -448,6 +479,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_UseTool;
+    private readonly InputAction m_Player_UseToolSecondary;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Menu;
     private readonly InputAction m_Player_Analitics;
@@ -461,6 +493,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @UseTool => m_Wrapper.m_Player_UseTool;
+        public InputAction @UseToolSecondary => m_Wrapper.m_Player_UseToolSecondary;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Menu => m_Wrapper.m_Player_Menu;
         public InputAction @Analitics => m_Wrapper.m_Player_Analitics;
@@ -487,6 +520,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @UseTool.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseTool;
                 @UseTool.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseTool;
                 @UseTool.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseTool;
+                @UseToolSecondary.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseToolSecondary;
+                @UseToolSecondary.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseToolSecondary;
+                @UseToolSecondary.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseToolSecondary;
                 @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
@@ -518,6 +554,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @UseTool.started += instance.OnUseTool;
                 @UseTool.performed += instance.OnUseTool;
                 @UseTool.canceled += instance.OnUseTool;
+                @UseToolSecondary.started += instance.OnUseToolSecondary;
+                @UseToolSecondary.performed += instance.OnUseToolSecondary;
+                @UseToolSecondary.canceled += instance.OnUseToolSecondary;
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
@@ -602,6 +641,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnUseTool(InputAction.CallbackContext context);
+        void OnUseToolSecondary(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
         void OnAnalitics(InputAction.CallbackContext context);

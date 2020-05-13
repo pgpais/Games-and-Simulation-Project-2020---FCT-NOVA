@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,8 +16,7 @@ public class LobbyManager : MonoBehaviour
     [SerializeField]
     private GameObject unreadyButton;
 
-    //TODO: show lobby name
-    private string lobbyName;
+    [SerializeField] private TMP_Text lobbyName;
 
     private List<string> log;
 
@@ -34,6 +34,7 @@ public class LobbyManager : MonoBehaviour
         instance = this;
 
         log = new List<string>();
+        lobbyName.text = NetworkManager.instance.RoomName;
     }
 
     // Update is called once per frame

@@ -16,4 +16,5 @@ public abstract class Tool : MonoBehaviour
     }
 
     public abstract void UseTool(InputActionPhase phase);
+    public abstract void UseToolSecondary(InputActionPhase phase);
 }

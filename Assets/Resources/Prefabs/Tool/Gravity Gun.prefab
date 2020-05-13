@@ -44,10 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1deb10f17150fb940853d2dfcf69e912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectRadius: 0
-  effectDistance: 0
-  force: 10
+  effectRadius: 2
+  effectDistance: 30
+  grabbingDistance: 1
+  force: 600
+  launchForce: 3000
   gravityGunTransform: {fileID: 0}
+  grabbingPoint: {fileID: 0}
+  cam: {fileID: 0}
 --- !u!1 &6958551551782412357
 GameObject:
   m_ObjectHideFlags: 0

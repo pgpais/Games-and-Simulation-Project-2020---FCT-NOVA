@@ -10,6 +10,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public static NetworkManager instance;
     
     private string gameVersion = "1";
+    private string roomName;
+    public string RoomName => roomName;
     
     private void Awake()
     {
@@ -78,12 +80,22 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         if (roomName.Equals(""))
         {
             Debug.Log("Trying to Host Lobby lobby");
-            PhotonNetwork.CreateRoom("lobby", options);
+            if (PhotonNetwork.CreateRoom("lobby", options))
+                this.roomName = "lobby";
+            else
+            {
+                this.roomName = null;
+            }
         }
         else
         {
             Debug.Log("Trying to Host Lobby " + roomName);
-            PhotonNetwork.CreateRoom(roomName, options);
+            if (PhotonNetwork.CreateRoom(roomName, options))
+                this.roomName = roomName;
+            else
+            {
+                this.roomName = null;
+            }
         }
         PhotonNetwork.LoadLevel(1);
     }
@@ -93,12 +105,23 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         if (roomName.Equals(""))
         {
             Debug.Log("Trying to Join Lobby lobby");
-            PhotonNetwork.JoinRoom("lobby");
+            if(PhotonNetwork.JoinRoom("lobby"))
+                this.roomName = "lobby";
+            else
+            {
+                this.roomName = null;
+            }
         }
         else
         {
             Debug.Log("Trying to Join Lobby " + roomName);
-            PhotonNetwork.JoinRoom(roomName);
+            if (PhotonNetwork.JoinRoom(roomName))
+                this.roomName = roomName;
+            else
+            {
+                this.roomName = null;
+            }
+
         }
     }
     

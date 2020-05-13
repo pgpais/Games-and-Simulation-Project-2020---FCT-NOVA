@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class GravityGun : Tool
 {
@@ -15,14 +16,24 @@ public class GravityGun : Tool
     [Tooltip("The distance of the gravity gun effect")][Range(10f, 100f)]
     public float effectDistance = 10f;
 
-    [Tooltip("The force applied by the gun")][Range(10f, 300f)]
+    [Tooltip("The distance from which the gun grabs the object instead of pulling")]
+    public float grabbingDistance = 3f;
+
+    [Tooltip("The force applied by the gun")][Range(10f, 1000f)]
     public float force = 10f;
+
+    [Tooltip("Force applied when launching object with gun")]
+    public float launchForce = 100f;
     
     public Transform gravityGunTransform;
+    [SerializeField] private Transform grabbingPoint;
     [SerializeField] private Camera cam;
 
     private bool isActive;
-    
+    private bool obj;
+    private Rigidbody objRB;
+    private bool isGrabbing;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,10 +49,10 @@ public class GravityGun : Tool
     private void FixedUpdate()
     {
         if (isActive)
-            PushObject();
+            pullObject();
     }
 
-    private void PushObject()
+    private void pullObject()
     {
         RaycastHit hit;
 
@@ -52,15 +63,18 @@ public class GravityGun : Tool
 
             if (hit.collider.CompareTag("Carryable"))
             {
-                if (hit.distance < 1f)
-                { 
-                    //Grab();   
+                if (!obj) // save object rb if we don't have it yet
+                {
+                    objRB = hit.collider.GetComponent<Rigidbody>();
+                    obj = true;
+                }
+                
+                if (hit.distance < grabbingDistance)
+                {
+                    Grab();
                 }
                 else
-                {
-                    Rigidbody obj = hit.collider.GetComponent<Rigidbody>();
-                    obj.AddForce((cam.transform.position - obj.position).normalized * force );
-                }
+                    objRB.AddForce((cam.transform.position - objRB.position).normalized * force );
 
             }
             
@@ -72,11 +86,56 @@ public class GravityGun : Tool
         switch (phase)
         {
             case InputActionPhase.Performed:
-                isActive = true;
+                if(isGrabbing)
+                    Drop();
+                else
+                    isActive = true;
                 break;
             case InputActionPhase.Canceled:
                 isActive = false;
                 break;
         }
+    }
+
+    public override void UseToolSecondary(InputActionPhase phase)
+    {
+        if (phase == InputActionPhase.Performed)
+        {
+            Debug.Log("ys");
+            if (isGrabbing)
+            {
+                LaunchObject();
+            }
+        }
+    }
+
+    private void LaunchObject()
+    {
+        objRB.isKinematic = false;
+        objRB.transform.parent = null;
+        objRB.AddForce(cam.transform.forward * launchForce, ForceMode.Force);
+        Drop();
+    }
+
+    private void Grab()
+    {
+        objRB.isKinematic = true;
+        
+        var transform1 = objRB.transform;
+        transform1.parent = grabbingPoint;
+        transform1.localPosition = Vector3.zero;
+        
+        isGrabbing = true;
+    }
+
+    private void Drop()
+    {
+        objRB.isKinematic = false;
+        objRB.transform.parent = null;
+        
+        obj = false;
+        objRB = null;
+        
+        isGrabbing = false;
     }
 }
