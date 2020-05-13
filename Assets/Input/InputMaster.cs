@@ -73,6 +73,22 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Equip Flashlight"",
+                    ""type"": ""Button"",
+                    ""id"": ""52bf8503-bc90-44b4-873e-0c387835c532"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Equip Gravity gun"",
+                    ""type"": ""Button"",
+                    ""id"": ""10b0a9e2-24bf-4ef2-a57c-058e50bf0dfa"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -251,6 +267,28 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""action"": ""Analitics"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5c75d3c0-6206-44d6-b5e6-1e30e63266cc"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Equip Flashlight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""251c273d-baf3-47ae-84b6-441ef89ed390"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Equip Gravity gun"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -351,6 +389,8 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Menu = m_Player.FindAction("Menu", throwIfNotFound: true);
         m_Player_Analitics = m_Player.FindAction("Analitics", throwIfNotFound: true);
+        m_Player_EquipFlashlight = m_Player.FindAction("Equip Flashlight", throwIfNotFound: true);
+        m_Player_EquipGravitygun = m_Player.FindAction("Equip Gravity gun", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Analitics = m_Menu.FindAction("Analitics", throwIfNotFound: true);
@@ -411,6 +451,8 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Menu;
     private readonly InputAction m_Player_Analitics;
+    private readonly InputAction m_Player_EquipFlashlight;
+    private readonly InputAction m_Player_EquipGravitygun;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -422,6 +464,8 @@ public class @InputMaster : IInputActionCollection, IDisposable
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Menu => m_Wrapper.m_Player_Menu;
         public InputAction @Analitics => m_Wrapper.m_Player_Analitics;
+        public InputAction @EquipFlashlight => m_Wrapper.m_Player_EquipFlashlight;
+        public InputAction @EquipGravitygun => m_Wrapper.m_Player_EquipGravitygun;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -452,6 +496,12 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Analitics.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAnalitics;
                 @Analitics.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAnalitics;
                 @Analitics.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAnalitics;
+                @EquipFlashlight.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipFlashlight;
+                @EquipFlashlight.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipFlashlight;
+                @EquipFlashlight.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipFlashlight;
+                @EquipGravitygun.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipGravitygun;
+                @EquipGravitygun.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipGravitygun;
+                @EquipGravitygun.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipGravitygun;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -477,6 +527,12 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Analitics.started += instance.OnAnalitics;
                 @Analitics.performed += instance.OnAnalitics;
                 @Analitics.canceled += instance.OnAnalitics;
+                @EquipFlashlight.started += instance.OnEquipFlashlight;
+                @EquipFlashlight.performed += instance.OnEquipFlashlight;
+                @EquipFlashlight.canceled += instance.OnEquipFlashlight;
+                @EquipGravitygun.started += instance.OnEquipGravitygun;
+                @EquipGravitygun.performed += instance.OnEquipGravitygun;
+                @EquipGravitygun.canceled += instance.OnEquipGravitygun;
             }
         }
     }
@@ -549,6 +605,8 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
         void OnAnalitics(InputAction.CallbackContext context);
+        void OnEquipFlashlight(InputAction.CallbackContext context);
+        void OnEquipGravitygun(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {

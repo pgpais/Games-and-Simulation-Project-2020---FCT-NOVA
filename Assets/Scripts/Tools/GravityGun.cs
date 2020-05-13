@@ -19,6 +19,7 @@ public class GravityGun : Tool
     public float force = 10f;
     
     public Transform gravityGunTransform;
+    [SerializeField] private Camera cam;
 
     private bool isActive;
     
@@ -44,7 +45,7 @@ public class GravityGun : Tool
     {
         RaycastHit hit;
 
-        if (Physics.SphereCast(Camera.main.transform.position, effectRadius, Camera.main.transform.forward, out hit,
+        if (Physics.SphereCast(cam.transform.position, effectRadius, cam.transform.forward, out hit,
             effectDistance))
         {
             //Debug.Log("Hit an object " + hit.collider.name, this);
@@ -58,7 +59,7 @@ public class GravityGun : Tool
                 else
                 {
                     Rigidbody obj = hit.collider.GetComponent<Rigidbody>();
-                    obj.AddForce((Camera.main.transform.position - obj.position).normalized * force );
+                    obj.AddForce((cam.transform.position - obj.position).normalized * force );
                 }
 
             }

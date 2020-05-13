@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Interactables;
 using Photon.Pun;
 using UnityEngine;
@@ -23,26 +24,28 @@ namespace FirstPerson
         public static GameObject localPlayerInstance;
 
         #region Required Components
-        
+        [Header("Required components")]
         private FirstPersonAiming aim;
         private FirstPersonMovement mov;
         private PlayerInput input;
 
         [SerializeField] private GameObject capsuleModel;
         [SerializeField] private GameObject animatedModel;
-        [SerializeField] private GameObject flashLight;
-        
         #endregion
+        
 
         #region Player Stuff
 
-        public Tool tool;
+        [Header("Tools")]
+        [SerializeField] private List<Tool> tools;
+        private Tool activeTool;
+        private int equippedToolIndex;
 
         #endregion
 
         #region Carryable Stuff
 
-        [Tooltip("Carrying stuff")] 
+        [Header("Carrying stuff")] 
         [SerializeField] private float pullForce;
         [SerializeField] private float launchForce = 100f;
         [SerializeField] private Transform carryingPoint;
@@ -76,6 +79,7 @@ namespace FirstPerson
         /// </summary>
         void Start()
         {
+            PhotonNetwork.OfflineMode = !PhotonNetwork.IsConnected;
             aim = GetComponent<FirstPersonAiming>();
             mov = GetComponent<FirstPersonMovement>();
             input = GetComponent<PlayerInput>();
@@ -98,7 +102,7 @@ namespace FirstPerson
             //Debug.Log("RPC UseTool called", this);
             // Criar um ENUM que representa o Tipo de Input realizado
             // Investigar metodos de disntinção de Input
-            tool.UseTool(phase);
+            activeTool.UseTool(phase);
         }
 
         #region Local VS Remote setup
@@ -108,18 +112,19 @@ namespace FirstPerson
         /// </summary>
         void Setup()
         {
-            _pauseMenu = GameManager.instance.SettingsSpawned.GetComponent<PauseMenu>();
+            if(GameManager.instance != null)
+                _pauseMenu = GameManager.instance.SettingsSpawned.GetComponent<PauseMenu>();
             if (photonView.IsMine || !PhotonNetwork.IsConnected)
             {
-                //TODO: Setup local player (change appearance and enable controls)
+                //Setup local player (change appearance and enable controls)
                 input.enabled = true;
                 ChangeModels(true);
             }
             else
             {
-                //TODO: Setup object as remote player (show the humanoid model and disable controls)
+                //Setup object as remote player (show the humanoid model and disable controls)
                 input.enabled = false;
-                aim.DisableCamera(); // Maybe this is going away, since we're changing the whole model
+                aim.DisableCamera();
                 ChangeModels(false);
             }
         }
@@ -127,8 +132,17 @@ namespace FirstPerson
         void ChangeModels(bool isLocal)
         {
             capsuleModel.SetActive(false);
-            flashLight.GetComponent<MeshRenderer>().enabled = isLocal;
             animatedModel.SetActive(!isLocal);
+            
+            foreach (Tool tool in tools)
+            {
+                tool.GetComponentInChildren<MeshRenderer>().enabled = isLocal;
+                tool.gameObject.SetActive(false);
+            }
+
+            activeTool = tools[0];
+            ChangeTool(0);
+            
         }
 
         #endregion
@@ -161,7 +175,7 @@ namespace FirstPerson
             {
                 photonView.RPC("LaunchObject", RpcTarget.All);
             } else if (PhotonNetwork.OfflineMode) 
-                tool.UseTool(ctx.phase);
+                activeTool.UseTool(ctx.phase);
             else
                 photonView.RPC("UseTool", RpcTarget.All, ctx.phase);
 
@@ -226,6 +240,36 @@ namespace FirstPerson
                 }
             }
         }
+
+        public void OnEquipFlashlight(InputAction.CallbackContext ctx)
+        {
+            ChangeTool(0);
+        }
+
+        public void OnEquipGravitygun(InputAction.CallbackContext ctx)
+        {
+            ChangeTool(1);
+        }
+        #endregion
+
+        private void ChangeTool(int toolIndex)
+        {
+            if(toolIndex >= tools.Count || toolIndex < 0)
+            {
+                Debug.LogError("Trying to list tools at an illegal position");
+                return;
+            }
+            
+            // Disable old tool
+            activeTool.gameObject.SetActive(false);
+            
+            // Set new Tool
+            equippedToolIndex = toolIndex;
+            activeTool = tools[equippedToolIndex];
+            
+            // Enable new tool
+            activeTool.gameObject.SetActive(true);
+        }
         
         /// <summary>
         /// Shoots a Raycast forward to look for an Interactable
@@ -275,6 +319,5 @@ namespace FirstPerson
             carryingTrans = null;
             carryingObject = null;
         }
-        #endregion
     }
 }
