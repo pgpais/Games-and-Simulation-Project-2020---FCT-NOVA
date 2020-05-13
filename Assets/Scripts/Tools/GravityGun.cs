@@ -74,7 +74,10 @@ public class GravityGun : Tool
                     Grab();
                 }
                 else
-                    objRB.AddForce((cam.transform.position - objRB.position).normalized * force );
+                {
+                    Debug.Log("Pulling object");
+                    objRB.AddForce((cam.transform.position - objRB.position).normalized * force);
+                }
 
             }
             
@@ -87,9 +90,13 @@ public class GravityGun : Tool
         {
             case InputActionPhase.Performed:
                 if(isGrabbing)
+                {
                     Drop();
+                }
                 else
+                {
                     isActive = true;
+                }
                 break;
             case InputActionPhase.Canceled:
                 isActive = false;
@@ -101,16 +108,20 @@ public class GravityGun : Tool
     {
         if (phase == InputActionPhase.Performed)
         {
-            Debug.Log("ys");
             if (isGrabbing)
             {
                 LaunchObject();
+            }
+            else
+            {
+                Debug.Log("Tried Launching but nope");
             }
         }
     }
 
     private void LaunchObject()
     {
+        Debug.Log("Launched Object");
         objRB.isKinematic = false;
         objRB.transform.parent = null;
         objRB.AddForce(cam.transform.forward * launchForce, ForceMode.Force);
@@ -119,6 +130,7 @@ public class GravityGun : Tool
 
     private void Grab()
     {
+        Debug.Log("GRabbed");
         objRB.isKinematic = true;
         
         var transform1 = objRB.transform;
@@ -130,6 +142,7 @@ public class GravityGun : Tool
 
     private void Drop()
     {
+        Debug.Log("Dropped");
         objRB.isKinematic = false;
         objRB.transform.parent = null;
         
