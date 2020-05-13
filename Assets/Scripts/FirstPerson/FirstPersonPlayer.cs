@@ -257,15 +257,26 @@ namespace FirstPerson
 
         public void OnEquipFlashlight(InputAction.CallbackContext ctx)
         {
-            ChangeTool(0);
+            if(PhotonNetwork.OfflineMode)
+                ChangeTool(0);
+            else
+            {
+                photonView.RPC("ChangeTool", RpcTarget.All, 0);
+            }
         }
 
         public void OnEquipGravitygun(InputAction.CallbackContext ctx)
         {
-            ChangeTool(1);
+            if(PhotonNetwork.OfflineMode)
+                ChangeTool(1);
+            else
+            {
+                photonView.RPC("ChangeTool", RpcTarget.All, 1);
+            }
         }
         #endregion
 
+        [PunRPC]
         private void ChangeTool(int toolIndex)
         {
             if(toolIndex >= tools.Count || toolIndex < 0)
