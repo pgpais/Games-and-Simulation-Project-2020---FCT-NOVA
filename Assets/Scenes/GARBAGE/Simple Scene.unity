@@ -2069,7 +2069,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20586
+  m_Name: pb_Mesh177982
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2679,6 +2679,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 72240818}
     m_Modifications:
+    - target: {fileID: -3771050348163357618, guid: b02a9c8cc9888f542b77ba34cf894c99,
+        type: 3}
+      propertyPath: viewIdField
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5219040850969339905, guid: b02a9c8cc9888f542b77ba34cf894c99,
         type: 3}
       propertyPath: m_LocalPosition.x

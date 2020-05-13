@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 public class FPSCounter : MonoBehaviour
 {
@@ -33,7 +34,7 @@ public class FPSCounter : MonoBehaviour
         UpdateBuffer();
         CalculateFps();
        
-        
+     
     }
 
     private void UpdateBuffer()
