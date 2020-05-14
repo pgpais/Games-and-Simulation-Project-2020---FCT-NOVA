@@ -120,12 +120,12 @@ namespace FirstPerson
         void Setup()
         {
             if(GameManager.instance != null)
-                _pauseMenu = GameManager.instance.SettingsSpawned.GetComponent<PauseMenu>();
+                _pauseMenu = GameManager.instance.CanvasSpawned.GetComponent<PauseMenu>();
             if (photonView.IsMine || !PhotonNetwork.IsConnected)
             {
                 //Setup local player (change appearance and enable controls)
                 input.enabled = true;
-                ChangeModels(true);
+                ChangeModels(false);
             }
             else
             {

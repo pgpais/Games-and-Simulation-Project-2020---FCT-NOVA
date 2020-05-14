@@ -62,6 +62,5 @@ MonoBehaviour:
   clientSpawnPoint: {fileID: 0}
   initialClientSpawnPoint: {fileID: 0}
   nextPortal: {fileID: 0}
-  settingsPrefab: {fileID: 3099257330372107817, guid: 125d3b6acba69554e886c11a9ae973df,
+  canvasPrefab: {fileID: 3099257330372107817, guid: 125d3b6acba69554e886c11a9ae973df,
     type: 3}
-  analyticsPrefab: {fileID: 0}

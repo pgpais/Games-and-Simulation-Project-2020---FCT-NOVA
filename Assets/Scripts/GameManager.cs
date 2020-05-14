@@ -38,14 +38,8 @@ public class GameManager : MonoBehaviour
 
     public Teleport nextPortal;
 
-    [Header("UI")] 
-    public GameObject settingsPrefab;
-    public GameObject analyticsPrefab;
-    //[SerializeField] private Transform canvas;
-    private GameObject settingsSpawned;
-    public GameObject SettingsSpawned => settingsSpawned;
-    private GameObject analyticsSpawned;
-    public GameObject AnalyticsSpawned => analyticsSpawned;
+    [Header("UI")] public GameObject canvasPrefab;
+    public GameObject CanvasSpawned { get; private set; }
 
     // Start is called before the first frame update
     void Start()
@@ -57,7 +51,7 @@ public class GameManager : MonoBehaviour
         }
         instance = this;
 
-        settingsSpawned = Instantiate(settingsPrefab);
+        CanvasSpawned = Instantiate(canvasPrefab);
 
 
         if (NetworkManager.instance == null)
