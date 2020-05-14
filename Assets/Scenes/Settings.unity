@@ -760,22 +760,22 @@ PrefabInstance:
     - target: {fileID: 6692907208955528808, guid: c3e126c3dea316a45a2685d087b02c90,
         type: 3}
       propertyPath: m_text
-      value: 1920 x 1080 | 144 Hz
+      value: 1920 x 1080 | 144Hz
       objectReference: {fileID: 0}
     - target: {fileID: 6692907208955528808, guid: c3e126c3dea316a45a2685d087b02c90,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 20
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 6692907208955528808, guid: c3e126c3dea316a45a2685d087b02c90,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6692907208955528808, guid: c3e126c3dea316a45a2685d087b02c90,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6692907208955528808, guid: c3e126c3dea316a45a2685d087b02c90,
         type: 3}
