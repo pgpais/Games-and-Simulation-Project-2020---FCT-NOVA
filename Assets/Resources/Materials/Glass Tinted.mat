@@ -237,7 +237,7 @@ Material:
     - _HeightTessAmplitude: 2
     - _HeightTessCenter: 0.5
     - _InvTilingScale: 1
-    - _Ior: 1.5
+    - _Ior: 1.823
     - _IridescenceMask: 1
     - _IridescenceThickness: 1
     - _LinkDetailsWithBase: 1
@@ -259,7 +259,7 @@ Material:
     - _RefractionModel: 1
     - _SSRefractionProjectionModel: 0
     - _Shininess: 0.01
-    - _Smoothness: 0.85
+    - _Smoothness: 1
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0
     - _SmoothnessTextureChannel: 1
@@ -305,9 +305,9 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 0.16470589}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 0}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 0.16470589}
+    - _Color: {r: 1, g: 1, b: 1, a: 0}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
@@ -316,9 +316,9 @@ Material:
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _SpecColor: {r: 0.055, g: 0.055, b: 0.055, a: 1}
-    - _SpecularColor: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 0}
+    - _SpecularColor: {r: 0.545, g: 0.545, b: 0.545, a: 0}
     - _ThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
-    - _TransmittanceColor: {r: 1, g: 1, b: 1, a: 1}
+    - _TransmittanceColor: {r: 0.76600003, g: 1, b: 1, a: 0}
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}

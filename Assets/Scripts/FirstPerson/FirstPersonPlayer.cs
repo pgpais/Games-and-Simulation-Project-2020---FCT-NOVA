@@ -138,7 +138,7 @@ namespace FirstPerson
 
         void ChangeModels(bool isLocal)
         {
-            capsuleModel.SetActive(false);
+            capsuleModel.SetActive(isLocal);
             animatedModel.SetActive(!isLocal);
             
             foreach (Tool tool in tools)

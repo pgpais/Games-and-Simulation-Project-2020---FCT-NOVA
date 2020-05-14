@@ -31,11 +31,22 @@ public class PuzzleRoom : MonoBehaviour
             Application.Quit();
         }
 
-        if(PhotonNetwork.IsMasterClient)
+        if (PhotonNetwork.IsConnected && !PhotonNetwork.OfflineMode)
+        {
+            if (PhotonNetwork.IsMasterClient)
+                for (int i = 0; i < objectsToSpawn.Count; i++)
+                {
+                    PhotonNetwork.Instantiate(objectsToSpawn[i].name, whereToSpawn[i].position,
+                            whereToSpawn[i].rotation);
+                }
+        }
+        else
+        {
             for (int i = 0; i < objectsToSpawn.Count; i++)
             {
-                PhotonNetwork.Instantiate(objectsToSpawn[i].name, whereToSpawn[i].position, whereToSpawn[i].rotation);
+                    Instantiate(objectsToSpawn[i], whereToSpawn[i].position, whereToSpawn[i].rotation);
             }
+        }
     }
 
 
