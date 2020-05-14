@@ -125,22 +125,19 @@ namespace FirstPerson
             {
                 //Setup local player (change appearance and enable controls)
                 input.enabled = true;
-                ChangeModels(false);
+                //ChangeModels(false);
             }
             else
             {
                 //Setup object as remote player (show the humanoid model and disable controls)
                 input.enabled = false;
                 aim.DisableCamera();
-                ChangeModels(false);
+                //ChangeModels(false);
             }
         }
 
-        void ChangeModels(bool isLocal)
+        void SetupModel(bool isLocal)
         {
-            capsuleModel.SetActive(isLocal);
-            animatedModel.SetActive(!isLocal);
-            
             foreach (Tool tool in tools)
             {
                 tool.GetComponentInChildren<MeshRenderer>().enabled = isLocal;
