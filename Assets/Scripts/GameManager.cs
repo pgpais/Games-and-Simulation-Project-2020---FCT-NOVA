@@ -23,8 +23,6 @@ public class GameManager : MonoBehaviour
     [Header("Player settings")]
     [SerializeField]
     private GameObject LocalPlayerPrefab;
-    [SerializeField]
-    private GameObject RemotePlayerPrefab;
 
     [Header("Game References")]
     [SerializeField]
