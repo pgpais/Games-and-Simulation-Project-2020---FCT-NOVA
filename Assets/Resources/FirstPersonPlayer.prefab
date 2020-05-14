@@ -300,6 +300,18 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 2a770155-a94f-4667-8a00-063a51057b62
     m_ActionName: Menu/Menu[/Keyboard/escape,/DualShock4GamepadHID/start]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 300ddf04-b38e-417e-a946-8b0618ee6c96
+    m_ActionName: Player/UseToolSecondary[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 52bf8503-bc90-44b4-873e-0c387835c532
+    m_ActionName: Player/Equip Flashlight[/Keyboard/1]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 10b0a9e2-24bf-4ef2-a57c-058e50bf0dfa
+    m_ActionName: Player/Equip Gravity gun[/Keyboard/2]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -323,7 +335,7 @@ MonoBehaviour:
     m_Bits: 1331
   capsuleModel: {fileID: 0}
   animatedModel: {fileID: 0}
-  tool: {fileID: 0}
+  tools: []
   pullForce: 20
   launchForce: 100
   carryingPoint: {fileID: 0}
