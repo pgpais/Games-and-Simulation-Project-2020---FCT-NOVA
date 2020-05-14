@@ -68,7 +68,7 @@ namespace Multiplayer.Tutorial
             {
                 Debug.LogError("<Color=Red><a>Missing</a></Color> playerPrefab Reference. Please set it up in GameObject 'Game Manager'",this);
             }
-            else if (FirstPersonPlayer.localPlayerInstance == null)
+            else if (FirstPersonPlayer.LocalPlayerInstance == null)
             {
                 Debug.LogFormat("We are Instantiating LocalPlayer from {0}", Application.loadedLevelName);
                 // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate

@@ -21,7 +21,7 @@ namespace FirstPerson
         [SerializeField] private LayerMask interactMask;
 
         [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
-        public static GameObject localPlayerInstance;
+        public static GameObject LocalPlayerInstance;
 
         #region Required Components
         [Header("Required components")]
@@ -65,7 +65,7 @@ namespace FirstPerson
             // used in GameManager.cs: we keep track of the localPlayer instance to prevent instantiation when levels are synchronized
             if (photonView.IsMine)
             {
-                FirstPersonPlayer.localPlayerInstance = this.gameObject;
+                FirstPersonPlayer.LocalPlayerInstance = this.gameObject;
             }
             // #Critical
             // we flag as don't destroy on load so that instance survives level synchronization, thus giving a seamless experience when levels load.

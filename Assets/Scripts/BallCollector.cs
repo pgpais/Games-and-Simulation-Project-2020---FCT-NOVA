@@ -8,7 +8,7 @@ public class BallCollector : Switchable
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name.Equals("Sphere"))
+        if (other.gameObject.name.Contains("Sphere"))
         {
             switchOn.Invoke();
         }
