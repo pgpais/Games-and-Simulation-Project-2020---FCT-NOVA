@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5014210290500492298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3940769320282759609}
+  - component: {fileID: 2357728049786478266}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3940769320282759609
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5014210290500492298}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.8477124, y: 1.5960454, z: 2.4337187}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2357728049786478266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5014210290500492298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9303aa0d3ed9f5744be24e9aedde34b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puzzles:
+  - {fileID: 7393169066150354520, guid: f80f5a5f255cfd941adfb11df652d643, type: 3}
+  - {fileID: 6080371181286371690, guid: aa0b88cde27a3f3429877df08b8a5ec4, type: 3}
+  - {fileID: 7722193107698895613, guid: cdc3a18dceea0814ebaaad036fae347a, type: 3}
+  - {fileID: 3295271152407063654, guid: 9b9c86e96f241804686aa2219cc05ee8, type: 3}
+  puzzleSpawnList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  LocalPlayerPrefab: {fileID: 2329750830122688487, guid: 846145685254e8a48810ca24e0f97e2d,
+    type: 3}
+  RemotePlayerPrefab: {fileID: 5397416741137440589, guid: c85739c26f46b2446803a6029b2d1e47,
+    type: 3}
+  masterSpawnPoint: {fileID: 0}
+  initialMasterSpawnPoint: {fileID: 0}
+  clientSpawnPoint: {fileID: 0}
+  initialClientSpawnPoint: {fileID: 0}
+  nextPortal: {fileID: 0}
+  settingsPrefab: {fileID: 3099257330372107817, guid: 125d3b6acba69554e886c11a9ae973df,
+    type: 3}
+  analyticsPrefab: {fileID: 0}
