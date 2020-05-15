@@ -25,6 +25,8 @@ namespace Interactables
 
         public override void Interact()
         {
+            if(PhotonNetwork.OfflineMode)
+                RpcInteract();
             PhotonView.Get(this).RPC("RpcInteract", RpcTarget.All);
         }
         
