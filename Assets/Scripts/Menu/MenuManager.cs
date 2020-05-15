@@ -12,6 +12,8 @@ public class MenuManager : MonoBehaviour
 
     [SerializeField]
     private List<GameObject> objectsToActivateOnConnection;
+    [SerializeField]
+    private List<GameObject> objectsToDeActivateOnConnection;
     
     [SerializeField]
     private TMP_InputField roomNameInput;
@@ -52,6 +54,11 @@ public class MenuManager : MonoBehaviour
         foreach (GameObject obj in objectsToActivateOnConnection)
         {
             obj.SetActive(true);
+        }
+        
+        foreach (GameObject obj in objectsToDeActivateOnConnection)
+        {
+            obj.SetActive(false);
         }
     }
 
