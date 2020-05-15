@@ -125,14 +125,14 @@ namespace FirstPerson
             {
                 //Setup local player (change appearance and enable controls)
                 input.enabled = true;
-                //ChangeModels(false);
+                SetupModel(true);
             }
             else
             {
                 //Setup object as remote player (show the humanoid model and disable controls)
                 input.enabled = false;
                 aim.DisableCamera();
-                //ChangeModels(false);
+                SetupModel(false);
             }
         }
 
@@ -141,8 +141,14 @@ namespace FirstPerson
             foreach (Tool tool in tools)
             {
                 tool.GetComponentInChildren<MeshRenderer>().enabled = isLocal;
-                tool.gameObject.SetActive(false);
+                GameObject o;
+                (o = tool.gameObject).SetActive(false);
+                o.layer = isLocal ? 11 : 12; // LocalTool : RemoteTool
+                Utils.Utils.SetLayerToChildren(o, o.layer);
             }
+
+            animatedModel.layer = isLocal ? 9 : 10; // LocalModel : RemoteModel
+            Utils.Utils.SetLayerToChildren(animatedModel, animatedModel.layer);
 
             activeTool = tools[0];
             ChangeTool(0);
