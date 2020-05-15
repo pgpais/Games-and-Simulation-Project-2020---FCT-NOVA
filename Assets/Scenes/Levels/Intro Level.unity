@@ -4190,7 +4190,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1777331579, guid: 76ebf7ea86045354bb92a7a9879cd042, type: 3}
       propertyPath: viewIdField
-      value: 1
+      value: 999
       objectReference: {fileID: 0}
     - target: {fileID: 7880039448233141771, guid: 76ebf7ea86045354bb92a7a9879cd042,
         type: 3}
