@@ -654,7 +654,7 @@ PrefabInstance:
     - target: {fileID: 358075516558283373, guid: f83b78c52b6c3454fa8269ddfcc4273e,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 358075516558283374, guid: f83b78c52b6c3454fa8269ddfcc4273e,
         type: 3}
@@ -666,6 +666,11 @@ PrefabInstance:
       propertyPath: GroundCheck
       value: 
       objectReference: {fileID: 7688640604427942281}
+    - target: {fileID: 358075516558283374, guid: f83b78c52b6c3454fa8269ddfcc4273e,
+        type: 3}
+      propertyPath: boxMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 358075516558283375, guid: f83b78c52b6c3454fa8269ddfcc4273e,
         type: 3}
       propertyPath: m_LocalPosition.x
