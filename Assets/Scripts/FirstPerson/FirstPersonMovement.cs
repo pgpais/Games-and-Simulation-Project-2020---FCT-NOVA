@@ -33,8 +33,6 @@ public class FirstPersonMovement : MonoBehaviourPun
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotation;
 
-        if (photonView.IsMine)
-            animator = null;
     }
 
     // Update is called once per frame
@@ -90,16 +88,14 @@ public class FirstPersonMovement : MonoBehaviourPun
         if (!photonView.IsMine)
         {
             Vector3 horizontalVelocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-            if(animator != null)
-                animator.SetFloat(Speed, horizontalVelocity.magnitude);
+            animator.SetFloat(Speed, horizontalVelocity.magnitude);
             return;
         }
 
         Vector3 mov = transform.forward * movV + transform.right * movH;
         mov.Normalize();
         mov *= speed;
-        if(animator != null)
-            animator.SetFloat(Speed, mov.magnitude);
+        animator.SetFloat(Speed, mov.magnitude);
         
         mov += new Vector3(0, rb.velocity.y, 0);
         rb.velocity = mov;

@@ -24,15 +24,16 @@ namespace FirstPerson
         public static GameObject LocalPlayerInstance;
 
         #region Required Components
+        
         [Header("Required components")]
         private FirstPersonAiming aim;
         private FirstPersonMovement mov;
         private PlayerInput input;
 
-        [SerializeField] private GameObject capsuleModel;
-        [SerializeField] private GameObject animatedModel;
         #endregion
         
+        [SerializeField] private GameObject capsuleModel;
+        [SerializeField] private GameObject animatedModel;
 
         #region Player Stuff
 
