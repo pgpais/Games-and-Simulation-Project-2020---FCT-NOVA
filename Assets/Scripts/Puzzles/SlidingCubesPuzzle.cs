@@ -71,17 +71,19 @@ public class SlidingCubesPuzzle : MonoBehaviour
     {
         var elapsedTime = 0f;
 
-        while (elapsedTime <= time)
+        do
         {
             // Set our position as a fraction of the distance between the markers.
-            cube.transform.position = Vector3.Lerp(startMarker, endMarker, Mathf.Min(elapsedTime / time, 1f));
-
             elapsedTime += step;
+            float lerpValue = elapsedTime / time;
+            cube.transform.position = Vector3.Lerp(startMarker, endMarker, lerpValue);
+
 
             yield return new WaitForSeconds(step);
 
-        }
-
+        } while (elapsedTime <= time);
+        
+        cube.transform.position = Vector3.Lerp(startMarker, endMarker, 1);
     }
     
     public void moveCubesDown()

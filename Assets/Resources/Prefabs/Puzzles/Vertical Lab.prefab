@@ -79,11 +79,11 @@ MonoBehaviour:
   - {fileID: 4916000495720157868}
   - {fileID: 4916000495311488179}
   - {fileID: 4916000496038907960}
-  height: 3.5
+  height: 3
   teleporterHeight: 3
   exitTeleporter: {fileID: 7611188990475015297}
-  maxTimer: 0.5
-  steps: 0.2
+  maxTimer: 0.1
+  steps: 0.005
 --- !u!1 &4916000495308375463
 GameObject:
   m_ObjectHideFlags: 0
