@@ -14,12 +14,17 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private string gameVersion = "1";
     private string roomName;
     public string RoomName => roomName;
+    [SerializeField]
+    private int sendRate;
+    public int SendRate => sendRate;
 
     public int Seed { get; private set; }
     private readonly byte SeedGeneratedEvent = 1;
 
     private void Awake()
     {
+        PhotonNetwork.SendRate = sendRate;
+        PhotonNetwork.SerializationRate = sendRate;
         PhotonNetwork.AutomaticallySyncScene = true;
     }
 
