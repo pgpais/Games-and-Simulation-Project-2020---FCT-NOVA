@@ -251,7 +251,7 @@ namespace FirstPerson
             {
                 if (_pauseMenu != null)
                 {
-                    _pauseMenu.toggleAnalytics();
+                    _pauseMenu.ToggleAnalytics();
                 }
                 else
                 {

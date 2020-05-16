@@ -6,32 +6,31 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
 
-    public static PauseMenu instance;
+    public static PauseMenu Instance;
+    public GameObject pauseMenu;
     
-    private bool _gameIsPaused;
-    public bool GameIsPaused => _gameIsPaused;
+    public bool GameIsPaused { get; private set; }
 
-    public GameObject pauseMenuUI;
-    public GameObject analyticsUI;
+    public GameObject analyticsUi;
 
     private void Start()
     {
-        if (instance != null)
+        if (Instance != null)
         {
             Destroy(this);
             return;
         }
-        instance = this;
+        Instance = this;
     }
 
-    public bool isPaused()
+    public bool IsPaused()
     {
-        return _gameIsPaused;
+        return GameIsPaused;
     }
 
     public void MenuTrigger()
     {
-        if (isPaused())
+        if (IsPaused())
         {
             Resume();
         } else
@@ -42,7 +41,7 @@ public class PauseMenu : MonoBehaviour
     
     void Resume()
     {
-        pauseMenuUI.SetActive(false);
+        pauseMenu.SetActive(false);
         
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -51,13 +50,13 @@ public class PauseMenu : MonoBehaviour
         // We'll comment this line of code
         // Time.timeScale = 1f;
         
-        _gameIsPaused = false;
+        GameIsPaused = false;
 
     }
     
     void Pause()
     {
-        pauseMenuUI.SetActive(true);
+        pauseMenu.SetActive(true);
         
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -66,12 +65,12 @@ public class PauseMenu : MonoBehaviour
         // We'll comment this line of code
         // Time.timeScale = 0f;
 
-        _gameIsPaused = true;
+        GameIsPaused = true;
     }
     
-    public void toggleAnalytics()
+    public void ToggleAnalytics()
     {
-        analyticsUI.SetActive(!analyticsUI.activeSelf);
+        analyticsUi.SetActive(!analyticsUi.activeSelf);
     }
     
 }
