@@ -684,6 +684,21 @@ PrefabInstance:
       propertyPath: boxMask.m_Bits
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 358075516558283374, guid: f83b78c52b6c3454fa8269ddfcc4273e,
+        type: 3}
+      propertyPath: boxRadiuses.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 358075516558283374, guid: f83b78c52b6c3454fa8269ddfcc4273e,
+        type: 3}
+      propertyPath: boxRadiuses.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 358075516558283374, guid: f83b78c52b6c3454fa8269ddfcc4273e,
+        type: 3}
+      propertyPath: boxRadiuses.y
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 358075516558283375, guid: f83b78c52b6c3454fa8269ddfcc4273e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -822,7 +837,7 @@ PrefabInstance:
     - target: {fileID: 1056923821832261581, guid: f83b78c52b6c3454fa8269ddfcc4273e,
         type: 3}
       propertyPath: m_Intensity
-      value: 47.746483
+      value: 3.9788735
       objectReference: {fileID: 0}
     - target: {fileID: 1056923821832261581, guid: f83b78c52b6c3454fa8269ddfcc4273e,
         type: 3}
@@ -965,6 +980,11 @@ PrefabInstance:
       propertyPath: tools.Array.data[1]
       value: 
       objectReference: {fileID: 6377228768002244306}
+    - target: {fileID: 5384974210629017905, guid: f83b78c52b6c3454fa8269ddfcc4273e,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 5629317175992431618, guid: f83b78c52b6c3454fa8269ddfcc4273e,
         type: 3}
       propertyPath: m_Layer
