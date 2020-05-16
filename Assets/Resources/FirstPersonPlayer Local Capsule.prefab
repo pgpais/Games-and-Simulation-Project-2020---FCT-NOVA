@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &7429087000056724715
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2329750830122688487}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3, y: 2.1, z: 0.3}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3398430699633747965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -877,6 +890,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 13400000, guid: 57bf59125d8bbd742af2265f72dbf8c9,
         type: 2}
+    - target: {fileID: 3361537089693303794, guid: f83b78c52b6c3454fa8269ddfcc4273e,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3361537089693303794, guid: f83b78c52b6c3454fa8269ddfcc4273e,
+        type: 3}
+      propertyPath: m_Height
+      value: 2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3361537089693303794, guid: f83b78c52b6c3454fa8269ddfcc4273e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4306235663306872362, guid: f83b78c52b6c3454fa8269ddfcc4273e,
         type: 3}
       propertyPath: m_Controller
@@ -1498,6 +1526,12 @@ PrefabInstance:
     - {fileID: 4306235663306872362, guid: f83b78c52b6c3454fa8269ddfcc4273e, type: 3}
     - {fileID: 6997585622726964514, guid: f83b78c52b6c3454fa8269ddfcc4273e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f83b78c52b6c3454fa8269ddfcc4273e, type: 3}
+--- !u!1 &2329750830122688487 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 358075516558283373, guid: f83b78c52b6c3454fa8269ddfcc4273e,
+    type: 3}
+  m_PrefabInstance: {fileID: 2642719910120836490}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2329750830122688485 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 358075516558283375, guid: f83b78c52b6c3454fa8269ddfcc4273e,
@@ -1510,7 +1544,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 2642719910120836490}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2329750830122688487}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8e9b5db1045ac449972cd5ea44045da, type: 3}
