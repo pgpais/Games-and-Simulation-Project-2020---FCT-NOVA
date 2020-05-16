@@ -62,7 +62,7 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    public void QuitGame()
+    public static void QuitGame()
     {
         //TODO: maybe confirm?
 #if UNITY_EDITOR
