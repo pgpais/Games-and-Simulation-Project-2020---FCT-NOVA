@@ -26,6 +26,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
+        PhotonNetwork.NetworkingClient.EventReceived += OnEvent;
+        
         if (instance != null)
         {
             Debug.LogWarning("Tried to create a new NetworkManager. Please be sure that there is only one in the scene");
@@ -195,6 +197,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All }; // You would have to set the Receivers to All in order to receive this event on the local client as well
             SendOptions sendOptions = new SendOptions { Reliability = true };
             int seed = new Random().Next();
+            Debug.Log("Raising event SeedGenerated");
             PhotonNetwork.RaiseEvent(SeedGeneratedEvent, seed, raiseEventOptions,
                 sendOptions);
         }
@@ -206,7 +209,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         switch (eventCode)
         {
             case 1:
+                Debug.Log("Setting seed to " + (int) data.CustomData);
                 Seed = (int)data.CustomData;
+                Debug.Log("Seed = " + Seed);
                 break;
         }
     }

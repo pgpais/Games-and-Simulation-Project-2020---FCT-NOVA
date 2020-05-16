@@ -62,7 +62,7 @@
                     int seed;
                     if (NetworkManager.instance)
                     {
-                        seed = NetworkManager.instance.Seed;
+                        seed = NetworkManager.instance.Seed % mazes.Count;
                     }
                     else
                     {
