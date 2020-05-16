@@ -65,7 +65,16 @@ PrefabInstance:
     - target: {fileID: 5219040850969339934, guid: b02a9c8cc9888f542b77ba34cf894c99,
         type: 3}
       propertyPath: m_Name
-      value: Box
+      value: Box Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5219040850969339934, guid: b02a9c8cc9888f542b77ba34cf894c99,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -7107716379561650744, guid: b02a9c8cc9888f542b77ba34cf894c99, type: 3}
+    - {fileID: -5338700913144634582, guid: b02a9c8cc9888f542b77ba34cf894c99, type: 3}
+    - {fileID: -3771050348163357618, guid: b02a9c8cc9888f542b77ba34cf894c99, type: 3}
+    - {fileID: 5219040850969339909, guid: b02a9c8cc9888f542b77ba34cf894c99, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b02a9c8cc9888f542b77ba34cf894c99, type: 3}
