@@ -97,6 +97,14 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Enter Debug"",
+                    ""type"": ""Button"",
+                    ""id"": ""e432d3ba-98de-4a64-a034-0a5df3e4dccc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -319,6 +327,17 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""action"": ""UseToolSecondary"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""80a9f40f-d424-414a-b878-eeb7c03b3697"",
+                    ""path"": ""<Keyboard>/f2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Enter Debug"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -378,6 +397,191 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Debug"",
+            ""id"": ""88c5c450-6e21-4734-8db9-acd125376b35"",
+            ""actions"": [
+                {
+                    ""name"": ""FastSpeed"",
+                    ""type"": ""Button"",
+                    ""id"": ""b8271e45-a0e8-4487-b5da-0dd93c61760a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""SlowSpeed"",
+                    ""type"": ""Button"",
+                    ""id"": ""fac177bb-a8cf-4fad-9edb-ec5e43a83b55"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Ascend"",
+                    ""type"": ""Button"",
+                    ""id"": ""eaaf01a6-61c8-4fbb-9315-01d5115ab8bc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Descend"",
+                    ""type"": ""Button"",
+                    ""id"": ""a5451b5b-936b-45c3-901c-05007b58e42a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Aim"",
+                    ""type"": ""Value"",
+                    ""id"": ""aa352b17-0dbd-4599-b21f-06f8906805e3"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Movement"",
+                    ""type"": ""Value"",
+                    ""id"": ""c71e543d-a2af-44a6-b66f-de03e3dda556"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Leave Debug"",
+                    ""type"": ""Button"",
+                    ""id"": ""10d5d7df-54c6-4b40-833f-903aad8343c0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""d0ac0a3b-439c-41b4-b813-4fec1fc6276f"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""FastSpeed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""88a59195-92c9-4cf0-9b61-3c260342710e"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""SlowSpeed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e598abc8-4230-495c-af92-59a93e797ca4"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Ascend"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""63141169-31cc-4a12-b19c-c7669de7eda9"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Descend"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3b6a6867-f1bf-4a10-9f7d-c8b87c282380"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""d8deb56b-b340-489f-a8b1-3a697b07e579"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""faef0e85-32a4-48f4-9641-d7d90eb7292a"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""ff9a6a76-4d6e-4242-8f4c-adad37d97214"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""e039d8cb-3fbb-4ca5-83e5-bfeb97117e67"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""5c3f18c2-cdc9-44cd-96ef-e566604d2b8a"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""61f5d29a-da2d-43b6-b97d-fe9ab484c270"",
+                    ""path"": ""<Keyboard>/f2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Leave Debug"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -422,10 +626,20 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_Analitics = m_Player.FindAction("Analitics", throwIfNotFound: true);
         m_Player_EquipFlashlight = m_Player.FindAction("Equip Flashlight", throwIfNotFound: true);
         m_Player_EquipGravitygun = m_Player.FindAction("Equip Gravity gun", throwIfNotFound: true);
+        m_Player_EnterDebug = m_Player.FindAction("Enter Debug", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Analitics = m_Menu.FindAction("Analitics", throwIfNotFound: true);
         m_Menu_Menu = m_Menu.FindAction("Menu", throwIfNotFound: true);
+        // Debug
+        m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
+        m_Debug_FastSpeed = m_Debug.FindAction("FastSpeed", throwIfNotFound: true);
+        m_Debug_SlowSpeed = m_Debug.FindAction("SlowSpeed", throwIfNotFound: true);
+        m_Debug_Ascend = m_Debug.FindAction("Ascend", throwIfNotFound: true);
+        m_Debug_Descend = m_Debug.FindAction("Descend", throwIfNotFound: true);
+        m_Debug_Aim = m_Debug.FindAction("Aim", throwIfNotFound: true);
+        m_Debug_Movement = m_Debug.FindAction("Movement", throwIfNotFound: true);
+        m_Debug_LeaveDebug = m_Debug.FindAction("Leave Debug", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -485,6 +699,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Analitics;
     private readonly InputAction m_Player_EquipFlashlight;
     private readonly InputAction m_Player_EquipGravitygun;
+    private readonly InputAction m_Player_EnterDebug;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -499,6 +714,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         public InputAction @Analitics => m_Wrapper.m_Player_Analitics;
         public InputAction @EquipFlashlight => m_Wrapper.m_Player_EquipFlashlight;
         public InputAction @EquipGravitygun => m_Wrapper.m_Player_EquipGravitygun;
+        public InputAction @EnterDebug => m_Wrapper.m_Player_EnterDebug;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -538,6 +754,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @EquipGravitygun.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipGravitygun;
                 @EquipGravitygun.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipGravitygun;
                 @EquipGravitygun.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipGravitygun;
+                @EnterDebug.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEnterDebug;
+                @EnterDebug.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEnterDebug;
+                @EnterDebug.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEnterDebug;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -572,6 +791,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @EquipGravitygun.started += instance.OnEquipGravitygun;
                 @EquipGravitygun.performed += instance.OnEquipGravitygun;
                 @EquipGravitygun.canceled += instance.OnEquipGravitygun;
+                @EnterDebug.started += instance.OnEnterDebug;
+                @EnterDebug.performed += instance.OnEnterDebug;
+                @EnterDebug.canceled += instance.OnEnterDebug;
             }
         }
     }
@@ -617,6 +839,87 @@ public class @InputMaster : IInputActionCollection, IDisposable
         }
     }
     public MenuActions @Menu => new MenuActions(this);
+
+    // Debug
+    private readonly InputActionMap m_Debug;
+    private IDebugActions m_DebugActionsCallbackInterface;
+    private readonly InputAction m_Debug_FastSpeed;
+    private readonly InputAction m_Debug_SlowSpeed;
+    private readonly InputAction m_Debug_Ascend;
+    private readonly InputAction m_Debug_Descend;
+    private readonly InputAction m_Debug_Aim;
+    private readonly InputAction m_Debug_Movement;
+    private readonly InputAction m_Debug_LeaveDebug;
+    public struct DebugActions
+    {
+        private @InputMaster m_Wrapper;
+        public DebugActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
+        public InputAction @FastSpeed => m_Wrapper.m_Debug_FastSpeed;
+        public InputAction @SlowSpeed => m_Wrapper.m_Debug_SlowSpeed;
+        public InputAction @Ascend => m_Wrapper.m_Debug_Ascend;
+        public InputAction @Descend => m_Wrapper.m_Debug_Descend;
+        public InputAction @Aim => m_Wrapper.m_Debug_Aim;
+        public InputAction @Movement => m_Wrapper.m_Debug_Movement;
+        public InputAction @LeaveDebug => m_Wrapper.m_Debug_LeaveDebug;
+        public InputActionMap Get() { return m_Wrapper.m_Debug; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DebugActions set) { return set.Get(); }
+        public void SetCallbacks(IDebugActions instance)
+        {
+            if (m_Wrapper.m_DebugActionsCallbackInterface != null)
+            {
+                @FastSpeed.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnFastSpeed;
+                @FastSpeed.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnFastSpeed;
+                @FastSpeed.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnFastSpeed;
+                @SlowSpeed.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnSlowSpeed;
+                @SlowSpeed.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnSlowSpeed;
+                @SlowSpeed.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnSlowSpeed;
+                @Ascend.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnAscend;
+                @Ascend.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnAscend;
+                @Ascend.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnAscend;
+                @Descend.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnDescend;
+                @Descend.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnDescend;
+                @Descend.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnDescend;
+                @Aim.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnAim;
+                @Aim.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnAim;
+                @Aim.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnAim;
+                @Movement.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnMovement;
+                @Movement.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnMovement;
+                @Movement.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnMovement;
+                @LeaveDebug.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnLeaveDebug;
+                @LeaveDebug.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnLeaveDebug;
+                @LeaveDebug.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnLeaveDebug;
+            }
+            m_Wrapper.m_DebugActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @FastSpeed.started += instance.OnFastSpeed;
+                @FastSpeed.performed += instance.OnFastSpeed;
+                @FastSpeed.canceled += instance.OnFastSpeed;
+                @SlowSpeed.started += instance.OnSlowSpeed;
+                @SlowSpeed.performed += instance.OnSlowSpeed;
+                @SlowSpeed.canceled += instance.OnSlowSpeed;
+                @Ascend.started += instance.OnAscend;
+                @Ascend.performed += instance.OnAscend;
+                @Ascend.canceled += instance.OnAscend;
+                @Descend.started += instance.OnDescend;
+                @Descend.performed += instance.OnDescend;
+                @Descend.canceled += instance.OnDescend;
+                @Aim.started += instance.OnAim;
+                @Aim.performed += instance.OnAim;
+                @Aim.canceled += instance.OnAim;
+                @Movement.started += instance.OnMovement;
+                @Movement.performed += instance.OnMovement;
+                @Movement.canceled += instance.OnMovement;
+                @LeaveDebug.started += instance.OnLeaveDebug;
+                @LeaveDebug.performed += instance.OnLeaveDebug;
+                @LeaveDebug.canceled += instance.OnLeaveDebug;
+            }
+        }
+    }
+    public DebugActions @Debug => new DebugActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -647,10 +950,21 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnAnalitics(InputAction.CallbackContext context);
         void OnEquipFlashlight(InputAction.CallbackContext context);
         void OnEquipGravitygun(InputAction.CallbackContext context);
+        void OnEnterDebug(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {
         void OnAnalitics(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
+    }
+    public interface IDebugActions
+    {
+        void OnFastSpeed(InputAction.CallbackContext context);
+        void OnSlowSpeed(InputAction.CallbackContext context);
+        void OnAscend(InputAction.CallbackContext context);
+        void OnDescend(InputAction.CallbackContext context);
+        void OnAim(InputAction.CallbackContext context);
+        void OnMovement(InputAction.CallbackContext context);
+        void OnLeaveDebug(InputAction.CallbackContext context);
     }
 }

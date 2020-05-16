@@ -280,7 +280,7 @@ namespace FirstPerson
         }
         #endregion
 
-        public void changePlayerActionMap(string actionMap)
+        public void ChangePlayerActionMap(string actionMap)
         {
             input.SwitchCurrentActionMap(actionMap);
         }

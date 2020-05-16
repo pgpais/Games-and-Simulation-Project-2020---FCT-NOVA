@@ -485,6 +485,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5014210290500492298, guid: 43dc09942593396409d36a620594b86f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43dc09942593396409d36a620594b86f, type: 3}
 --- !u!1 &770895257
@@ -1574,6 +1579,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1777331579, guid: 76ebf7ea86045354bb92a7a9879cd042, type: 3}
+      propertyPath: viewIdField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8961259287103464304, guid: 76ebf7ea86045354bb92a7a9879cd042,
         type: 3}
       propertyPath: m_Mesh
@@ -1653,6 +1662,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Button Stand Improved
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961259287880240387, guid: 76ebf7ea86045354bb92a7a9879cd042,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8961259287254900809, guid: 76ebf7ea86045354bb92a7a9879cd042, type: 3}

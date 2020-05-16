@@ -53,7 +53,7 @@ public class PauseMenu : MonoBehaviour
         // We'll comment this line of code
         // Time.timeScale = 1f;
         
-        FirstPersonPlayer.LocalPlayerInstance.changePlayerActionMap("Player");
+        FirstPersonPlayer.LocalPlayerInstance.ChangePlayerActionMap("Player");
         
         GameIsPaused = false;
 
@@ -70,7 +70,7 @@ public class PauseMenu : MonoBehaviour
         // We'll comment this line of code
         // Time.timeScale = 0f;
 
-        FirstPersonPlayer.LocalPlayerInstance.changePlayerActionMap("Menu");
+        FirstPersonPlayer.LocalPlayerInstance.ChangePlayerActionMap("Menu");
         
         GameIsPaused = true;
     }
