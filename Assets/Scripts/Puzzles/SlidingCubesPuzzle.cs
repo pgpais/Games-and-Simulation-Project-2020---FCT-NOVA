@@ -15,10 +15,9 @@ public class SlidingCubesPuzzle : MonoBehaviour
     [SerializeField]
     private float height;
 
-    [SerializeField]
-    private float teleporterHeight;
+    
 
-    [SerializeField] private Transform exitTeleporter;
+    [SerializeField] private GameObject exitTeleporter;
     
     [SerializeField]private float maxTimer;
 
@@ -45,13 +44,10 @@ public class SlidingCubesPuzzle : MonoBehaviour
     
     public void showTeleporter()
     {
-        exitTeleporter.transform.position += new Vector3(0, teleporterHeight, 0);
-    }
+        exitTeleporter.SetActive(true);
+         }
     
-    public void hideTeleporter()
-    {
-        exitTeleporter.transform.position -= new Vector3(0, teleporterHeight, 0);
-    }
+   
     
 
     public void moveCubesUp()
