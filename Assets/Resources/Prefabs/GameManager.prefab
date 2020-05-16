@@ -55,12 +55,12 @@ MonoBehaviour:
   - {fileID: 0}
   LocalPlayerPrefab: {fileID: 2329750830122688487, guid: 846145685254e8a48810ca24e0f97e2d,
     type: 3}
-  RemotePlayerPrefab: {fileID: 5397416741137440589, guid: c85739c26f46b2446803a6029b2d1e47,
-    type: 3}
   masterSpawnPoint: {fileID: 0}
   initialMasterSpawnPoint: {fileID: 0}
   clientSpawnPoint: {fileID: 0}
   initialClientSpawnPoint: {fileID: 0}
   nextPortal: {fileID: 0}
   canvasPrefab: {fileID: 3099257330372107817, guid: 125d3b6acba69554e886c11a9ae973df,
+    type: 3}
+  endLevel: {fileID: 7432099671235609167, guid: caf2549bfabdb74489ea61a5789a5c65,
     type: 3}

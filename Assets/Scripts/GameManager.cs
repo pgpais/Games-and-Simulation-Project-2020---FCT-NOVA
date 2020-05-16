@@ -39,6 +39,10 @@ public class GameManager : MonoBehaviour
     [Header("UI")] public GameObject canvasPrefab;
     public GameObject CanvasSpawned { get; private set; }
 
+
+    [SerializeField]
+    private GameObject endLevel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -84,23 +88,25 @@ public class GameManager : MonoBehaviour
 
     public void SpawnPuzzleRooms(int howMany)
     {
+        if (nextPuzzleToSpawnIndex >= puzzles.Count)
+        {
+            Debug.LogWarning("All puzzles have been spawned");
+            //TODO: Do something here. Game will soon end
+            GameObject endlevelInst = Instantiate(endLevel, puzzleSpawnList[nextSpawnIndex].position,
+                puzzleSpawnList[nextSpawnIndex].rotation);
+            nextPuzzle = endlevelInst.GetComponent<PuzzleRoom>();
+            return;
+        }
+        
         for (int i = 0; i < howMany; i++)
         {
             if (nextPuzzleToSpawnIndex >= puzzles.Count || nextSpawnIndex >= puzzleSpawnList.Count)
                 return;
             GameObject nextPuzzleObj = Instantiate(puzzles[nextPuzzleToSpawnIndex], puzzleSpawnList[nextSpawnIndex].position, Quaternion.identity);
             nextPuzzle = nextPuzzleObj.GetComponent<PuzzleRoom>();
-            spawnedPuzzles.Insert(nextSpawnIndex, nextPuzzleObj);
+            spawnedPuzzles.Insert(spawnedPuzzles.Count, nextPuzzleObj);
             nextPuzzleToSpawnIndex = ++nextPuzzleToSpawnIndex;
             nextSpawnIndex = ++nextSpawnIndex % puzzleSpawnList.Count;
-
-            
-            
-            if (nextPuzzleToSpawnIndex == puzzles.Count)
-            {
-                Debug.LogWarning("All puzzles have been spawned");
-                //TODO: Do something here. Game will soon end
-            }
         }
     }
 
@@ -108,6 +114,12 @@ public class GameManager : MonoBehaviour
     {
         masterSpawnPoint = nextPuzzle.MasterSpawnPoint;
         clientSpawnPoint = nextPuzzle.ClientSpawnPoint;
+        if (nextPortal == null)
+        {
+            Debug.Log("Couldn't find a portal", this);
+            return;
+        }
+
         nextPortal.SetPoints(masterSpawnPoint, clientSpawnPoint);
             
         nextPortal = nextPuzzle.Teleport;
@@ -135,8 +147,17 @@ public class GameManager : MonoBehaviour
 
     public void DeletePuzzle()
     {
-        int puzzleToDelete = nextPuzzleToSpawnIndex - 3;
+        if (spawnedPuzzles.Count <= 2)
+        {
+            Debug.LogError("Tried to delete the only puzzle remaining!");
+            return;
+        }
         
+        int puzzleToDelete = spawnedPuzzles.Count - 3;
+
         Debug.Log("Tried to delete puzzle " + puzzleToDelete);
+        Destroy(spawnedPuzzles[puzzleToDelete]);
+        spawnedPuzzles.RemoveAt(puzzleToDelete);
+
     }
 }
