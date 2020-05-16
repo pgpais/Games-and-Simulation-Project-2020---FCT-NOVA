@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using FirstPerson;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PauseMenu : MonoBehaviour
 {
 
     public static PauseMenu Instance;
     public GameObject pauseMenu;
-    
+
+
     public bool GameIsPaused { get; private set; }
 
     public GameObject analyticsUi;
@@ -45,10 +48,12 @@ public class PauseMenu : MonoBehaviour
         
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        
+
         // Since we do not want to pause the time yet
         // We'll comment this line of code
         // Time.timeScale = 1f;
+        
+        FirstPersonPlayer.LocalPlayerInstance.changePlayerActionMap("Player");
         
         GameIsPaused = false;
 
@@ -60,11 +65,13 @@ public class PauseMenu : MonoBehaviour
         
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        
+
         // Since we do not want to pause the time yet
         // We'll comment this line of code
         // Time.timeScale = 0f;
 
+        FirstPersonPlayer.LocalPlayerInstance.changePlayerActionMap("Menu");
+        
         GameIsPaused = true;
     }
     
