@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
+using Random = System.Random;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
@@ -12,7 +14,10 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private string gameVersion = "1";
     private string roomName;
     public string RoomName => roomName;
-    
+
+    public int Seed { get; private set; }
+    private readonly byte SeedGeneratedEvent = 1;
+
     private void Awake()
     {
         PhotonNetwork.AutomaticallySyncScene = true;
@@ -180,6 +185,30 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public void LaunchSpawnPlayers()
     {
         photonView.RPC("SpawnPlayers", RpcTarget.All);
+        PickSeed();
+    }
+
+    void PickSeed()
+    {
+        if (PhotonNetwork.IsMasterClient || !PhotonNetwork.IsConnected)
+        {
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All }; // You would have to set the Receivers to All in order to receive this event on the local client as well
+            SendOptions sendOptions = new SendOptions { Reliability = true };
+            int seed = new Random().Next();
+            PhotonNetwork.RaiseEvent(SeedGeneratedEvent, seed, raiseEventOptions,
+                sendOptions);
+        }
+    }
+    void OnEvent(EventData data)
+    {
+        byte eventCode = data.Code;
+
+        switch (eventCode)
+        {
+            case 1:
+                Seed = (int)data.CustomData;
+                break;
+        }
     }
     
     [PunRPC]
