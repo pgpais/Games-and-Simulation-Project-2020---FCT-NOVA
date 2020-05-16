@@ -4,6 +4,9 @@
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using ExitGames.Client.Photon;
+    using Photon.Pun;
+    using Photon.Realtime;
     using UnityEngine;
     using UnityEngine.Serialization;
     using Random = System.Random;
@@ -33,9 +36,14 @@
 
             private static MazeGenerator Instance { get; set; }
             void Awake()  { Instance = this;}
-            void Start() { MakeBlocks(); }
-        
-     
+
+            void Start()
+            {
+                MakeBlocks();
+            }
+
+            
+            
             void MakeBlocks() {
        
             
@@ -51,10 +59,17 @@
                 }
                 else
                 {
-                
-                    var random = new Random();
-                    mazeString = mazes[random.Next(0, mazes.Count)];
-                
+                    int seed;
+                    if (NetworkManager.instance)
+                    {
+                        seed = NetworkManager.instance.Seed % mazes.Count;
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Couldn't find instance of network manager. Setting seed to 0");
+                        seed = 0;
+                    }
+                    mazeString = mazes[seed];
                     mazeString = mazeString.Replace(" ", String.Empty);
                 
                     Debug.Log(mazeString);
@@ -89,8 +104,7 @@
                 
                 print (mazeString);  // added to create String
             }
-
-
+            
             void putBlocks()
             {
                 GameObject ptype = null;

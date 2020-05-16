@@ -1004,6 +1004,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 723469777303146104, guid: 846145685254e8a48810ca24e0f97e2d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1235344892988321222, guid: 846145685254e8a48810ca24e0f97e2d,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -1114,6 +1119,17 @@ PrefabInstance:
       propertyPath: launchForce
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 7429087000056724715, guid: 846145685254e8a48810ca24e0f97e2d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7429087000056724715, guid: 846145685254e8a48810ca24e0f97e2d,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 57bf59125d8bbd742af2265f72dbf8c9,
+        type: 2}
     - target: {fileID: 8846151188177792357, guid: 846145685254e8a48810ca24e0f97e2d,
         type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Target

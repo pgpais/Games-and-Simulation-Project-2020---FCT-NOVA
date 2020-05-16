@@ -84,13 +84,17 @@ public class FirstPersonMovement : MonoBehaviourPun
     
     void HandleMovement()
     {
-        // TODO: total mid-air control
+        // no mid-air control
+        if (!isGrounded)
+            return;
+        
         if (!photonView.IsMine)
         {
             Vector3 horizontalVelocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
             animator.SetFloat(Speed, horizontalVelocity.magnitude);
             return;
         }
+
 
         Vector3 mov = transform.forward * movV + transform.right * movH;
         mov.Normalize();

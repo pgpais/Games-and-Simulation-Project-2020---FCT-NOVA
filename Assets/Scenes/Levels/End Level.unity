@@ -624,6 +624,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3502342836948034754, guid: caf2549bfabdb74489ea61a5789a5c65,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6041937051116380846, guid: caf2549bfabdb74489ea61a5789a5c65,
         type: 3}
       propertyPath: viewIdField
@@ -693,6 +698,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: End level
+      objectReference: {fileID: 0}
+    - target: {fileID: 7432099671757464534, guid: caf2549bfabdb74489ea61a5789a5c65,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.63
       objectReference: {fileID: 0}
     - target: {fileID: 7432099672167005733, guid: caf2549bfabdb74489ea61a5789a5c65,
         type: 3}
