@@ -91,6 +91,7 @@ public class FirstPersonMovement : MonoBehaviourPun
             animator.SetFloat(Speed, horizontalVelocity.magnitude);
             return;
         }
+        
 
         Vector3 mov = transform.forward * movV + transform.right * movH;
         mov.Normalize();
