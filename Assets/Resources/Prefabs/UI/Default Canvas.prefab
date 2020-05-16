@@ -32,7 +32,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 3099257332141113637}
-  - {fileID: 784196041051381137}
+  - {fileID: 3227782872410748139}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52a4138b69bd5ba4ca7320224845403b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 784196041051381142}
+  pauseMenuUI: {fileID: 3227782872410744540}
   analyticsUI: {fileID: 3099257332141113636}
 --- !u!1001 &1541748372094328022
 PrefabInstance:
@@ -276,42 +276,42 @@ PrefabInstance:
     - target: {fileID: 2749840437576298210, guid: ba49bacf48870b9469e76cd1b8711a3a,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2749840437576298210, guid: ba49bacf48870b9469e76cd1b8711a3a,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2749840437576298210, guid: ba49bacf48870b9469e76cd1b8711a3a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 2749840437576298210, guid: ba49bacf48870b9469e76cd1b8711a3a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -416.66663
       objectReference: {fileID: 0}
     - target: {fileID: 2749840438427439550, guid: ba49bacf48870b9469e76cd1b8711a3a,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2749840438427439550, guid: ba49bacf48870b9469e76cd1b8711a3a,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2749840438427439550, guid: ba49bacf48870b9469e76cd1b8711a3a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 2749840438427439550, guid: ba49bacf48870b9469e76cd1b8711a3a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -249.99998
       objectReference: {fileID: 0}
     - target: {fileID: 2749840438520412401, guid: ba49bacf48870b9469e76cd1b8711a3a,
         type: 3}
@@ -426,7 +426,7 @@ PrefabInstance:
     - target: {fileID: 2749840438520412406, guid: ba49bacf48870b9469e76cd1b8711a3a,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2749840438592581390, guid: ba49bacf48870b9469e76cd1b8711a3a,
         type: 3}
@@ -451,22 +451,22 @@ PrefabInstance:
     - target: {fileID: 2749840438658454218, guid: ba49bacf48870b9469e76cd1b8711a3a,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2749840438658454218, guid: ba49bacf48870b9469e76cd1b8711a3a,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2749840438658454218, guid: ba49bacf48870b9469e76cd1b8711a3a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 2749840438658454218, guid: ba49bacf48870b9469e76cd1b8711a3a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -83.33333
       objectReference: {fileID: 0}
     - target: {fileID: 2749840438920713103, guid: ba49bacf48870b9469e76cd1b8711a3a,
         type: 3}
@@ -515,13 +515,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba49bacf48870b9469e76cd1b8711a3a, type: 3}
---- !u!1 &784196041051381142 stripped
+--- !u!1 &3227782872410744540 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2749840438520412406, guid: ba49bacf48870b9469e76cd1b8711a3a,
     type: 3}
   m_PrefabInstance: {fileID: 3227782872410744160}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &784196041051381137 stripped
+--- !u!224 &3227782872410748139 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2749840438520412401, guid: ba49bacf48870b9469e76cd1b8711a3a,
     type: 3}
