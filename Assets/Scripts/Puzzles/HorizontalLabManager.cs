@@ -5,14 +5,19 @@ using UnityEngine;
 
 public class HorizontalLabManager : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject ceiling;
-    
+    [SerializeField] private GameObject ceiling;
+    [SerializeField] private GameObject teleport;
 
 
     public void destroyWall()
     {
         Destroy(ceiling);
+    }
+
+    public void spawnTeleport()
+    {
+        
+        teleport.SetActive(true);
     }
     
     
