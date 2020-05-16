@@ -17,7 +17,7 @@ namespace Interactables
             
             if (!open)
             {
-                if (other.CompareTag("Carryable") || allowPlayer)
+                if (other.CompareTag("Carryable") || (allowPlayer && other.CompareTag("Player")))
                 {
                     open = true;
                     switchOn.Invoke();
