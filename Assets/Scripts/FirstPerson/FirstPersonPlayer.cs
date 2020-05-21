@@ -122,7 +122,12 @@ namespace FirstPerson
         public void PlayeNextStepAudio()
         {
             int nextClip = new Random().Next(stepClips.Count);
-            _audioSource.PlayOneShot(stepClips[nextClip]);
+            Play(stepClips[nextClip]);
+        }
+
+        public void Play(AudioClip clip)
+        {
+            _audioSource.PlayOneShot(clip);
         }
 
         #region Local VS Remote setup

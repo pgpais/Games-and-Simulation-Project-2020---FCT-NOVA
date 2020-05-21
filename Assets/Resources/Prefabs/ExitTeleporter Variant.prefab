@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 381787646037903599, guid: 30338380d1b57ea43a1d51a3f4c36f70,
+        type: 3}
+      propertyPath: portalSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 84033ff951b25e049826ff6f64e69e5b, type: 3}
     - target: {fileID: 3285732616780753036, guid: 30338380d1b57ea43a1d51a3f4c36f70,
         type: 3}
       propertyPath: m_Name
