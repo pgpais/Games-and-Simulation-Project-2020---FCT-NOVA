@@ -7,7 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class FirstPersonMovement : MonoBehaviourPun
 {
-    private static readonly int Speed = Animator.StringToHash("Speed");
+    
     
     public float speed = 10f;
     public float jumpForce = 10f;
@@ -26,6 +26,8 @@ public class FirstPersonMovement : MonoBehaviourPun
     private Rigidbody rb;
     [SerializeField]
     private Animator animator;
+
+    private static readonly int Speed = Animator.StringToHash("Speed");
 
     // Start is called before the first frame update
     void Start()

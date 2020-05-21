@@ -7,6 +7,7 @@ using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
 using UnityEngine.PlayerLoop;
 using Object = UnityEngine.Object;
+using Random = System.Random;
 
 namespace FirstPerson
 {
@@ -23,14 +24,18 @@ namespace FirstPerson
         [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
         public static FirstPersonPlayer LocalPlayerInstance;
 
+        public List<AudioClip> stepClips;
+
         #region Required Components
         
         [Header("Required components")]
         private FirstPersonAiming aim;
         private FirstPersonMovement mov;
         private PlayerInput input;
+        private AudioSource _audioSource;
 
         #endregion
+        
         
         [SerializeField] private GameObject capsuleModel;
         [SerializeField] private GameObject animatedModel;
@@ -85,6 +90,7 @@ namespace FirstPerson
             aim = GetComponent<FirstPersonAiming>();
             mov = GetComponent<FirstPersonMovement>();
             input = GetComponent<PlayerInput>();
+            _audioSource = GetComponent<AudioSource>();
 
             gameObject.tag = "Player";
             
@@ -111,6 +117,12 @@ namespace FirstPerson
         public void UseToolSecondary(InputActionPhase phase)
         {
             activeTool.UseToolSecondary(phase);
+        }
+
+        public void PlayeNextStepAudio()
+        {
+            int nextClip = new Random().Next(stepClips.Count);
+            _audioSource.PlayOneShot(stepClips[nextClip]);
         }
 
         #region Local VS Remote setup
