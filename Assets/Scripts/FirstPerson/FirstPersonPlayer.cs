@@ -24,7 +24,7 @@ namespace FirstPerson
         [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
         public static FirstPersonPlayer LocalPlayerInstance;
 
-        public List<AudioClip> stepClips;
+        public AudioSource[] stepSources;
 
         #region Required Components
         
@@ -32,7 +32,6 @@ namespace FirstPerson
         private FirstPersonAiming aim;
         private FirstPersonMovement mov;
         private PlayerInput input;
-        private AudioSource _audioSource;
 
         #endregion
         
@@ -90,7 +89,7 @@ namespace FirstPerson
             aim = GetComponent<FirstPersonAiming>();
             mov = GetComponent<FirstPersonMovement>();
             input = GetComponent<PlayerInput>();
-            _audioSource = GetComponent<AudioSource>();
+            //stepSources = GetComponents<AudioSource>();
 
             gameObject.tag = "Player";
             
@@ -121,13 +120,13 @@ namespace FirstPerson
 
         public void PlayeNextStepAudio()
         {
-            int nextClip = new Random().Next(stepClips.Count);
-            Play(stepClips[nextClip]);
+            int nextClip = new Random().Next(stepSources.Length);
+            stepSources[nextClip].Play();
         }
 
         public void Play(AudioClip clip)
         {
-            _audioSource.PlayOneShot(clip);
+            //_audioSource.PlayOneShot(clip);
         }
 
         #region Local VS Remote setup
