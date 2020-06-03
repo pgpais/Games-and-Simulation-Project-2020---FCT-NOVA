@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 3
+  m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -608,6 +608,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1503006567}
     m_Modifications:
+    - target: {fileID: 1777331579, guid: 76ebf7ea86045354bb92a7a9879cd042, type: 3}
+      propertyPath: viewIdField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8961259287103464304, guid: 76ebf7ea86045354bb92a7a9879cd042,
         type: 3}
       propertyPath: m_Mesh
@@ -1598,25 +1602,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &950456313 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5397416740430290169, guid: c85739c26f46b2446803a6029b2d1e47,
-    type: 3}
-  m_PrefabInstance: {fileID: 1675387318}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &950456320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 950456313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1932527511c0fc24685861b66d4a4b6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  reflectionPlane: {fileID: 2073487245}
+  objectToShow: {fileID: 0}
 --- !u!1 &1037858960
 GameObject:
   m_ObjectHideFlags: 0
