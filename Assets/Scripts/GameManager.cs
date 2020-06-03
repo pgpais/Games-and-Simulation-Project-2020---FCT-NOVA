@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using Photon.Pun;
+using SteamAudio;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -24,7 +25,10 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject LocalPlayerPrefab;
 
-    [Header("Game References")]
+    [Header("Game References")] 
+    private SteamAudioManager _steamAudioManager;
+    public SteamAudioManager SteamAudioManager => _steamAudioManager;
+
     [SerializeField]
     private Transform masterSpawnPoint;
     [SerializeField]
@@ -48,10 +52,11 @@ public class GameManager : MonoBehaviour
     {
         if (instance != null)
         {
-            Destroy(this);
+            Destroy(gameObject);
             return;
         }
         instance = this;
+        _steamAudioManager = GetComponent<SteamAudioManager>();
 
         CanvasSpawned = Instantiate(canvasPrefab);
 

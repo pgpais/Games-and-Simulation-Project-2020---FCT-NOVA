@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3940769320282759609}
   - component: {fileID: 2357728049786478266}
+  - component: {fileID: 1598198597}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -44,10 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzles:
-  - {fileID: 7393169066150354520, guid: f80f5a5f255cfd941adfb11df652d643, type: 3}
-  - {fileID: 6080371181286371690, guid: aa0b88cde27a3f3429877df08b8a5ec4, type: 3}
   - {fileID: 7722193107698895613, guid: cdc3a18dceea0814ebaaad036fae347a, type: 3}
+  - {fileID: 7393169066150354520, guid: f80f5a5f255cfd941adfb11df652d643, type: 3}
   - {fileID: 3295271152407063654, guid: 9b9c86e96f241804686aa2219cc05ee8, type: 3}
+  - {fileID: 6080371181286371690, guid: aa0b88cde27a3f3429877df08b8a5ec4, type: 3}
   puzzleSpawnList:
   - {fileID: 0}
   - {fileID: 0}
@@ -64,3 +65,49 @@ MonoBehaviour:
     type: 3}
   endLevel: {fileID: 7432099671235609167, guid: caf2549bfabdb74489ea61a5789a5c65,
     type: 3}
+--- !u!114 &1598198597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5014210290500492298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4576053e6ac4964287500815ebc2f7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioEngine: 0
+  sofaFiles: []
+  currentSOFAFile: 0
+  materialPreset: 9
+  materialValue:
+    LowFreqAbsorption: 0.2
+    MidFreqAbsorption: 0.07
+    HighFreqAbsorption: 0.06
+    Scattering: 0.05
+    LowFreqTransmission: 0.2
+    MidFreqTransmission: 0.025
+    HighFreqTransmission: 0.01
+  simulationPreset: 2
+  simulationValue:
+    MaxOcclusionSamples: 128
+    RealtimeRays: 16384
+    RealtimeSecondaryRays: 1024
+    RealtimeBounces: 8
+    RealtimeThreadsPercentage: 5
+    BakeRays: 65536
+    BakeSecondaryRays: 4096
+    BakeBounces: 128
+    BakeThreadsPercentage: 5
+    Duration: 1
+    AmbisonicsOrder: 1
+    MaxSources: 32
+    IrradianceMinDistance: 1
+  updateComponents: 1
+  currentAudioListener: {fileID: 0}
+  showLoadTimeOptions: 0
+  showMassBakingOptions: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
