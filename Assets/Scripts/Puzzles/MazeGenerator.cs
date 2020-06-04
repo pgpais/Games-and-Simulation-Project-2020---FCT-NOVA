@@ -7,9 +7,12 @@
     using ExitGames.Client.Photon;
     using Photon.Pun;
     using Photon.Realtime;
+    using SteamAudio;
     using UnityEngine;
     using UnityEngine.Serialization;
+    using Material = UnityEngine.Material;
     using Random = System.Random;
+    using Vector3 = UnityEngine.Vector3;
 
     namespace Puzzles
     {
@@ -122,6 +125,8 @@
                                 var prefab = Resources.Load("Prefabs/MazeCube", typeof(GameObject));
                                 ptype = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
                                 ptype.transform.parent = transform;
+                                ptype.AddComponent<SteamAudioGeometry>();
+                                ptype.AddComponent<SteamAudioDynamicObject>();
 
                                 var localScale = ptype.transform.localScale;
 
