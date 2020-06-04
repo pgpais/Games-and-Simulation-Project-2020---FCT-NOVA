@@ -68,8 +68,7 @@ public class SettingsMenu : MonoBehaviour
     
     private void SetVolume(float volume, string mixerParam)
     {
-        var convertedValue = volume * 80 - 80;
-        audioMixer.SetFloat(mixerParam, convertedValue);
+        audioMixer.SetFloat(mixerParam, Mathf.Lerp(-50, 0, volume));
     }
 
     #endregion
