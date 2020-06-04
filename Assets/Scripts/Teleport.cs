@@ -20,7 +20,8 @@ public class Teleport : MonoBehaviour
         
         if (other.CompareTag("Player"))
         {
-            other.gameObject.transform.position = PhotonNetwork.IsMasterClient? masterTeleportPoint.position: clientTeleportPoint.position;
+            if(PhotonView.Get(other.gameObject).IsMine)
+                other.gameObject.transform.position = PhotonNetwork.IsMasterClient? masterTeleportPoint.position: clientTeleportPoint.position;
             if (GameManager.instance != null && PhotonView.Get(other.gameObject).IsMine && bluePortal)
             {
                 //GameManager.instance.SpawnPuzzleRooms(1);
