@@ -615,9 +615,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 40
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -713,7 +713,7 @@ MonoBehaviour:
   sourceRadius: 1
   occlusionSamples: 16
   directMixLevel: 1
-  reflections: 0
+  reflections: 1
   indirectBinaural: 1
   physicsBasedAttenuationForIndirect: 1
   indirectMixLevel: 1
@@ -787,9 +787,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 40
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -885,7 +885,7 @@ MonoBehaviour:
   sourceRadius: 1
   occlusionSamples: 16
   directMixLevel: 1
-  reflections: 0
+  reflections: 1
   indirectBinaural: 1
   physicsBasedAttenuationForIndirect: 1
   indirectMixLevel: 1
@@ -959,9 +959,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 40
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -1057,7 +1057,7 @@ MonoBehaviour:
   sourceRadius: 1
   occlusionSamples: 16
   directMixLevel: 1
-  reflections: 0
+  reflections: 1
   indirectBinaural: 1
   physicsBasedAttenuationForIndirect: 1
   indirectMixLevel: 1
