@@ -40,13 +40,13 @@ GameObject:
   m_Component:
   - component: {fileID: 5397416741137440591}
   - component: {fileID: 5397416741137440576}
-  - component: {fileID: 4095790104408460685}
   - component: {fileID: 8326956540534785999}
   - component: {fileID: 4941650800366888049}
   - component: {fileID: 1184550364190387663}
   - component: {fileID: 1069176894464358188}
   - component: {fileID: 5397416741137440590}
   - component: {fileID: 5397416741137440577}
+  - component: {fileID: 9220789566921078885}
   m_Layer: 9
   m_Name: FirstPersonPlayer
   m_TagString: Player
@@ -85,22 +85,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &4095790104408460685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5397416741137440589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizeVelocity: 1
-  m_SynchronizeAngularVelocity: 1
-  m_TeleportEnabled: 1
-  m_TeleportIfDistanceGreaterThan: 3
 --- !u!114 &8326956540534785999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,7 +118,7 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 4095790104408460685}
+  - {fileID: 0}
   - {fileID: 8326956540534785999}
   viewIdField: 0
   InstantiationId: 0
@@ -333,6 +317,7 @@ MonoBehaviour:
   interactMask:
     serializedVersion: 2
     m_Bits: 1331
+  stepSources: []
   capsuleModel: {fileID: 0}
   animatedModel: {fileID: 0}
   tools: []
@@ -375,3 +360,19 @@ MonoBehaviour:
   sensitivity: 0.1
   maxClamp: 60
   camTrans: {fileID: 0}
+--- !u!114 &9220789566921078885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5397416741137440589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 0
+  m_TeleportEnabled: 0
+  m_TeleportIfDistanceGreaterThan: 3
