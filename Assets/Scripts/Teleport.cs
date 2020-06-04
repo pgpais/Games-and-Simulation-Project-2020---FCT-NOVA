@@ -23,9 +23,9 @@ public class Teleport : MonoBehaviour
             other.gameObject.transform.position = PhotonNetwork.IsMasterClient? masterTeleportPoint.position: clientTeleportPoint.position;
             if (GameManager.instance != null && PhotonView.Get(other.gameObject).IsMine && bluePortal)
             {
-                GameManager.instance.SpawnPuzzleRooms(1);
-                GameManager.instance.DeletePuzzle();
-                GameManager.instance.UpdateTeleport();
+                //GameManager.instance.SpawnPuzzleRooms(1);
+                //GameManager.instance.DeletePuzzle();
+                //GameManager.instance.UpdateTeleport();
             }
             PlayPortalSound();
         }

@@ -73,11 +73,11 @@ public class GameManager : MonoBehaviour
                 NetworkManager.instance.LaunchSpawnPlayers();
         }
 
-        spawnedPuzzles = new List<GameObject>(puzzleSpawnList.Count);
-        SpawnPuzzleRooms(1);
+        //spawnedPuzzles = new List<GameObject>(puzzleSpawnList.Count);
+        //SpawnPuzzleRooms(1);
 
-        nextPortal.SetPoints(nextPuzzle.MasterSpawnPoint, nextPuzzle.ClientSpawnPoint);
-        UpdateTeleport();
+        //nextPortal.SetPoints(nextPuzzle.MasterSpawnPoint, nextPuzzle.ClientSpawnPoint);
+        //UpdateTeleport();
     }
 
     private void LocalSpawnPlayers()
@@ -96,7 +96,6 @@ public class GameManager : MonoBehaviour
         if (nextPuzzleToSpawnIndex >= puzzles.Count)
         {
             Debug.LogWarning("All puzzles have been spawned");
-            //TODO: Do something here. Game will soon end
             GameObject endlevelInst = Instantiate(endLevel, puzzleSpawnList[nextSpawnIndex].position,
                 puzzleSpawnList[nextSpawnIndex].rotation);
             nextPuzzle = endlevelInst.GetComponent<PuzzleRoom>();
