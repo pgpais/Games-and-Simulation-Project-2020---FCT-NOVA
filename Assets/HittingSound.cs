@@ -8,14 +8,11 @@ public class HittingSound : MonoBehaviour
 
     public AudioSource collisionSound;
     // Start is called before the first frame update
-    void Start()
-    {
-        collisionSound = GetComponent<AudioSource>();
-    }
-    
+
 
     private void OnCollisionEnter(Collision other)
     {
+        // Debug.Log("Strange Man Touched me");
         collisionSound.Play();
     }
 }
