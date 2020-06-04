@@ -625,7 +625,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -2158848639286670968, guid: f61c217c36a8062498a6e3f284e33e3a,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: b8422c351fa95c4448eecc1a719b2e82, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -724,16 +724,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   directBinaural: 1
   interpolation: 0
-  physicsBasedAttenuation: 1
+  physicsBasedAttenuation: 0
   airAbsorption: 0
   dipoleWeight: 0
   dipolePower: 0
-  occlusionMode: 3
+  occlusionMode: 0
   occlusionMethod: 0
   sourceRadius: 1
   occlusionSamples: 16
   directMixLevel: 1
-  reflections: 1
+  reflections: 0
   indirectBinaural: 1
   physicsBasedAttenuationForIndirect: 1
   indirectMixLevel: 1
@@ -797,7 +797,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -2158848639286670968, guid: f61c217c36a8062498a6e3f284e33e3a,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 9bcdde6c7ab3ed54ba923e2b872d5a84, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -896,16 +896,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   directBinaural: 1
   interpolation: 0
-  physicsBasedAttenuation: 1
+  physicsBasedAttenuation: 0
   airAbsorption: 0
   dipoleWeight: 0
   dipolePower: 0
-  occlusionMode: 3
+  occlusionMode: 0
   occlusionMethod: 0
   sourceRadius: 1
   occlusionSamples: 16
   directMixLevel: 1
-  reflections: 1
+  reflections: 0
   indirectBinaural: 1
   physicsBasedAttenuationForIndirect: 1
   indirectMixLevel: 1
@@ -969,7 +969,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -2158848639286670968, guid: f61c217c36a8062498a6e3f284e33e3a,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 6cb66a7bae6c3ad4d88d40170266b364, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1068,16 +1068,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   directBinaural: 1
   interpolation: 0
-  physicsBasedAttenuation: 1
+  physicsBasedAttenuation: 0
   airAbsorption: 0
   dipoleWeight: 0
   dipolePower: 0
-  occlusionMode: 3
+  occlusionMode: 0
   occlusionMethod: 0
   sourceRadius: 1
   occlusionSamples: 16
   directMixLevel: 1
-  reflections: 1
+  reflections: 0
   indirectBinaural: 1
   physicsBasedAttenuationForIndirect: 1
   indirectMixLevel: 1
@@ -1313,15 +1313,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6db080c9c7267846ad6fa530fe7b039, type: 3}
---- !u!4 &5742763656068761499 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -3220319501169496967, guid: b6db080c9c7267846ad6fa530fe7b039,
-    type: 3}
-  m_PrefabInstance: {fileID: 2088902113546988514}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8060502639836181227 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: b6db080c9c7267846ad6fa530fe7b039,
+    type: 3}
+  m_PrefabInstance: {fileID: 2088902113546988514}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5742763656068761499 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -3220319501169496967, guid: b6db080c9c7267846ad6fa530fe7b039,
     type: 3}
   m_PrefabInstance: {fileID: 2088902113546988514}
   m_PrefabAsset: {fileID: 0}
@@ -1550,9 +1550,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 759735174121548113, guid: f83b78c52b6c3454fa8269ddfcc4273e,
         type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 759735174121548113, guid: f83b78c52b6c3454fa8269ddfcc4273e,
+        type: 3}
       propertyPath: viewIdField
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 759735174121548113, guid: f83b78c52b6c3454fa8269ddfcc4273e,
+        type: 3}
+      propertyPath: ObservedComponents.Array.data[0]
+      value: 
+      objectReference: {fileID: 1818543028091815781}
     - target: {fileID: 1056923821001294407, guid: f83b78c52b6c3454fa8269ddfcc4273e,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -2704,6 +2714,7 @@ PrefabInstance:
     - {fileID: 7713443115689550625, guid: f83b78c52b6c3454fa8269ddfcc4273e, type: 3}
     - {fileID: 4306235663306872362, guid: f83b78c52b6c3454fa8269ddfcc4273e, type: 3}
     - {fileID: 6997585622726964514, guid: f83b78c52b6c3454fa8269ddfcc4273e, type: 3}
+    - {fileID: 8559215625750528173, guid: f83b78c52b6c3454fa8269ddfcc4273e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f83b78c52b6c3454fa8269ddfcc4273e, type: 3}
 --- !u!1 &2329750830122688487 stripped
 GameObject:
@@ -2717,6 +2728,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2642719910120836490}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1818543028091815781 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4436064316432042735, guid: f83b78c52b6c3454fa8269ddfcc4273e,
+    type: 3}
+  m_PrefabInstance: {fileID: 2642719910120836490}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2329750830122688487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7234455953843058566 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4668298349904706060, guid: f83b78c52b6c3454fa8269ddfcc4273e,
@@ -2729,12 +2752,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8e9b5db1045ac449972cd5ea44045da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &2602946200316129825 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 50478607231975339, guid: f83b78c52b6c3454fa8269ddfcc4273e,
-    type: 3}
-  m_PrefabInstance: {fileID: 2642719910120836490}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7688640604427942281 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5629317175992431619, guid: f83b78c52b6c3454fa8269ddfcc4273e,
@@ -2792,6 +2809,12 @@ Camera:
 --- !u!4 &305020037050393170 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2348475310503702488, guid: f83b78c52b6c3454fa8269ddfcc4273e,
+    type: 3}
+  m_PrefabInstance: {fileID: 2642719910120836490}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2602946200316129825 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 50478607231975339, guid: f83b78c52b6c3454fa8269ddfcc4273e,
     type: 3}
   m_PrefabInstance: {fileID: 2642719910120836490}
   m_PrefabAsset: {fileID: 0}
