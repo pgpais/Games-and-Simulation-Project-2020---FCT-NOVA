@@ -13421,32 +13421,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &1734296343 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5014210290500492298, guid: 43dc09942593396409d36a620594b86f,
-    type: 3}
-  m_PrefabInstance: {fileID: 3037807607559559305}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1734296347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1734296343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1755cf01ec36db74aa5c0718cbce6df5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rayTracerOption: 0
-  convolutionOption: 0
-  maxComputeUnitsToReserve: 8
-  Duration: 1
-  AmbisonicsOrder: 1
-  MaxSources: 32
-  BakingBatchSize: 4
-  fractionComputeUnitsForIRUpdate: 0.5
 --- !u!4 &1735799266 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6928920086542397847, guid: 9b9c86e96f241804686aa2219cc05ee8,
