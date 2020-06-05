@@ -370,5 +370,24 @@ namespace FirstPerson
             carryingTrans = null;
             carryingObject = null;
         }
+
+        [PunRPC]
+        private void TeleportPlayer(Vector3 position)
+        {
+            transform.position = position;
+        }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            if (other.gameObject.CompareTag("Teleport") && photonView.IsMine)
+            {
+                Teleport teleport = other.gameObject.GetComponent<Teleport>();
+                photonView.RPC("TeleportPlayer",RpcTarget.All, 
+                    PhotonNetwork.IsMasterClient? 
+                        teleport.MasterTeleportPoint.position : teleport.ClientTeleportPoint.position);
+                if(teleport.bluePortal)
+                    teleport.PlayPortalSound();
+            }
+        }
     }
 }
