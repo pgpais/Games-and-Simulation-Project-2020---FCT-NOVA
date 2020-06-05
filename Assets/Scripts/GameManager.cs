@@ -36,8 +36,8 @@ public class GameManager : MonoBehaviour
 
     public Teleport nextPortal;
 
-    [Header("UI")] public GameObject canvasPrefab;
-    public GameObject CanvasSpawned { get; private set; }
+    [Header("UI")]
+    public GameObject CanvasSpawned;
 
 
     [SerializeField]
@@ -52,9 +52,6 @@ public class GameManager : MonoBehaviour
             return;
         }
         instance = this;
-
-        CanvasSpawned = Instantiate(canvasPrefab);
-
 
         if (NetworkManager.instance == null)
         {

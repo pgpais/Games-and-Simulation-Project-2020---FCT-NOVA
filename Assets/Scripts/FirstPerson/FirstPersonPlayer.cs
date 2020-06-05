@@ -256,6 +256,8 @@ namespace FirstPerson
                 }
                 else
                 {
+                    if(GameManager.instance != null)
+                        _pauseMenu = GameManager.instance.CanvasSpawned.GetComponent<PauseMenu>();
                     Debug.LogError("COULDN'T FIND PAUSEMENU, WHERE IS IT?", this);
                 }
             }
