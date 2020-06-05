@@ -369,5 +369,23 @@ namespace FirstPerson
             carryingTrans = null;
             carryingObject = null;
         }
+
+        [PunRPC]
+        private void TeleportPlayer(Vector3 position)
+        {
+            transform.position = position;
+        }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            if (other.gameObject.CompareTag("Teleport") && photonView.IsMine)
+            {
+                //TODO: move into different function and play sound
+                Teleport teleport = other.gameObject.GetComponent<Teleport>();
+                // Make every client teleport this player to the correct spot (hopefully fixes sync issues)
+                photonView.RPC("TeleportPlayer", RpcTarget.All,
+                    PhotonNetwork.IsMasterClient? teleport.MasterTeleportPoint.position : teleport.ClientTeleportPoint.position);
+            }
+        }
     }
 }

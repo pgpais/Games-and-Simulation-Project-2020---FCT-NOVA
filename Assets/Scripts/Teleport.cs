@@ -10,7 +10,9 @@ public class Teleport : MonoBehaviour
     public bool bluePortal = true;
     public AudioClip portalSound;
     [SerializeField] private Transform masterTeleportPoint;
+    public Transform MasterTeleportPoint => masterTeleportPoint;
     [SerializeField] private Transform clientTeleportPoint;
+    public Transform ClientTeleportPoint => clientTeleportPoint;
     //[SerializeField] private Transform player;
    
     private void OnTriggerEnter(Collider other)
@@ -18,7 +20,7 @@ public class Teleport : MonoBehaviour
         if(other.CompareTag("Carryable"))
             other.gameObject.transform.position = masterTeleportPoint.position;
         
-        if (other.CompareTag("Player"))
+        /*if (other.CompareTag("Player"))
         {
             if(PhotonView.Get(other.gameObject).IsMine)
                 other.gameObject.transform.position = PhotonNetwork.IsMasterClient? masterTeleportPoint.position: clientTeleportPoint.position;
@@ -29,7 +31,7 @@ public class Teleport : MonoBehaviour
                 //GameManager.instance.UpdateTeleport();
             }
             PlayPortalSound();
-        }
+        }*/
     }
 
     public void PlayPortalSound()
