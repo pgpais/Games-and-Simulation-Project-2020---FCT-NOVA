@@ -68,11 +68,11 @@ public class GameManager : MonoBehaviour
                 NetworkManager.instance.LaunchSpawnPlayers();
         }
 
-        spawnedPuzzles = new List<GameObject>(puzzleSpawnList.Count);
-        SpawnPuzzleRooms(1);
+        //spawnedPuzzles = new List<GameObject>(puzzleSpawnList.Count);
+        //SpawnPuzzleRooms(1);
 
-        nextPortal.SetPoints(nextPuzzle.MasterSpawnPoint, nextPuzzle.ClientSpawnPoint);
-        UpdateTeleport();
+        //nextPortal.SetPoints(nextPuzzle.MasterSpawnPoint, nextPuzzle.ClientSpawnPoint);
+        //UpdateTeleport();
     }
 
     private void LocalSpawnPlayers()

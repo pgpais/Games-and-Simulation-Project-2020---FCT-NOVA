@@ -4006,6 +4006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bluePortal: 1
+  portalSound: {fileID: 0}
   masterTeleportPoint: {fileID: 0}
   clientTeleportPoint: {fileID: 0}
 --- !u!1 &4916000496839434132
@@ -4223,6 +4224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bluePortal: 0
+  portalSound: {fileID: 0}
   masterTeleportPoint: {fileID: 1280727975051794508}
   clientTeleportPoint: {fileID: 4916000496612934444}
 --- !u!1 &4916000496922071951
@@ -8173,6 +8175,11 @@ PrefabInstance:
       propertyPath: m_MeshFormatVersion
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 970849636361416201, guid: 1aa2da5015bd2bf4fbc941ab5a0e5752,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 970849636361416202, guid: 1aa2da5015bd2bf4fbc941ab5a0e5752,
         type: 3}
       propertyPath: m_Mesh
@@ -8278,10 +8285,20 @@ PrefabInstance:
       propertyPath: m_MeshFormatVersion
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4164614466727966143, guid: 1aa2da5015bd2bf4fbc941ab5a0e5752,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7179845405117683396, guid: 1aa2da5015bd2bf4fbc941ab5a0e5752,
         type: 3}
       propertyPath: m_MeshFormatVersion
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179845405117683396, guid: 1aa2da5015bd2bf4fbc941ab5a0e5752,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1aa2da5015bd2bf4fbc941ab5a0e5752, type: 3}
