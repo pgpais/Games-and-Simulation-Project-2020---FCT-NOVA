@@ -250,16 +250,14 @@ namespace FirstPerson
         {
             if (ctx.started)
             {
-                if (_pauseMenu != null)
+                if (_pauseMenu == null)
                 {
-                    _pauseMenu.MenuTrigger();
-                }
-                else
-                {
-                    if(GameManager.instance != null)
-                        _pauseMenu = GameManager.instance.CanvasSpawned.GetComponent<PauseMenu>();
+                    if (GameManager.instance != null)
+                        _pauseMenu = PauseMenu.Instance;
                     Debug.LogError("COULDN'T FIND PAUSEMENU, WHERE IS IT?", this);
                 }
+
+                _pauseMenu.MenuTrigger();
             }
         }
 
