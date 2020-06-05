@@ -385,6 +385,7 @@ GameObject:
   - component: {fileID: 6342330931666871125}
   - component: {fileID: 7319164756068433821}
   - component: {fileID: -2635692543512556388}
+  - component: {fileID: 6974583039293482187}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Carryable
@@ -555,7 +556,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -637,3 +638,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6974583039293482187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8391891228119064666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fdb282bb1608b3489d54095e22c8045, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volume: 0
