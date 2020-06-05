@@ -7,6 +7,7 @@ TagManager:
   - Interactable
   - Carryable
   - Activatable
+  - Teleport
   layers:
   - Default
   - TransparentFX

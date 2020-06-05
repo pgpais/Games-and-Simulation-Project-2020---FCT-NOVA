@@ -16,23 +16,10 @@ public class Teleport : MonoBehaviour
     public Transform ClientTeleportPoint => clientTeleportPoint;
     //[SerializeField] private Transform player;
    
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collider other)
     {
         if(other.CompareTag("Carryable"))
             other.gameObject.transform.position = masterTeleportPoint.position;
-        
-        if (other.CompareTag("Player"))
-        {
-            //TODO: pass this onto player
-           // other.gameObject.transform.position = PhotonNetwork.IsMasterClient? masterTeleportPoint.position: clientTeleportPoint.position;
-            /*if (GameManager.instance != null && PhotonView.Get(other.gameObject).IsMine && bluePortal)
-            {
-                GameManager.instance.SpawnPuzzleRooms(1);
-                GameManager.instance.DeletePuzzle();
-                GameManager.instance.UpdateTeleport();
-            }*/
-            //PlayPortalSound();
-        }
     }
 
     public void PlayPortalSound()
