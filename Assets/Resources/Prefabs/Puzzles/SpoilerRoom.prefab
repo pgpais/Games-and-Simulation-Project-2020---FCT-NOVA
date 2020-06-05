@@ -37012,6 +37012,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3295271152407063649}
   - component: {fileID: 6164678392230988294}
+  - component: {fileID: 29306051027295977}
   m_Layer: 0
   m_Name: SpoilerRoom
   m_TagString: Untagged
@@ -37073,6 +37074,30 @@ MonoBehaviour:
   - {fileID: 8391891228119064666, guid: 1e718d7bbcfcf7b4eba34f3fc4f507f7, type: 3}
   whereToSpawn:
   - {fileID: 5198008669952579525}
+--- !u!167 &29306051027295977
+AudioReverbZone:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3295271152407063654}
+  m_Enabled: 1
+  m_MinDistance: 9.57
+  m_MaxDistance: 15
+  m_ReverbPreset: 22
+  m_Room: -1000
+  m_RoomHF: -1000
+  m_DecayTime: 2.81
+  m_DecayHFRatio: 0.14
+  m_Reflections: 429
+  m_ReflectionsDelay: 0.014
+  m_Reverb: 1023
+  m_ReverbDelay: 0.021
+  m_HFReference: 5000
+  m_Diffusion: 80
+  m_Density: 60
+  m_LFReference: 250
+  m_RoomLF: 0
 --- !u!1 &3295271152485040358
 GameObject:
   m_ObjectHideFlags: 0
