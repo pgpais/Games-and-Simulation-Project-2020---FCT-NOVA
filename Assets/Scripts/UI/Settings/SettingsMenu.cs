@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class SettingsMenu : MonoBehaviour
 {
     private Resolution[] _resolutions;
 
+    public AudioMixer audioMixer;
     public TMP_Dropdown resolutionDropdown;
     public Toggle fullScreenToggle;
     
@@ -49,11 +48,31 @@ public class SettingsMenu : MonoBehaviour
         Resolution resolution = _resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
-    
-    public void SetVolume(float volume)
+
+    #region Audio
+
+    public void SetFxVolume(float volume)
     {
-        Debug.Log(volume);
+        SetVolume(volume, "EffectsVolume");
     }
+
+    public void SetBackgroundVolume(float volume)
+    {
+        SetVolume(volume, "BackgroundVolume");
+    }
+    
+    public void SetMasterVolume(float volume)
+    {
+        SetVolume(volume, "MasterVolume");
+    }
+    
+    private void SetVolume(float volume, string mixerParam)
+    {
+        audioMixer.SetFloat(mixerParam, Mathf.Lerp(-50, 0, volume));
+    }
+
+    #endregion
+
 
     public void SetQuality(int qualityIndex)
     {
