@@ -2133,6 +2133,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1120360355757760482}
+        m_MethodName: PlaySuccessAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   switchOff:
     m_PersistentCalls:
       m_Calls: []
@@ -2700,6 +2711,7 @@ MonoBehaviour:
   - {fileID: 5219040850969339934, guid: b02a9c8cc9888f542b77ba34cf894c99, type: 3}
   whereToSpawn:
   - {fileID: 3218632641127580638}
+  successSound: {fileID: 8300000, guid: 92b088b4ff26b9841aaed9e78a742407, type: 3}
 --- !u!1 &8395599931532794358
 GameObject:
   m_ObjectHideFlags: 0

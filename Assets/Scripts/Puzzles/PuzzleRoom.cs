@@ -20,6 +20,9 @@ public class PuzzleRoom : MonoBehaviour
     [SerializeField] private List<Transform> whereToSpawn;
     public List<Transform> WhereToSpawn => whereToSpawn;
 
+    [SerializeField] private AudioClip successSound;
+    private AudioSource _audioSource;
+    
     private void Start()
     {
         if (objectsToSpawn.Count != whereToSpawn.Count)
@@ -47,6 +50,9 @@ public class PuzzleRoom : MonoBehaviour
                     Instantiate(objectsToSpawn[i], whereToSpawn[i].position, whereToSpawn[i].rotation);
             }
         }
+
+        _audioSource = gameObject.AddComponent<AudioSource>();
+        _audioSource.clip = successSound;
     }
 
 
@@ -60,5 +66,10 @@ public class PuzzleRoom : MonoBehaviour
     {
         if(PhotonNetwork.IsMasterClient) 
             PhotonNetwork.Instantiate("Box", pos.position, pos.rotation);
+    }
+
+    public void PlaySuccessAudio()
+    {
+        _audioSource.Play();
     }
 }
