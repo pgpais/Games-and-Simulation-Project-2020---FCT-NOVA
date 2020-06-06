@@ -21,12 +21,15 @@ public class LobbyManager : MonoBehaviour
     [SerializeField] private TMP_Text lobbyName;
 
     private List<string> log;
+    private AudioSource _audio;
 
     private int readyNum = 0;
     private readonly byte PlayerReadyEvent = 2;
 
-    
-    
+    [SerializeField] private AudioClip countdownBeep;
+    [SerializeField] private AudioClip finalBeep;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +40,7 @@ public class LobbyManager : MonoBehaviour
         }
         instance = this;
 
+        _audio = GetComponent<AudioSource>();
         log = new List<string>();
         lobbyName.text = NetworkManager.instance.RoomName;
     }
@@ -122,6 +126,7 @@ public class LobbyManager : MonoBehaviour
             if (timeToStart == 0)
             {
                 //Start Game
+                PlaySound(finalBeep);
                 if(PhotonNetwork.IsMasterClient)
                     StartGame();
                 Debug.Log("Game has started!");
@@ -130,10 +135,16 @@ public class LobbyManager : MonoBehaviour
             else
             {
                 updateLog("Game starting in " + timeToStart + " seconds!");
+                PlaySound(countdownBeep);
                 timeToStart--;
                 yield return new WaitForSeconds(1);
             }
         }
+    }
+
+    private void PlaySound(AudioClip sound)
+    {
+        _audio.PlayOneShot(sound);
     }
 
     void StartGame()
