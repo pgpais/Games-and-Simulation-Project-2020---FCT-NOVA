@@ -48,9 +48,9 @@
                         Debug.Log("Setting seed to " + (int) data.CustomData);
                         seed = (int)data.CustomData;
                         Debug.Log("Seed = " + seed);
+                        MakeBlocks(seed);
                         break;
                 }
-                MakeBlocks(seed);
             }
 
             void Start()
