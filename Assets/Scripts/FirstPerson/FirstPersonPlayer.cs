@@ -379,9 +379,11 @@ namespace FirstPerson
 
         private void OnCollisionEnter(Collision other)
         {
-            if (other.gameObject.CompareTag("Teleport") && photonView.IsMine)
+            if (other.gameObject.CompareTag("Teleport"))
             {
                 Teleport teleport = other.gameObject.GetComponent<Teleport>();
+                if(PhotonNetwork.OfflineMode)
+                    TeleportPlayer(teleport.MasterTeleportPoint.position);
                 photonView.RPC("TeleportPlayer",RpcTarget.All, 
                     PhotonNetwork.IsMasterClient? 
                         teleport.MasterTeleportPoint.position : teleport.ClientTeleportPoint.position);
