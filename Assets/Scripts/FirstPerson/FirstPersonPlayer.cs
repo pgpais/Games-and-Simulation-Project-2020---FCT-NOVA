@@ -379,7 +379,11 @@ namespace FirstPerson
 
         private void OnCollisionEnter(Collision other)
         {
-            if (other.gameObject.CompareTag("Teleport"))
+            if (other.gameObject.CompareTag("MovingPlatform"))
+            {
+                transform.parent = other.transform;
+            }
+            else if (other.gameObject.CompareTag("Teleport"))
             {
                 Teleport teleport = other.gameObject.GetComponent<Teleport>();
                 if(PhotonNetwork.OfflineMode)
@@ -394,6 +398,14 @@ namespace FirstPerson
 
                 if(teleport.bluePortal)
                     teleport.PlayPortalSound();
+            }
+        }
+
+        private void OnCollisionExit(Collision other)
+        {
+            if (other.gameObject.CompareTag("MovingPlatform"))
+            {
+                transform.parent = null;
             }
         }
     }
