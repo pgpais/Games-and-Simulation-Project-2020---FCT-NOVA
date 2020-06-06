@@ -8,6 +8,8 @@ TagManager:
   - Carryable
   - Activatable
   - Teleport
+  - Ground
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX

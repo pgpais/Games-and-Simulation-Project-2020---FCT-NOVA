@@ -14,7 +14,7 @@ namespace FirstPerson
     [RequireComponent(typeof(PlayerInput))]
     [RequireComponent(typeof(FirstPersonMovement))]
     [RequireComponent(typeof(FirstPersonAiming))]
-    public class FirstPersonPlayer : MonoBehaviourPun
+    public class FirstPersonPlayer : MonoBehaviourPun, IPunObservable
     {
         [Header("Interact Parameters")] [SerializeField]
         private float interactRange = 10f;
@@ -406,6 +406,20 @@ namespace FirstPerson
             if (other.gameObject.CompareTag("MovingPlatform"))
             {
                 transform.parent = null;
+            }
+        }
+
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            if (stream.IsWriting)
+            {
+                stream.SendNext(aim.camTransform.position);
+                stream.SendNext(aim.camTransform.rotation);
+            }
+            else
+            {
+                aim.camTransform.position = (Vector3) stream.ReceiveNext();
+                aim.camTransform.rotation = (Quaternion) stream.ReceiveNext();
             }
         }
     }
