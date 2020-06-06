@@ -45,9 +45,8 @@
                 switch (eventCode)
                 {
                     case 1:
-                        Debug.Log("Setting seed to " + (int) data.CustomData);
                         seed = (int)data.CustomData;
-                        Debug.Log("Seed = " + seed);
+                        Debug.Log("Maze Seed = " + seed);
                         MakeBlocks(seed);
                         break;
                 }

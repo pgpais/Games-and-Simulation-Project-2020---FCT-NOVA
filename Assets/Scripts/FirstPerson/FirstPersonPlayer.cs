@@ -384,9 +384,14 @@ namespace FirstPerson
                 Teleport teleport = other.gameObject.GetComponent<Teleport>();
                 if(PhotonNetwork.OfflineMode)
                     TeleportPlayer(teleport.MasterTeleportPoint.position);
-                photonView.RPC("TeleportPlayer",RpcTarget.All, 
-                    PhotonNetwork.IsMasterClient? 
-                        teleport.MasterTeleportPoint.position : teleport.ClientTeleportPoint.position);
+                else if(photonView.IsMine)
+                {
+                    Vector3 teleportPosition = PhotonNetwork.IsMasterClient
+                        ? teleport.MasterTeleportPoint.position
+                        : teleport.ClientTeleportPoint.position;
+                    photonView.RPC("TeleportPlayer", RpcTarget.All, teleportPosition);
+                }
+
                 if(teleport.bluePortal)
                     teleport.PlayPortalSound();
             }
