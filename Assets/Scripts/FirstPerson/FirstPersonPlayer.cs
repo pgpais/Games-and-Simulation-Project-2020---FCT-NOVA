@@ -201,7 +201,11 @@ namespace FirstPerson
         {
             if (isCarrying)
             {
-                photonView.RPC("LaunchObject", RpcTarget.All);
+                if (PhotonNetwork.OfflineMode)
+                {
+                    LaunchObject();
+                }else
+                    photonView.RPC("LaunchObject", RpcTarget.All);
             } else if (PhotonNetwork.OfflineMode) 
                 activeTool.UseTool(ctx.phase);
             else
@@ -227,7 +231,10 @@ namespace FirstPerson
                 
                 if (isCarrying)
                 {
-                    photonView.RPC("DropObject", RpcTarget.All);
+                    if(PhotonNetwork.OfflineMode)
+                       DropObject();
+                    else
+                        photonView.RPC("DropObject", RpcTarget.All);
                 }
                 else if (Physics.Raycast(camTransform.position, camTransform.forward, out hit, interactRange, interactMask))
                 {
@@ -240,7 +247,10 @@ namespace FirstPerson
 
                     if (hit.collider.CompareTag("Carryable"))
                     {
-                        photonView.RPC("CarryObjectFromView", RpcTarget.All, PhotonView.Get(hit.collider).ViewID);
+                        if(PhotonNetwork.OfflineMode)
+                            CarryObject(hit.collider.gameObject);
+                        else
+                            photonView.RPC("CarryObjectFromView", RpcTarget.All, PhotonView.Get(hit.collider).ViewID);
                     }
                 }
             }
