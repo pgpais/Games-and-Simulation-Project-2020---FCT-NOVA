@@ -11,9 +11,12 @@ public class RollBall: MonoBehaviour
     private AudioSource ballRolling ;  
     [SerializeField]
     private AudioSource ballColliding ;
+
+    [SerializeField][Range(1,10)] private float rollingQuietness = 6;
+    [SerializeField][Range(1,10)] private float collidingQuietness = 8;
     
-    private float volume;
-    private float volumeColliding;
+    private float _volume;
+    private float _volumeColliding;
 
     void Start()
     {
@@ -24,14 +27,14 @@ public class RollBall: MonoBehaviour
     private void Update()
     {
 
-        volume = Mathf.Clamp01(_speed/6);
+        _volume = Mathf.Clamp01(_speed/rollingQuietness);
         
-        volumeColliding = Mathf.Clamp01(_speed/8);
+        _volumeColliding = Mathf.Clamp01(_speed/collidingQuietness);
         
         
         if (ballRolling.isPlaying && _speed >= 0.1f)
         {
-            ballRolling.volume = volume;
+            ballRolling.volume = _volume;
 
         }
         
@@ -58,8 +61,8 @@ public class RollBall: MonoBehaviour
         }
         else if(!other.gameObject.CompareTag("Player"))
         {
-            ballColliding.volume = volumeColliding;
-            Debug.Log(volumeColliding);
+            ballColliding.volume = _volumeColliding;
+            Debug.Log(_volumeColliding);
             ballColliding.Play();
         }
     }
