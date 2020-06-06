@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using ExitGames.Client.Photon;
 using Photon.Pun;
+using Photon.Realtime;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,6 +23,8 @@ public class LobbyManager : MonoBehaviour
     private List<string> log;
 
     private int readyNum = 0;
+    private readonly byte PlayerReadyEvent = 2;
+
     
     
     // Start is called before the first frame update
@@ -65,13 +69,23 @@ public class LobbyManager : MonoBehaviour
     {
         readyButton.SetActive(false);
         unreadyButton.SetActive(true);
-        NetworkManager.instance.triggerReadyRPC("PlayerReadied", PhotonNetwork.LocalPlayer);
+        //NetworkManager.instance.triggerReadyRPC("PlayerReadied", PhotonNetwork.LocalPlayer);
+        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All }; // You would have to set the Receivers to All in order to receive this event on the local client as well
+        SendOptions sendOptions = new SendOptions { Reliability = true };
+        Debug.Log("Raised Ready event");
+        PhotonNetwork.RaiseEvent(PlayerReadyEvent, true, raiseEventOptions,
+            sendOptions);
     }
     public void OnUnreadyPressed()
     {
         readyButton.SetActive(true);
         unreadyButton.SetActive(false);
-        NetworkManager.instance.triggerReadyRPC("PlayerUnreadied", PhotonNetwork.LocalPlayer);
+        //NetworkManager.instance.triggerReadyRPC("PlayerUnreadied", PhotonNetwork.LocalPlayer);
+        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All }; // You would have to set the Receivers to All in order to receive this event on the local client as well
+        SendOptions sendOptions = new SendOptions { Reliability = true };
+        Debug.Log("Raised Unready event");
+        PhotonNetwork.RaiseEvent(PlayerReadyEvent, false, raiseEventOptions,
+            sendOptions);
     }
     
     public void ReadyPlayer()
@@ -81,10 +95,7 @@ public class LobbyManager : MonoBehaviour
         if (readyNum == 2)
         {
             updateLog("All players are ready!");
-            if (PhotonNetwork.IsMasterClient)
-            {
-                StartCoroutine(StartGameCountdown(5)); // Start game in 5 seconds
-            }
+            StartCoroutine(StartGameCountdown(5)); // Start game in 5 seconds
         }
 
     }
@@ -111,7 +122,8 @@ public class LobbyManager : MonoBehaviour
             if (timeToStart == 0)
             {
                 //Start Game
-                StartGame();
+                if(PhotonNetwork.IsMasterClient)
+                    StartGame();
                 Debug.Log("Game has started!");
                 break;
             }

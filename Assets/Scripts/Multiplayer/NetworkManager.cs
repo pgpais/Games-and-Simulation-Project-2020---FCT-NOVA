@@ -20,6 +20,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public int Seed { get; private set; }
     private readonly byte SeedGeneratedEvent = 1;
+    private readonly byte PlayerReadyEvent = 2;
 
     private void Awake()
     {
@@ -32,7 +33,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     void Start()
     {
         PhotonNetwork.NetworkingClient.EventReceived += OnEvent;
-        
+
         if (instance != null)
         {
             Debug.LogWarning("Tried to create a new NetworkManager. Please be sure that there is only one in the scene");
@@ -217,6 +218,18 @@ public class NetworkManager : MonoBehaviourPunCallbacks
                 Debug.Log("Setting seed to " + (int) data.CustomData);
                 Seed = (int)data.CustomData;
                 Debug.Log("Seed = " + Seed);
+                break;
+            case 2:
+                bool ready = (bool) data.CustomData;
+                Debug.Log("Ready event - " + ready);
+                if (ready)
+                {
+                    LobbyManager.instance.ReadyPlayer();
+                }
+                else
+                {
+                    LobbyManager.instance.UnreadyPlayer();
+                }
                 break;
         }
     }

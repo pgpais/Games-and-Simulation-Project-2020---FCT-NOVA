@@ -16,9 +16,9 @@ public class Teleport : MonoBehaviour
     public Transform ClientTeleportPoint => clientTeleportPoint;
     //[SerializeField] private Transform player;
    
-    private void OnCollisionEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        if(other.CompareTag("Carryable"))
+        if(other.gameObject.CompareTag("Carryable"))
             other.gameObject.transform.position = masterTeleportPoint.position;
     }
 
