@@ -4,6 +4,10 @@ public class QuitGame : MonoBehaviour
 {
     public void LeaveGame()
     {
-        MenuManager.QuitGame();
+        //TODO: maybe confirm?
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #endif
+        Application.Quit();
     }
 }
