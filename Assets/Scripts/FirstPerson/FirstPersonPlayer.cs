@@ -413,11 +413,35 @@ namespace FirstPerson
         {
             if (stream.IsWriting)
             {
+                // Transform sync
+                stream.SendNext(transform.position);
+                stream.SendNext(transform.rotation);
+                
+                // Rigidbody velocity
+                if(mov.Rb != null)
+                    stream.SendNext(mov.Rb.velocity);
+                else
+                {
+                    stream.SendNext(Vector3.zero);
+                }
+                
+                // Camera Transform sync
                 stream.SendNext(aim.camTransform.position);
                 stream.SendNext(aim.camTransform.rotation);
             }
             else
             {
+                // Transform sync
+                transform.position = (Vector3) stream.ReceiveNext();
+                transform.rotation = (Quaternion) stream.ReceiveNext();
+                
+                // Rigidbody velocity
+                Vector3 vel = (Vector3) stream.ReceiveNext();
+                vel.y = 0;
+                if(mov != null)
+                    mov.SetAnimatorSpeed(vel);
+                
+                // Camera Transform sync
                 aim.camTransform.position = (Vector3) stream.ReceiveNext();
                 aim.camTransform.rotation = (Quaternion) stream.ReceiveNext();
             }

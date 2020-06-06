@@ -24,6 +24,7 @@ public class FirstPersonMovement : MonoBehaviourPun
     private float movH, movV;
     private bool triedJumping;
     private Rigidbody rb;
+    public Rigidbody Rb => rb;
     [SerializeField]
     private Animator animator;
 
@@ -92,8 +93,6 @@ public class FirstPersonMovement : MonoBehaviourPun
         
         if (!photonView.IsMine)
         {
-            Vector3 horizontalVelocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-            animator.SetFloat(Speed, horizontalVelocity.magnitude);
             return;
         }
 
@@ -101,10 +100,15 @@ public class FirstPersonMovement : MonoBehaviourPun
         Vector3 mov = transform.forward * movV + transform.right * movH;
         mov.Normalize();
         mov *= speed;
-        animator.SetFloat(Speed, mov.magnitude);
+        SetAnimatorSpeed(mov);
         
         mov += new Vector3(0, rb.velocity.y, 0);
         rb.velocity = mov;
+    }
+
+    public void SetAnimatorSpeed(Vector3 horizontalVelocity)
+    {
+        animator.SetFloat(Speed, horizontalVelocity.magnitude);
     }
 
     private void OnDrawGizmosSelected()
