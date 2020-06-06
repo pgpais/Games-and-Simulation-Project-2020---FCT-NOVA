@@ -760,8 +760,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballRolling: {fileID: -2635692543512556388}
   ballColliding: {fileID: 2713201308802043533}
-  rollingQuietness: 6
-  collidingQuietness: 8
+  rollingQuietness: 1
+  collidingQuietness: 3
 --- !u!82 &2713201308802043533
 AudioSource:
   m_ObjectHideFlags: 0

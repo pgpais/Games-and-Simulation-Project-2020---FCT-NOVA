@@ -12,8 +12,8 @@ public class RollBall: MonoBehaviour
     [SerializeField]
     private AudioSource ballColliding ;
 
-    [SerializeField][Range(1,10)] private float rollingQuietness = 6;
-    [SerializeField][Range(1,10)] private float collidingQuietness = 8;
+    [SerializeField][Range(1,10)] private float rollingQuietness = 1;
+    [SerializeField][Range(1,10)] private float collidingQuietness = 3;
     
     private float _volume;
     private float _volumeColliding;
