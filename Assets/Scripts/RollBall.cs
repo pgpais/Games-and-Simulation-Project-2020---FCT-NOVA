@@ -7,13 +7,17 @@ public class RollBall: MonoBehaviour
     private float _speed;
     private int initialPitch = 1;
     private Rigidbody _rigidBody;
-    private AudioSource _ballSoundSource ;
-    public float volume;
+    [SerializeField]
+    private AudioSource ballRolling ;  
+    [SerializeField]
+    private AudioSource ballColliding ;
+    
+    private float volume;
+    private float volumeColliding;
 
     void Start()
     {
         _rigidBody = GetComponent<Rigidbody>();
-        _ballSoundSource = GetComponent<AudioSource>();
 
     }
 
@@ -22,19 +26,22 @@ public class RollBall: MonoBehaviour
 
         volume = Mathf.Clamp01(_speed/6);
         
+        volumeColliding = Mathf.Clamp01(_speed/8);
         
-        if (_ballSoundSource.isPlaying && _speed >= 0.1f)
+        
+        if (ballRolling.isPlaying && _speed >= 0.1f)
         {
-            _ballSoundSource.volume = volume;
+            ballRolling.volume = volume;
 
         }
         
              
-        else if (_ballSoundSource.isPlaying && _speed < 0.1f)
+        else if (ballRolling.isPlaying && _speed < 0.1f)
         {
-            _ballSoundSource.volume = 0;
+            ballRolling.volume = 0;
         }    
     }
+
 
 
     void FixedUpdate()
@@ -46,8 +53,14 @@ public class RollBall: MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ground"))
         {
-            _ballSoundSource.Play();
+            ballRolling.Play();
 
+        }
+        else if(!other.gameObject.CompareTag("Player"))
+        {
+            ballColliding.volume = volumeColliding;
+            Debug.Log(volumeColliding);
+            ballColliding.Play();
         }
     }
 
@@ -55,7 +68,8 @@ public class RollBall: MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ground"))
         {
-            _ballSoundSource.Stop();
+            ballRolling.Stop();
 
-        }    }
+        }    
+    }
 }
