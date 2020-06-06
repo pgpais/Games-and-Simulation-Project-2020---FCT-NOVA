@@ -18225,6 +18225,12 @@ PrefabInstance:
       propertyPath: CanvasSpawned
       value: 
       objectReference: {fileID: 884577313}
+    - target: {fileID: 2357728049786478266, guid: 43dc09942593396409d36a620594b86f,
+        type: 3}
+      propertyPath: LocalPlayerPrefab
+      value: 
+      objectReference: {fileID: 2329750830122688487, guid: 846145685254e8a48810ca24e0f97e2d,
+        type: 3}
     - target: {fileID: 3940769320282759609, guid: 43dc09942593396409d36a620594b86f,
         type: 3}
       propertyPath: m_LocalPosition.x
