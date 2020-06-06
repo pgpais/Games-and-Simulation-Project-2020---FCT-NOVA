@@ -13,7 +13,7 @@
 
     namespace Puzzles
     {
-        public class MazeGenerator : MonoBehaviour {
+        public class MazeGenerator : MonoBehaviourPunCallbacks {
             public int width, height;
             public Material brick;
             private int[,] maze;
@@ -37,14 +37,30 @@
             private static MazeGenerator Instance { get; set; }
             void Awake()  { Instance = this;}
 
-            void Start()
+
+            private void OnEvent(EventData data)
             {
-                MakeBlocks();
+                byte eventCode = data.Code;
+                int seed = 0;
+                switch (eventCode)
+                {
+                    case 1:
+                        Debug.Log("Setting seed to " + (int) data.CustomData);
+                        seed = (int)data.CustomData;
+                        Debug.Log("Seed = " + seed);
+                        break;
+                }
+                MakeBlocks(seed);
             }
 
-            
-            
-            void MakeBlocks() {
+            void Start()
+            {
+                PhotonNetwork.NetworkingClient.EventReceived += OnEvent;
+               
+            }
+
+
+            void MakeBlocks(int seed) {
        
             
                 maze = new int[width, height];
@@ -59,7 +75,6 @@
                 }
                 else
                 {
-                    int seed;
                     if (NetworkManager.instance)
                     {
                         seed = NetworkManager.instance.Seed % mazes.Count;
